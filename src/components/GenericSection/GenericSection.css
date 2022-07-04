@@ -1,0 +1,21 @@
+section {
+    /* min-height: 100vh; */
+    padding: 60px 8vw;
+}
+
+.doctors {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10vw;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filters span {
+    font-size: 1.1rem;
+    font-weight: 600;
+}

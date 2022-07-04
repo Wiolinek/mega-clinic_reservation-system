@@ -1,0 +1,24 @@
+button, .button-link {
+    font-family: var(--menu-font-family);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--white-color);
+    border-radius: 6px;
+    padding: 0.8rem 2rem;
+    transition: all .3s ease-out;
+    cursor: pointer;
+}
+
+button:hover {
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    background-color: var(--white-color);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 2px;
+    right: 8vw;
+}
