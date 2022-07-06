@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 
@@ -10,7 +9,6 @@ interface Props {
 const OurDoctors: React.FC<Props> = ({filters,resultsCounter}) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
-
 
     const filterList = filters?.map(filter => <option key={filter} value={filter} selected={doctorSpec === filter} >
         {filter}</option>)

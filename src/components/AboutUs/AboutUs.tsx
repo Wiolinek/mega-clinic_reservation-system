@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
-
 import GenericSection from "../GenericSection/GenericSection";
 
-// import '../Navigation/Navigation.css';
+// import '../AboutUs/AboutUs.css';
 
 
 const AboutUs: React.FC = () => {

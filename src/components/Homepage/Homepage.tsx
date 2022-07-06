@@ -5,9 +5,7 @@ import List from "../List/List";
 import { SpecialityType } from '../../types/speciality';
 
 
-
 const Homepage: React.FC = () => {
-
     const [specialitiesData, setSpecialitiesData] = useState<SpecialityType[]>();
   
     useEffect(() => {

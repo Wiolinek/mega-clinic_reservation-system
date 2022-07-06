@@ -30,7 +30,7 @@ const OurDoctors: React.FC = () => {
         const requestPost = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ specialityFilter: doctorSpec })
+            body: JSON.stringify({ specialityFilter: doctorSpec, doctorFilter: '' })
         };
         fetch(`http://localhost:3030/filter`, doctorSpec !== null ? requestPost : undefined)
         .then(response => response.json())
@@ -47,7 +47,6 @@ const OurDoctors: React.FC = () => {
     const backToTop = () => {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
     }
-
 
     return (
         <main>

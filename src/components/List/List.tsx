@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react';
 import { SpecialityType } from '../../types/speciality';
 import '../List/List.css';
 
@@ -6,7 +5,6 @@ interface Props {
     list: SpecialityType[];
     customClass: string;
 }
-
 
 const List: React.FC<Props> = ({ list, customClass }) => {
 
