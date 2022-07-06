@@ -9,6 +9,8 @@ var indexRouter = require('./routes/index');
 // var doctorsRouter = require('./routes/doctors');
 var specialitiesRouter = require('./routes/specialities');
 var filter = require('./routes/doctors');
+var timetable = require('./routes/timetable');
+var form = require('./routes/form');
 
 var app = express();
 
@@ -28,6 +30,8 @@ app.use('/', indexRouter);
 // app.use('/doctors', doctorsRouter);
 app.use('/specialities', specialitiesRouter);
 app.use('/filter', filter);
+app.use('/timetable', timetable);
+app.use('/form', form);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
