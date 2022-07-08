@@ -79,13 +79,13 @@ Project is: _complete_
 
 ## Room for Improvement
 
-- add notiffication about max order quantity for each item in cart
-- block manual input for quantities on product card
+- 
+- 
 
 ## License
 
 This website was built by Wiola Polok www.u-v.codes.
-Copyright @ 2021 Wiola Polok www.u-v.codes. All Rights Reserved.
+Copyright @ 2022 Wiola Polok www.u-v.codes. All Rights Reserved.
 You are allowed to use it for both personal and commercial use, but not to claim it as your own design.
 
 ## Contact
