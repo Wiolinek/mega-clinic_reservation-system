@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import CalendarComp from '../Calendar/Calendar';
 
 import { PacientType } from '../../types/pacient'
 
@@ -17,10 +18,12 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsList, timeList }) => {
     const doctorSpec = searchParams.get('speciality');
     const doctorName = searchParams.get('doctor');
     const defaultValue = '---';
+    const [date, setDate] = useState(new Date());
+
     const [formData, setFormData] = useState<PacientType>({
         speciality: '',
         doctor: '',
-        date: '',
+        date: date.toLocaleDateString('sv'),
         time: '',
         pacientName: '',
         pacientEmail: '',
@@ -29,20 +32,15 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsList, timeList }) => {
 
     const selectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setFormData(dataItem => ({...dataItem, [e.target.name]: e.target.value}));
-        setSearchParams(e.target.selectedOptions[0].value !== defaultValue ? {speciality: `${doctorSpec}`, [e.currentTarget.name]: e.target.selectedOptions[0].value} : {})
+        setSearchParams(e.target.selectedOptions[0].value !== defaultValue ? {speciality: `${doctorSpec}`, [e.currentTarget.name]: e.target.selectedOptions[0].value} : {});
     };
 
-    const timeSelectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setFormData(dataItem => ({...dataItem, [e.target.name]: e.target.value}));
-    };
+    const timeSelectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => setFormData(dataItem => ({...dataItem, [e.target.name]: e.target.value}));
 
-    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData(dataItem => ({...dataItem, [e.target.name]: e.target.value}));
-    };
+    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => setFormData(dataItem => ({...dataItem, [e.target.name]: e.target.value}));
 
     const formHandler = (e: React.SyntheticEvent) => {
         e.preventDefault()
-        console.log(formData)
         fetch(`http://localhost:3030/form`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -50,55 +48,55 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsList, timeList }) => {
         })
         .catch(error => console.log(`error ${error}`))
     };
-    
+
     useEffect(() => {
-        doctorName && doctorSpec && setFormData({...formData,  speciality: doctorSpec, doctor: doctorName});
-    }, []);
+        doctorName && doctorSpec && setFormData({...formData, speciality: doctorSpec, doctor: doctorName, date: date.toLocaleDateString('sv')});
+    }, [date, doctorName, doctorSpec]);
     
 
     return (
         <><h2>Zarezerwuj wizytę</h2>
-        <form className='login__form' onSubmit={e => formHandler(e)}>
+        <form className='reservation__form' onSubmit={e => formHandler(e)}>
             <div>
-                <div>
-                    <label>Wybierz specjalizację:
-                        <select name='speciality' required onChange={selectHandler}>
-                            <option key={defaultValue} value={defaultValue} >{defaultValue}</option>
-                            {specialitiesList}
-                        </select>
-                        <span>np. pediatra</span>
-                    </label>
-                    <label>Wybierz lekarza:
-                        <select name='doctor' required onChange={selectHandler}>
-                            <option key={defaultValue} value={defaultValue}>{defaultValue}</option>
-                            {doctorsList}
-                        </select>
-                        <span>np. Adam Kowalski</span>
-                    </label>
-                    <label>Wybierz godzinę:
-                        <select name='time' required onChange={timeSelectHandler}>
-                            <option key={defaultValue} value={defaultValue}>{defaultValue}</option>
-                            {timeList}
-                        </select>
-                        <span>np. 7:30</span>
-                    </label>
-                </div>
-                <div>
-                    <label>Imię i nazwisko:
-                        <input type='text' name='pacientName' pattern="[a-zA-Z]+[ ][a-zA-Z]+" required onChange={inputHandler}></input>
-                        <span>np. Anna Nowak</span>
-                    </label>
-                    <label>Adres email:
-                        <input type='email' name='pacientEmail' required onChange={inputHandler}></input>
-                        <span>np. anna.nowak@email.pl</span>
-                    </label>
-                    <label>Numer telefonu:
-                        <input type='tel' name='pacientPhone' pattern="[0-9]{9}" required onChange={inputHandler}></input>
-                        <span>np. 123456789</span>
-                    </label>
-                </div>
+                <label>Wybierz specjalizację:
+                    <select name='speciality' required onChange={selectHandler}>
+                        <option key={defaultValue} value={defaultValue} >{defaultValue}</option>
+                        {specialitiesList}
+                    </select>
+                    <span>np. pediatra</span>
+                </label>
+                <label>Wybierz lekarza:
+                    <select name='doctor' required onChange={selectHandler}>
+                        <option key={defaultValue} value={defaultValue}>{defaultValue}</option>
+                        {doctorsList}
+                    </select>
+                    <span>np. Adam Kowalski</span>
+                </label>
+                <label>Wybierz datę:
+                    <input name='date' value={date.toLocaleDateString()} onChange={e => inputHandler(e)}></input>
+                    <CalendarComp date={date} setDate={setDate}/>
+                </label>
+                <label>Wybierz godzinę:
+                    <select name='time' required onChange={timeSelectHandler}>
+                        <option key={defaultValue} value={defaultValue} selected>{defaultValue}</option>
+                        {timeList}
+                    </select>
+                    <span>np. 7:30</span>
+                </label>
+                <label>Imię i nazwisko:
+                    <input type='text' name='pacientName' pattern="[a-zA-Z]+[ ][a-zA-Z]+" required onChange={inputHandler}></input>
+                    <span>np. Anna Nowak</span>
+                </label>
+                <label>Adres email:
+                    <input type='email' name='pacientEmail' required onChange={inputHandler}></input>
+                    <span>np. anna.nowak@email.pl</span>
+                </label>
+                <label>Numer telefonu:
+                    <input type='tel' name='pacientPhone' pattern="[0-9]{9}" required onChange={inputHandler}></input>
+                    <span>np. 123456789</span>
+                </label>
             </div>
-            <button className="login__btn" type="submit">Wyślij</button>
+            <button type="submit">Wyślij</button>
         </form>
     </>
     )

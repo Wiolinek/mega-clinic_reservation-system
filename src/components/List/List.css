@@ -1,7 +1,7 @@
 .specialities {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    gap: 12px;
     justify-content: center;
     padding: 0 10vw; 
 }
@@ -9,6 +9,11 @@
 .specialities li {
     text-align: center;
     background-color: var(--primary-color);
+    transition: all .3s ease-out;
+}
+
+.specialities li:hover {
+    transform: scale(1.06);
 }
 
 .specialities li a {
