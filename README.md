@@ -1,4 +1,4 @@
-# International Ceramics Manufacturing Inc.
+# MegaClinic.
 
 > MegaClinic is a website providing variety of medical services. It is home page of medical clinic with reservation system. UPacient can choose a specialist and send reservation. Doctor can login to personal account and check all the bookings made by pacients.
 
