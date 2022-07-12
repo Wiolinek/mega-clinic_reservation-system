@@ -24,6 +24,8 @@ const filter = require('./routes/doctors');
 const timetable = require('./routes/timetable');
 const form = require('./routes/form');
 const login = require('./routes/login');
+const user = require('./routes/login');
+const logout = require('./routes/login');
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -53,6 +55,8 @@ app.use('/filter', filter);
 app.use('/timetable', timetable);
 app.use('/form', form);
 app.use('/login', login);
+app.use('/user', user);
+app.use('/logout', logout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

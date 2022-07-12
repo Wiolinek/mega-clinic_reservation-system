@@ -48,7 +48,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((userId, done) => {
-  Doctor.findbyId(userId)
+  Doctor.findById(userId)
     .then((user) => {
         done(null, user);
     })
