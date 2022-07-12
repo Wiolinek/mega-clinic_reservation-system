@@ -1,37 +1,58 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
+const express = require ('express');
+const path = require ('path');
+const cors = require ('cors');
+const passport = require ('passport');
+const session = require ('express-session');
+const dotenv = require('dotenv');
+const createError = require('http-errors');
+const logger = require('morgan');
+const mongoose = require('mongoose');
 
-var indexRouter = require('./routes/index');
-// var doctorsRouter = require('./routes/doctors');
-var specialitiesRouter = require('./routes/specialities');
-var filter = require('./routes/doctors');
-var timetable = require('./routes/timetable');
-var form = require('./routes/form');
+dotenv.config()
 
-var app = express();
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
-app.use(cors());
+const db = mongoose.connection
+db.on('error', error => console.log(error))
+db.once('open', () => console.log('connected to DB'))
 
-// view engine setup
+const indexRouter = require('./routes/index');
+const specialitiesRouter = require('./routes/specialities');
+const filter = require('./routes/doctors');
+const timetable = require('./routes/timetable');
+const form = require('./routes/form');
+const login = require('./routes/login');
+
+const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(cors({origin: 'http://localhost:3000', credentials: true}));
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }))
+
+app.use(session({
+  secret: process.env.SECRET_CODE,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 1000 * 60* 60 * 24 }
+}))
+
+require('./passport-config');
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-// app.use('/doctors', doctorsRouter);
 app.use('/specialities', specialitiesRouter);
 app.use('/filter', filter);
 app.use('/timetable', timetable);
 app.use('/form', form);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
