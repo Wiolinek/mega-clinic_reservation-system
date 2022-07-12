@@ -1,12 +1,13 @@
-// import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStethoscope } from '@fortawesome/free-solid-svg-icons'
+import { myContext } from '../../Context';
 
 import '../Navigation/Navigation.css';
 
 const Navigation: React.FC = () => {
-
+const context = useContext(myContext)
     
     return (
         <header>
@@ -28,9 +29,19 @@ const Navigation: React.FC = () => {
                     <li className='nav__item nav__item--reservation'>
                         <NavLink to='/reservation'>Zarezerwuj wizytę</NavLink>
                     </li>
+                    {context ?
+                    <>
+                        <li className='nav__item nav__item--doctor-zone'>
+                            <NavLink to='/user'>Moje konto</NavLink>
+                        </li>
+                        <li className='nav__item nav__item--doctor-zone'>
+                            <NavLink to='/logout'>Wyloguj się</NavLink>
+                        </li>
+                    </>
+                    :
                     <li className='nav__item nav__item--doctor-zone'>
                         <NavLink to='/login'>Strefa lekarza</NavLink>
-                    </li>
+                    </li>}
                 </ul>
             </nav>
         </header>
