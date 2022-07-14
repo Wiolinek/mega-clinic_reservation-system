@@ -26,10 +26,20 @@
     gap: 20px;
 }
 
-.doctor__item--description p {
+.doctor__item--description h2, .doctor__item--description h3{
     text-align: center;
+}
+
+.doctor__item--description p {
+    padding: 0 5vw;
 }
 
 button {
     align-self: flex-end;
+}
+
+@media (max-width: 1000px) {
+    .doctor__item {
+        flex-wrap: wrap;
+    }    
 }

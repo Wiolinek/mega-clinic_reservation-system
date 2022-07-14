@@ -18,11 +18,6 @@
     margin-top: 4px;
 }
 
-.reservation__form  button {
-    margin-right: 0;
-    align-self: flex-end;
-}
-
 .chosen-date {
     display: flex;
     align-items: center;

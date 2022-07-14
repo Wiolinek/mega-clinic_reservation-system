@@ -77,10 +77,6 @@ select, input {
   margin-top: 8px;
 }
 
-select {
+select, button {
   cursor: pointer;
-}
-
-button {
-  min-width: 140px;
 }

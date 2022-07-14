@@ -1,17 +1,21 @@
-button, .button-link {
+.react-calendar__tile,
+.react-calendar__navigation__arrow,
+.react-calendar__navigation__label,
+.btn {
     font-family: var(--menu-font-family);
     font-size: 1.2rem;
     letter-spacing: 1px;
     color: var(--white-color);
     background-color: var(--primary-color);
     border: 1px solid var(--white-color);
+    min-width: 140px;
     border-radius: 6px;
     padding: 0.8rem 2rem;
     transition: all .3s ease-out;
     cursor: pointer;
 }
 
-button:hover {
+button:not(.menu-btn):hover {
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
     background-color: var(--white-color);
@@ -21,4 +25,31 @@ button:hover {
     position: fixed;
     bottom: 2px;
     right: 8vw;
+}
+
+.reservation__form-btn {
+    margin-right: 0;
+    align-self: flex-end;
+}
+
+.menu-btn {
+    background-color: transparent;
+    border: none;
+    width: 50px;
+    min-width: unset;
+}
+
+.menu-btn svg {
+    transition: all .3s ease-out;
+}
+
+.menu-btn:hover svg {
+    color: var(--red-color);
+}
+
+
+@media (min-width: 1300px) {
+    .menu-btn {
+        display: none;
+    }
 }
