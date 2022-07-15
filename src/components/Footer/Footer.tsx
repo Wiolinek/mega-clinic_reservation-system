@@ -1,8 +1,3 @@
-// import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-
-// import Menu from './Menu';
-
 import '../Footer/Footer.css';
 
 

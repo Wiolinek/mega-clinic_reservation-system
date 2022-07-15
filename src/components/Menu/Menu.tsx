@@ -4,10 +4,12 @@ import { myContext } from '../../Context';
 
 import '../Menu/Menu.css';
 
+
 interface Props {
     isOpen: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
+
 
 const Menu: React.FC<Props> = ({ isOpen, setOpen }) => {
     const context = useContext(myContext)

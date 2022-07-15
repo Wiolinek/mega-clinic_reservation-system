@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
 import GenericSection from '../common/GenericSection/GenericSection';
 import Form from '../Form/Form';
-
 import { DoctorType } from '../../types/doctor';
 import { SpecialityType } from '../../types/speciality';
 import { VisitType } from '../../types/visit';

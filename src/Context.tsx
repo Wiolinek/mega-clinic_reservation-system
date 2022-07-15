@@ -1,7 +1,9 @@
 import React, { createContext, PropsWithChildren, useEffect, useState } from 'react'
 import { UserType } from '../src/types/user'
 
+
 export const myContext = createContext<Partial<UserType>>({})
+
 
 export default function Context(props: PropsWithChildren<any>) {
   const [user, setUser] = useState<any>()

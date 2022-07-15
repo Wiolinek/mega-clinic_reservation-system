@@ -49,15 +49,7 @@ const DoctorAccount: React.FC = () => {
             <h3>Przejrzyj swoje wizyty</h3>
             <p>Znalezionych wizyt: <span>{visitsList?.length}</span></p>
         </div>
-        
         <article>
-            {/* <div className='doctor-account__visits-list--item'>
-                <p>Data</p>
-                <p>Godzina</p>
-                <p>Pacjent</p>
-                <p>Adres email</p>
-                <p>Nr telefonu</p>
-            </div> */}
             <ol className='doctor-account__visits-list'>
                 {visitsList}
             </ol>
