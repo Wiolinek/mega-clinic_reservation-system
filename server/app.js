@@ -24,8 +24,9 @@ const filter = require('./routes/doctors');
 const timetable = require('./routes/timetable');
 const form = require('./routes/form');
 const login = require('./routes/login');
-const user = require('./routes/login');
-const logout = require('./routes/login');
+const doctorAccount = require('./routes/doctor-account');
+const logout = require('./routes/logout');
+const visits = require('./routes/visits');
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -55,8 +56,9 @@ app.use('/filter', filter);
 app.use('/timetable', timetable);
 app.use('/form', form);
 app.use('/login', login);
-app.use('/user', user);
+app.use('/doctor-account', doctorAccount);
 app.use('/logout', logout);
+app.use('/visits', visits);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -73,5 +75,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
