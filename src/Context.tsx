@@ -7,15 +7,14 @@ export default function Context(props: PropsWithChildren<any>) {
   const [user, setUser] = useState<any>()
 
   useEffect(() => {
-    fetch(`http://localhost:3030/user`, { credentials: 'include' })
+    fetch(`http://localhost:3030/doctor-account`, { credentials: 'include' })
     .then(res => res.json())
-    .then(res => setUser(res))
+    .then(res => setUser({name: res.name, id: res._id, setUser: setUser}))
     .catch(error => console.log(`error ${error}`))
   }, []);
 
-  console.log(user)
 
   return (
-    <myContext.Provider value={user!}>{props.children}</myContext.Provider>
-    )
+    <myContext.Provider value={user} >{props.children}</myContext.Provider>
+  )
 }
