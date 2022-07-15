@@ -1,48 +1,35 @@
-import { useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import Menu from '../Menu/Menu';
+import ButtonLink from '../ButtonLink/ButtonLink'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStethoscope } from '@fortawesome/free-solid-svg-icons'
-import { myContext } from '../../Context';
+import { faStethoscope, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 
 import '../Navigation/Navigation.css';
 
+
 const Navigation: React.FC = () => {
-const context = useContext(myContext)
-    
+    const [isOpen, setOpen] = useState(false);
+
+    const toggleMenuHandler = () => {
+        setOpen(!isOpen)
+    };
+
+    useEffect(() => {
+        const closeMenu = () => setOpen(false);
+
+        window.addEventListener('resize', closeMenu)
+        return () => window.removeEventListener('resize', closeMenu)
+    })
+
     return (
         <header>
             <nav>
-                <div className='logo' 
-                >
-                    <NavLink to='/'><FontAwesomeIcon icon={faStethoscope} />MegaClinic</NavLink>
-                    </div>
-                <ul className='nav__menu'>
-                    <li className='nav__item'>
-                        <NavLink to='/about-us'>O nas</NavLink>
-                    </li>
-                    <li className='nav__item'>
-                        <NavLink to='/our-doctors'>Nasi lekarze</NavLink>
-                    </li>
-                    <li className='nav__item'>
-                        <NavLink to='/contact'>Kontakt</NavLink>
-                    </li>
-                    <li className='nav__item nav__item--reservation'>
-                        <NavLink to='/reservation'>Zarezerwuj wizytę</NavLink>
-                    </li>
-                    {context ?
-                    <>
-                        <li className='nav__item nav__item--doctor-zone'>
-                            <NavLink to='/user'>Moje konto</NavLink>
-                        </li>
-                        <li className='nav__item nav__item--doctor-zone'>
-                            <NavLink to='/logout'>Wyloguj się</NavLink>
-                        </li>
-                    </>
-                    :
-                    <li className='nav__item nav__item--doctor-zone'>
-                        <NavLink to='/login'>Strefa lekarza</NavLink>
-                    </li>}
-                </ul>
+                <div className='logo'>
+                    <NavLink to='/' onClick={() => setOpen(false)}><FontAwesomeIcon icon={faStethoscope}/>MegaClinic</NavLink>
+                </div>
+                <Menu isOpen={isOpen} setOpen={setOpen} />
+                <ButtonLink type='button' icon={isOpen ? <FontAwesomeIcon icon={faXmark}/> : <FontAwesomeIcon icon={faBars}/>} customClass='menu-btn' onClick={toggleMenuHandler}/>
             </nav>
         </header>
     )

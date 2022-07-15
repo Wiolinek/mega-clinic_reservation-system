@@ -2,10 +2,16 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2vw;
     background-color: var(--primary-color);
     padding: 1rem 8vw;
     letter-spacing: 1px;
     color: var(--white-color);
+    min-height: 75px;
+}
+
+.logo {
+    z-index: 3;
 }
 
 .logo a {
@@ -17,56 +23,17 @@ nav {
     align-items: flex-end;
 }
 
-.logo svg {
-    height: 40px;
+.svg-inline--fa {
+    height: 40px; 
+    color: var(--white-color);
+}
+
+.fa-stethoscope {
     margin-right: 10px;
 }
 
-.nav__menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 2vw;
-}
-
-.nav__item {
-    
-}
-
-.nav__item a {
-    font-family: var(--menu-font-family);
-    font-size: 1.4rem;
-    color: var(--white-color);
-    background-color: transparent;
-    padding: .8rem 1.2vw;
-    border-radius: 6px;
-    transition: all .3s ease-out;
-}
-
-.nav__item a:hover {
-    color: var(--primary-color);
-    background-color: var(--white-color);
-}
-
-.nav__item .active {
-    color: var(--primary-color);
-    background-color: var(--white-color);
-}
-
-.nav__item--reservation a {
-    border: 1px solid var(--white-color);
-}
-
-.nav__item--doctor-zone a {
-    background-color: var(--red-color);
-    border: 1px solid var(--red-color);
-    border-radius: 6px;
-}
-
-.nav__item--doctor-zone a:hover {
-    color: var(--red-color);
-}
-
-.nav__item--doctor-zone .active {
-    color: var(--red-color);
+@media (max-width: 700px) {
+    nav {
+        padding: 1rem 3vw;
+    }
 }
