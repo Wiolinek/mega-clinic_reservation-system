@@ -7,8 +7,6 @@ import Filters from '../Filters/Filtres';
 import { DoctorType } from '../../types/doctor'
 import { SpecialityType } from '../../types/speciality';
 
-import '../OurDoctors/OurDoctors.css';
-
 
 const OurDoctors: React.FC = () => {
 

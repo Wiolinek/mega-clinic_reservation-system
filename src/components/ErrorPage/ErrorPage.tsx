@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GenericSection from '../common/GenericSection/GenericSection';
 
-import '../ErrorPage/ErrorPage.css';
-
 
 const ErrorPage: React.FC = () => {
     const navigate = useNavigate();

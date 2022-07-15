@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GenericSection from '../common/GenericSection/GenericSection';
 
-import '../SuccessForm/SuccessForm.css';
-
 
 const SuccesForm: React.FC = () => {
     const navigate = useNavigate();
