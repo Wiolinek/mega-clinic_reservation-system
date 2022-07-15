@@ -1,4 +1,4 @@
-import ButtonLink from '../ButtonLink/ButtonLink'
+import ButtonLink from '../common/ButtonLink/ButtonLink'
 
 import '../Doctor/Doctor.css'
 

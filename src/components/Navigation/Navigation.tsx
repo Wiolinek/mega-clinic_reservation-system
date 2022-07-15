@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Menu from '../Menu/Menu';
-import ButtonLink from '../ButtonLink/ButtonLink'
+import ButtonLink from '../common/ButtonLink/ButtonLink'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStethoscope, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 

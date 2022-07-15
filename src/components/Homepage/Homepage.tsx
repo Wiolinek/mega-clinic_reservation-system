@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Banner from '../Banner/Banner';
-import GenericSection from '../GenericSection/GenericSection';
+import Banner from '../common/Banner/Banner';
+import GenericSection from '../common/GenericSection/GenericSection';
 import List from '../List/List';
 import { SpecialityType } from '../../types/speciality';
 

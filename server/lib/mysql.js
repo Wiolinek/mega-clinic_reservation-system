@@ -6,7 +6,7 @@ var pool  = mysql.createPool({
   host            : 'localhost',
   user            : 'root',
   password        : '2200',
-  database        : 'reservation-system'
+  database        : 'reservation_system'
 });
 
 

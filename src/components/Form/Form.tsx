@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import CalendarComp from '../Calendar/Calendar';
-import ButtonLink from '../ButtonLink/ButtonLink'
+import ButtonLink from '../common/ButtonLink/ButtonLink'
 import { PacientType } from '../../types/pacient';
 import { DoctorType } from '../../types/doctor';
 

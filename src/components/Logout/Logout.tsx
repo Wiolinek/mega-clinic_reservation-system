@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import GenericSection from '../GenericSection/GenericSection';
+import GenericSection from '../common/GenericSection/GenericSection';
 import { myContext } from '../../Context';
 
 

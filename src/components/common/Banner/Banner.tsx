@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import '../Banner/Banner.css';
+import './Banner.css';
 
 
 const Banner: React.FC = () => {

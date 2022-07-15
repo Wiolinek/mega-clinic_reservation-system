@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { myContext } from '../../Context';
-import GenericSection from '../GenericSection/GenericSection';
+import GenericSection from '../common/GenericSection/GenericSection';
 import { VisitType } from '../../types/visit';
 
 import '../DoctorAccount/DoctorAccount.css';

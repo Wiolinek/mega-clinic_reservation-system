@@ -1,4 +1,4 @@
-import '../GenericSection/GenericSection.css';
+import './GenericSection.css';
 
 interface Props {
     children: React.ReactNode;

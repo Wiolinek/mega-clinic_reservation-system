@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import GenericSection from '../GenericSection/GenericSection';
-import ButtonLink from '../ButtonLink/ButtonLink'
+import GenericSection from '../common/GenericSection/GenericSection';
+import ButtonLink from '../common/ButtonLink/ButtonLink'
 import { myContext } from '../../Context';
 
 import '../LogIn/LogIn.css';
