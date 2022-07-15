@@ -4,6 +4,15 @@
 
 Project was created to learn all technologies used here, and practice.
 
+
+
+TO LOGIN TO DOCTOR ACCOUNT USE:
+LOGIN NAME.SURNAME: (eg. karolina.smith)
+PASSOWRD: surname123 (eg. smith123)
+
+
+
+
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
