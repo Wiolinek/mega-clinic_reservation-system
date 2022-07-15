@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-// import Banner from "../Banner/Banner";
-import GenericSection from "../GenericSection/GenericSection"
+import GenericSection from '../GenericSection/GenericSection'
 import Doctor from '../Doctor/Doctor'
 import ButtonLink from '../ButtonLink/ButtonLink';
 import Filters from '../Filters/Filtres';
@@ -21,7 +20,7 @@ const OurDoctors: React.FC = () => {
 
     useEffect(() => {
       fetch(`http://localhost:3030/specialities`)
-      .then(response => response.json())
+      .then(res => res.json())
       .then(result => setSpecialitiesData(result))
       .catch(error => console.log(`error ${error}`))
     }, []);
@@ -33,27 +32,24 @@ const OurDoctors: React.FC = () => {
             body: JSON.stringify({ specialityFilter: doctorSpec, doctorFilter: '' })
         };
         fetch(`http://localhost:3030/filter`, doctorSpec !== null ? requestPost : undefined)
-        .then(response => response.json())
+        .then(res => res.json())
         .then(result => setDoctorsData(result))
         .catch(error => console.log(`error ${error}`))
     }, [searchParams]);
     
     const doctorsList: React.ReactNode = <ul className='doctors'>
-        {doctorsData?.map(doctor => <Doctor key={doctor.id} {...doctor}/>)}
+        {doctorsData?.map(doctor => <Doctor key={doctor.doctor_id} {...doctor}/>)}
     </ul>
 
     const filterList = Array.from(new Set(specialitiesData?.map(item => item.speciality)))
 
-    const backToTop = () => {
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-    }
+    const backToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 
     return (
         <main>
-            {/* <Banner /> */}
             <GenericSection children={<Filters filters={filterList} resultsCounter={doctorsData?.length} />} customClass='filters' />
             <GenericSection children={doctorsList}/>
-            <ButtonLink customClass='back-to-top' text='powrót' type='button' onClick={backToTop}/>
+            <ButtonLink customClass='btn back-to-top' text='powrót' type='button' onClick={backToTop}/>
         </main>
     )
 }
