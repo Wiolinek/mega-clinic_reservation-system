@@ -1,5 +1,5 @@
 export interface DoctorType {
-    id: number;
+    doctor_id: string;
     name: string;
     photo: string;
     description: string;

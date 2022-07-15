@@ -1,5 +1,5 @@
 export interface UserType {
     id: string;
-    username: string;
-    isAdmin: boolean;
+    name: string;
+    setUser?: React.Dispatch<React.SetStateAction<Object>>
 }
