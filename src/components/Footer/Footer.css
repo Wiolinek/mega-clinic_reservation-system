@@ -6,3 +6,9 @@ footer {
     padding: 1rem 8vw;
     color: var(--white-color);
 }
+
+@media (max-width: 700px) {
+    footer {
+        padding: 1rem 3vw;
+    }
+}

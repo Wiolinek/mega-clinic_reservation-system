@@ -11,7 +11,6 @@ section {
 .filters {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .filters span {
@@ -19,9 +18,25 @@ section {
     font-weight: 600;
 }
 
+.article__section p {
+    margin: 20px 0;
+}
+
+@media (max-width: 1200px) {
+    .doctors {
+        padding: 0;
+    }
+}
+
 @media (max-width: 700px) {
+    section {
+        padding: 20px 3vw;
+    }
     .filters {
         flex-direction: column;
         gap: 20px;
+    }
+    .doctors {
+        padding: 0;
     }
 }

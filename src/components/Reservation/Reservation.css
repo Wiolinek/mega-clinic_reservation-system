@@ -24,3 +24,9 @@ label {
     flex-direction: column;
     justify-content: center;
 }
+
+@media (max-width: 700px) {
+    .login__form .btn {
+        align-self: center;
+    }
+}
