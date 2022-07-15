@@ -1,5 +1,3 @@
-// import { useEffect, useState } from 'react';
-
 import ButtonLink from '../ButtonLink/ButtonLink'
 
 import '../Doctor/Doctor.css'
@@ -25,7 +23,7 @@ const Doctor = (props: DoctorType) => {
                     </div>
                     <div>
                         <h3>Godziny przyjęć</h3>
-                        <p>{props.working_hours_start.substring(0, 5)} - {props.working_hours_end.substring(0, 5)}</p>
+                        <p>{props.working_hours_start?.substring(0, 5)} - {props.working_hours_end?.substring(0, 5)}</p>
                     </div>
                 </div>
                 <ButtonLink text='Zarezerwuj wizytę' target={`/reservation/?speciality=${props.speciality}&doctor=${props.name}`}/>
