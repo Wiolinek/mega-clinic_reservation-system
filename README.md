@@ -4,9 +4,6 @@
 
 Project was created to learn all technologies used here, and practice.
 
-> Live demo [_here_](https://megaclinic.ultra-violet.codes/).
-login is not working on production - works only localy - TO FIX
-
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
