@@ -8,7 +8,7 @@ var mysql = require('./../lib/mysql')
 router.post('/', function(req, res, next) {
   let formData = req.body.formData;
 
-  mysql.query("INSERT INTO reservations (speciality, doctor, date, time, pacientName, pacientEmail, pacientPhone) VALUES (?, ?, ?, ?, ?, ?, ?)", [formData.speciality, formData.doctor, formData.date, formData.time, formData.pacientName, formData.pacientEmail, formData.pacientPhone], function(error, result, fields) {
+  mysql.query("INSERT INTO reservations (speciality, doctor, doctor_id, date, time, pacientName, pacientEmail, pacientPhone) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [formData.speciality, formData.doctor, formData.doctorId, formData.date, formData.time, formData.pacientName, formData.pacientEmail, formData.pacientPhone], function(error, result, fields) {
     res.json(result);
   });
 });
