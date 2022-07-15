@@ -19,7 +19,7 @@ SECRET_CODE=njsnjsklnjkgnjkamkldfbnklNJKBHnknkNJKNklnKL
 
 
 ## I'm also adding life version but it is after midnight so you can skip it ;)
-https://megaclinic.ultra-violet.codes/ - BUT - on local it works fine - on PROD login page throw an error after putting credentials, after refreshing the page and changing url to home page it works, user is logged in.. trying to figure out what is going on...
+https://megaclinic.ultra-violet.codes/ - BUT - on localhost page works fine - on PROD login page throw an error after putting credentials, after refreshing the page and changing url to home page it works, user is logged in.. trying to figure out what is going on...
 
 
 ## Table of Contents
