@@ -37,6 +37,7 @@ button:not(.menu-btn):hover {
     border: none;
     width: 50px;
     min-width: unset;
+    z-index: 12;
 }
 
 .menu-btn svg {
@@ -52,4 +53,10 @@ button:not(.menu-btn):hover {
     .menu-btn {
         display: none;
     }
+}
+
+@media (max-width: 700px) {
+    .back-to-top {
+        right: 3vw;
+    }    
 }

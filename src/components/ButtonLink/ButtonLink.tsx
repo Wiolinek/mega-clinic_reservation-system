@@ -1,26 +1,24 @@
-// import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
-// import Banner from "../Banner/Banner";
 
 import '../ButtonLink/ButtonLink.css';
 
 interface Props {
     customClass?: string;
-    text: string;
+    text?: string;
     type?: string;
     target?: string;
+    icon?: React.ReactNode;
     onClick?: () => void;
 }
 
 
-const Button: React.FC<Props> = ({customClass, text, type, target, onClick}) => {
+const Button: React.FC<Props> = ({customClass, text, type, target, icon, onClick}) => {
 
 
     return (
-        type === 'button' ? 
-            <button className={customClass} onClick={onClick}>{text}</button> : 
-            <NavLink to={target || '/'} className='button-link' >{text}</NavLink>
+        type === 'button' || type === 'submit' ? 
+            <button className={customClass} type={type} onClick={onClick}>{text}{icon}</button> : 
+            <NavLink to={target || '/'} className='btn' >{text}</NavLink>
     )
 }
 
