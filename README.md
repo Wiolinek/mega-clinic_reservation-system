@@ -10,7 +10,16 @@ TO LOGIN TO DOCTOR ACCOUNT USE:
 LOGIN NAME.SURNAME: (eg. karolina.smith)
 PASSOWRD: surname123 (eg. smith123)
 
+also:
+I'm adding temporarly env file content to connect database:
 
+DATABASE_URL = mongodb+srv://Wiola:mojabaza!23@cluster0.sbg2x.mongodb.net/doctorsDatabase?retryWrites=true&w=majority
+PORT=3030
+SECRET_CODE=njsnjsklnjkgnjkamkldfbnklNJKBHnknkNJKNklnKL
+
+
+## I'm also adding life version but it is after midnight (01:10am) so you can skip it ;)
+https://megaclinic.ultra-violet.codes/ - BUT - on localhost page works fine - on PROD login page throw an error after putting credentials, after refreshing the page and changing url to home page it works, user is logged in.. trying to figure out what is going on...
 
 
 ## Table of Contents
