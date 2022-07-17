@@ -116,10 +116,10 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, timeList }) => {
                 </label>
                 <label>Wybierz datę z kalendarza:
                     <input name='date'
+                        className='date-input'
                         value={'' || date?.toLocaleDateString('pl-PL')}
                         onChange={e => setFormData(dataItem => ({...dataItem, [e.target.name]: date.toLocaleDateString('sv')}))}
-                        required
-                        disabled>
+                        required>
                     </input>
                     <CalendarComp date={date} setDate={setDate}/>
                 </label>
@@ -136,6 +136,7 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, timeList }) => {
                     <input type='text' name='pacientName'
                         pattern='[a-zA-Z]+[ ][a-zA-Z]+'
                         onChange={inputHandler}
+                        readOnly
                         required>
                     </input>
                     <span>np. Anna Nowak</span>
