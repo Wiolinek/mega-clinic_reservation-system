@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import GenericSection from '../common/GenericSection/GenericSection';
-import Form from '../Form/Form';
-import { DoctorType } from '../../types/doctor';
-import { SpecialityType } from '../../types/speciality';
-import { VisitType } from '../../types/visit';
+import GenericSection from 'components/common/GenericSection/GenericSection';
+import Form from 'components/Form/Form';
+import { DoctorType } from 'types/doctor';
+import { SpecialityType } from 'types/speciality';
+import { VisitType } from 'types/visit';
 
-import '../Reservation/Reservation.css';
+import './Reservation.css';
 
 
 const Reservation: React.FC = () => {

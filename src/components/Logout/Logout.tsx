@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import GenericSection from '../common/GenericSection/GenericSection';
-import { myContext } from '../../Context';
+import GenericSection from 'components/common/GenericSection/GenericSection';
+import { myContext } from 'Context';
 
 
 const Logout: React.FC = () => {

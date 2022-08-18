@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import CalendarComp from '../Calendar/Calendar';
-import ButtonLink from '../common/ButtonLink/ButtonLink'
-import { PacientType } from '../../types/pacient';
-import { DoctorType } from '../../types/doctor';
+import CalendarComp from 'components/Calendar/Calendar';
+import ButtonLink from 'components/common/ButtonLink/ButtonLink'
+import { PacientType } from 'types/pacient';
+import { DoctorType } from 'types/doctor';
 
-import '../Form/Form.css';
+import './Form.css';
 
 interface Props {
     specialitiesList: React.ReactNode[];

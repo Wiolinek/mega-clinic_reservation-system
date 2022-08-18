@@ -1,7 +1,7 @@
 import React from 'react';
 import Calendar from 'react-calendar';
 
-import '../Calendar/Calendar.css';
+import './Calendar.css';
 
 interface Props {
   date: any;

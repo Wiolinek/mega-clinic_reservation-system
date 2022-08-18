@@ -15,21 +15,22 @@ import './App.css';
 
 
 const App: React.FC = () => {
+  
   return (
   <BrowserRouter>
   <Context>
-  <Navigation />
-    <Routes>
-      <Route path='/' element={ <Homepage />}></Route>
-      <Route path='/our-doctors' element={ <OurDoctors />}></Route>
-      <Route path='/reservation' element={ <Reservation />}></Route>
-      <Route path='/login' element={ <LogIn />}></Route>
-      <Route path='/success' element={ <SuccessForm />}></Route>
-      <Route path='/doctor-account' element={ <DoctorAccount />}></Route>
-      <Route path='/logout' element={ <Logout />}></Route>
-      <Route path='*' element={ <ErrorPage />}></Route>
-    </Routes>
-    <Footer />
+    <Navigation />
+      <Routes>
+        <Route path='/' element={ <Homepage />}></Route>
+        <Route path='/our-doctors' element={ <OurDoctors />}></Route>
+        <Route path='/reservation' element={ <Reservation />}></Route>
+        <Route path='/login' element={ <LogIn />}></Route>
+        <Route path='/success' element={ <SuccessForm />}></Route>
+        <Route path='/doctor-account' element={ <DoctorAccount />}></Route>
+        <Route path='/logout' element={ <Logout />}></Route>
+        <Route path='*' element={ <ErrorPage />}></Route>
+      </Routes>
+      <Footer />
     </Context>
   </BrowserRouter>
   );

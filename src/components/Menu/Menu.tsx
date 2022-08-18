@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { myContext } from '../../Context';
+import { myContext } from 'Context';
 
-import '../Menu/Menu.css';
+import './Menu.css';
 
 
 interface Props {
@@ -23,7 +23,7 @@ const Menu: React.FC<Props> = ({ isOpen, setOpen }) => {
         .catch(error => console.log(`error ${error}`));
         setOpen(false)
     }
-    
+
 
     return (
         <ul className={`nav__menu ${isOpen ? 'mobile-menu' : ''}`}>

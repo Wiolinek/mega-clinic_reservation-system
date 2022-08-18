@@ -1,5 +1,5 @@
-import { SpecialityType } from '../../types/speciality';
-import '../List/List.css';
+import { SpecialityType } from 'types/speciality';
+import './List.css';
 
 interface Props {
     list: SpecialityType[];

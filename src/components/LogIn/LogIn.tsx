@@ -1,14 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import GenericSection from '../common/GenericSection/GenericSection';
-import ButtonLink from '../common/ButtonLink/ButtonLink'
-import { myContext } from '../../Context';
+import GenericSection from 'components/common/GenericSection/GenericSection';
+import ButtonLink from 'components/common/ButtonLink/ButtonLink'
+import { myContext } from 'Context';
 
 
 const LogIn: React.FC = () => {
     const context = useContext(myContext)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    console.log(username)
+    console.log(password)
 
     const onSubmit = () => {
         fetch(`http://localhost:3030/login`, {
@@ -31,6 +34,7 @@ const LogIn: React.FC = () => {
         </form>
     </>
 
+    
 
     return (
         <main>

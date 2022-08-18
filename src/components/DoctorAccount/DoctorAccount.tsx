@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { myContext } from '../../Context';
-import GenericSection from '../common/GenericSection/GenericSection';
-import { VisitType } from '../../types/visit';
+import { myContext } from 'Context';
+import GenericSection from 'components/common/GenericSection/GenericSection';
+import { VisitType } from 'types/visit';
+import Loader from 'components/Loader/Loader';
 
-import '../DoctorAccount/DoctorAccount.css';
+import './DoctorAccount.css';
 
 
 const DoctorAccount: React.FC = () => {
@@ -12,6 +13,10 @@ const DoctorAccount: React.FC = () => {
     const [visitsData, setVisitsData] = useState<VisitType[]>()
     const [doctorId, setDoctorId] = useState<String>()
     const navigate = useNavigate();
+
+    console.log(context)
+    console.log(visitsData)
+    console.log(doctorId)
 
     useEffect(() => {
         const requestPost = {
@@ -62,6 +67,7 @@ const DoctorAccount: React.FC = () => {
     </>
 
     useEffect(() => {
+        console.log(context)
         context && setDoctorId(context?.id);
     }, [])
 
@@ -72,10 +78,14 @@ const DoctorAccount: React.FC = () => {
         }, 2000)
     },[context])
 
+    console.log(context)
+    console.log(visitsData)
+    console.log(doctorId)
 
     return (
         <main>
-            {<GenericSection children={context ? content : errorAuthenticationMsg} customClass='doctor-account__section' /> }
+            {}
+            {<GenericSection children={doctorId ? content : errorAuthenticationMsg} customClass='doctor-account__section' /> }
         </main>
     )
 }

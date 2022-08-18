@@ -1,8 +1,8 @@
-import ButtonLink from '../common/ButtonLink/ButtonLink'
+import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 
-import '../Doctor/Doctor.css'
+import './Doctor.css'
 
-import { DoctorType } from '../../types/doctor'
+import { DoctorType } from 'types/doctor'
 
 
 const Doctor = (props: DoctorType) => {

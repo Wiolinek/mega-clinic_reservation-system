@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import Menu from '../Menu/Menu';
-import ButtonLink from '../common/ButtonLink/ButtonLink'
+import Menu from 'components/Menu/Menu';
+import ButtonLink from 'components/common/ButtonLink/ButtonLink'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStethoscope, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 
-import '../Navigation/Navigation.css';
+import './Navigation.css';
 
 
 const Navigation: React.FC = () => {

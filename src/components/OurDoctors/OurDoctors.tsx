@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import GenericSection from '../common/GenericSection/GenericSection'
-import Doctor from '../Doctor/Doctor'
-import ButtonLink from '../common/ButtonLink/ButtonLink';
-import Filters from '../Filters/Filtres';
-import { DoctorType } from '../../types/doctor'
-import { SpecialityType } from '../../types/speciality';
+import GenericSection from 'components/common/GenericSection/GenericSection'
+import Doctor from 'components/Doctor/Doctor'
+import ButtonLink from 'components/common/ButtonLink/ButtonLink';
+import Filters from 'components/Filters/Filtres';
+import { DoctorType } from 'types/doctor'
+import { SpecialityType } from 'types/speciality';
 
 
 const OurDoctors: React.FC = () => {

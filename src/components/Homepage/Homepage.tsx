@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Banner from '../common/Banner/Banner';
-import GenericSection from '../common/GenericSection/GenericSection';
-import List from '../List/List';
-import { SpecialityType } from '../../types/speciality';
+import Banner from 'components/common/Banner/Banner';
+import GenericSection from 'components/common/GenericSection/GenericSection';
+import List from 'components/List/List';
+import { SpecialityType } from 'types/speciality';
 
 
 const Homepage: React.FC = () => {
