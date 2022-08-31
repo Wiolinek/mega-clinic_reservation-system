@@ -13,13 +13,15 @@ const OurDoctors: React.FC = () => {
     const [doctorsData, setDoctorsData] = useState<DoctorType[]>();
     const [specialitiesData, setSpecialitiesData] = useState<SpecialityType[]>();
     const [searchParams, setSearchParams] = useSearchParams();
-
+    
     const doctorSpec = searchParams.get('speciality');
+    const backToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 
     useEffect(() => {
-      fetch(`http://localhost:3030/specialities`)
+    //   fetch(`https://megaclinic.ultra-violet.codes/api/specialities`)
+      fetch(`http://localhost:3030/api/specialities`)
       .then(res => res.json())
-      .then(result => setSpecialitiesData(result))
+      .then(res => setSpecialitiesData(res))
       .catch(error => console.log(`error ${error}`))
     }, []);
 
@@ -29,9 +31,10 @@ const OurDoctors: React.FC = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ specialityFilter: doctorSpec, doctorFilter: '' })
         };
-        fetch(`http://localhost:3030/filter`, doctorSpec !== null ? requestPost : undefined)
+        // fetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== null ? requestPost : undefined)
+        fetch(`http://localhost:3030/api/doctors`, doctorSpec !== null ? requestPost : undefined)
         .then(res => res.json())
-        .then(result => setDoctorsData(result))
+        .then(res => setDoctorsData(res))
         .catch(error => console.log(`error ${error}`))
     }, [searchParams]);
     
@@ -41,7 +44,6 @@ const OurDoctors: React.FC = () => {
 
     const filterList = Array.from(new Set(specialitiesData?.map(item => item.speciality)))
 
-    const backToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 
     return (
         <main>

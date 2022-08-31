@@ -1,22 +1,24 @@
-import React, { createContext, PropsWithChildren, useEffect, useState } from 'react'
+import React, { createContext, PropsWithChildren, useState } from 'react'
 import { UserType } from '../src/types/user'
 
 
-export const myContext = createContext<Partial<UserType>>({})
+const MyContext = createContext<Partial<UserType>>({})
 
 
-export default function Context(props: PropsWithChildren<any>) {
-  const [user, setUser] = useState<any>()
+const Context = (props: PropsWithChildren<any>) => {
+  const [user, setUser] = useState<any>(JSON.parse(window.localStorage.getItem('user') || '{}'))
 
-  useEffect(() => {
-    fetch(`http://localhost:3030/doctor-account`, { credentials: 'include' })
-    .then(res => res.json())
-    .then(res => setUser({name: res.name, id: res._id, setUser: setUser}))
-    .catch(error => console.log(`error ${error}`))
-  }, []);
-
+  const providedValues = {
+    user,
+    setUser,
+  }
 
   return (
-    <myContext.Provider value={user} >{props.children}</myContext.Provider>
+    <MyContext.Provider value={providedValues} >
+      {props.children}
+    </MyContext.Provider>
   )
 }
+
+export default Context
+export { MyContext }

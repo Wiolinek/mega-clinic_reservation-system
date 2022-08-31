@@ -9,5 +9,7 @@ var pool  = mysql.createPool({
   database        : 'reservation_system'
 });
 
+console.log('connected to MySQL')
+
 
 module.exports = pool;

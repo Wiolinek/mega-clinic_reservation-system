@@ -9,9 +9,10 @@ const Homepage: React.FC = () => {
     const [specialitiesData, setSpecialitiesData] = useState<SpecialityType[]>();
   
     useEffect(() => {
-      fetch(`http://localhost:3030/specialities`)
+      // fetch(`https://megaclinic.ultra-violet.codes/api/specialities`)
+      fetch(`http://localhost:3030/api/specialities`)
       .then(res => res.json())
-      .then(result => setSpecialitiesData(result))
+      .then(res => setSpecialitiesData(res))
       .catch(error => console.log(`error ${error}`))
     }, []);
 

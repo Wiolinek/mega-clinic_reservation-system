@@ -71,9 +71,10 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, timeList }) => {
 
     const formHandler = (e: React.SyntheticEvent) => {
         e.preventDefault()
-        fetch(`http://localhost:3030/form`, {
+        // fetch(`https://megaclinic.ultra-violet.codes/api/form`, {
+        fetch(`http://localhost:3030/api/form`, { 
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({formData})
         })
         .catch(error => console.log(`error ${error}`));
@@ -136,7 +137,6 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, timeList }) => {
                     <input type='text' name='pacientName'
                         pattern='[a-zA-Z]+[ ][a-zA-Z]+'
                         onChange={inputHandler}
-                        readOnly
                         required>
                     </input>
                     <span>np. Anna Nowak</span>

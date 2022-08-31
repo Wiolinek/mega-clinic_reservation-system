@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { myContext } from 'Context';
+import { MyContext } from 'Context';
 import GenericSection from 'components/common/GenericSection/GenericSection';
 import { VisitType } from 'types/visit';
 import Loader from 'components/Loader/Loader';
@@ -9,14 +9,20 @@ import './DoctorAccount.css';
 
 
 const DoctorAccount: React.FC = () => {
-    const context = useContext(myContext)
+    const context = useContext(MyContext)
     const [visitsData, setVisitsData] = useState<VisitType[]>()
-    const [doctorId, setDoctorId] = useState<String>()
+    const [doctorId, setDoctorId] = useState<String>(JSON.parse(window.localStorage.getItem('user') || '{}').id)
     const navigate = useNavigate();
 
-    console.log(context)
-    console.log(visitsData)
-    console.log(doctorId)
+    useEffect(() => {
+        // fetch(`https://megaclinic.ultra-violet.codes/api/user-account`, { credentials: 'include' }, headers: { 'Content-Type': 'application/json' })
+        fetch(`http://localhost:3030/api/user-account`, {
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .then(res => res.json())
+        .catch(error => console.log(`error ${error}`))
+    }, []);
 
     useEffect(() => {
         const requestPost = {
@@ -24,13 +30,15 @@ const DoctorAccount: React.FC = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ doctorId: doctorId})
         };
-        fetch(`http://localhost:3030/visits`, requestPost)
+        // fetch(`https://megaclinic.ultra-violet.codes/api/visits`, requestPost)
+        fetch(`http://localhost:3030/api/visits`, requestPost)
         .then(res => res.json())
-        .then(result => setVisitsData(result))
+        .then(res => setVisitsData(res))
         .catch(error => console.log(`error ${error}`))
-    }, [doctorId, context]);
+    }, [doctorId]);
 
-    const visitsList = visitsData?.map(visit => <li key={visit.id} className='doctor-account__visits-list--item'>
+    const visitsList = visitsData?.map(visit =>
+        <li key={visit.id} className='doctor-account__visits-list--item'>
             <div className='doctor-account__visits-list--header'>
                 <p>Data</p>
                 <p>Godzina</p>
@@ -49,12 +57,13 @@ const DoctorAccount: React.FC = () => {
     )
 
     const content: React.ReactNode = <>
-        <h2>{`Witaj, ${context?.name}`}</h2>
+        <h2>{`Witaj, ${context?.user?.name || JSON.parse(window.localStorage.getItem('user') || '{}').name}`}</h2>
         <div className='doctor-account__filters'>
             <h3>Przejrzyj swoje wizyty</h3>
             <p>Znalezionych wizyt: <span>{visitsList?.length}</span></p>
         </div>
         <article>
+            {!visitsData && <Loader message='Trwa ładowanie listy..' />}
             <ol className='doctor-account__visits-list'>
                 {visitsList}
             </ol>
@@ -67,25 +76,27 @@ const DoctorAccount: React.FC = () => {
     </>
 
     useEffect(() => {
-        console.log(context)
-        context && setDoctorId(context?.id);
-    }, [])
-
-    useEffect(() => {
-        !context && 
+        !doctorId && 
         setTimeout(() => {
-            navigate('../', { replace: true })
+            navigate('../login')
         }, 2000)
-    },[context])
+    },[doctorId])
 
-    console.log(context)
-    console.log(visitsData)
-    console.log(doctorId)
 
     return (
         <main>
-            {}
-            {<GenericSection children={doctorId ? content : errorAuthenticationMsg} customClass='doctor-account__section' /> }
+            {
+                doctorId ?
+                    <GenericSection
+                        children={content}
+                        customClass='doctor-account__section'
+                    />
+                :
+                    <GenericSection
+                        children={errorAuthenticationMsg}
+                        customClass='doctor-account__section'
+                    /> 
+            }
         </main>
     )
 }

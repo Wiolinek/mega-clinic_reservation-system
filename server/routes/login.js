@@ -19,10 +19,15 @@ const passport = require ('passport');
 // //   res.redirect('/');
 // // });
 
-router.post('/', passport.authenticate('local', { failureRedirect: '/login', successRedirect: '/'}));
+router.post('/', passport.authenticate('local'), (req, res, next) => {
 
-router.get('/', (req, res, next) => {
-  res.send({'id': res.user._id, 'name': req.user.name})
-})
+    if (!req?.user?.id) {
+        res.status(401);
+        return next(new Error("Unauthorized"));
+    }
+
+    res.json({id: req.user.id, name: req.user.name});
+
+});
 
 module.exports = router;

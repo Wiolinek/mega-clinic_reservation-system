@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GenericSection from 'components/common/GenericSection/GenericSection';
-import { myContext } from 'Context';
+import { MyContext } from 'Context';
 
 
 const Logout: React.FC = () => {
-    const context = useContext(myContext)
+    const context = useContext(MyContext)
     const navigate = useNavigate();
 
     const content: React.ReactNode = <>
@@ -14,25 +14,30 @@ const Logout: React.FC = () => {
     </>
 
     useEffect(() => {
-        fetch(`http://localhost:3030/logout`, {
+        // fetch(`https://megaclinic.ultra-violet.codes/api/logout`, {
+        fetch(`http://localhost:3030/api/logout`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
         })
+        .then(res => {
+            res.ok &&
+            window.localStorage.removeItem('user');
+            context.setUser?.({user: ''})
+            setTimeout(() => {
+                navigate('../', { replace: true })
+            }, 1200)
+        })
         .catch(error => console.log(`error ${error}`))
     },[])
 
-    useEffect(() => {
-        context?.setUser?.(false)
-        setTimeout(() => {
-            navigate('../', { replace: true })
-        }, 2000)
-    },[])
-
-
+    
     return (
         <main>
-            <GenericSection children={content} customClass='login__section' />
+            <GenericSection
+                children={content}
+                customClass='login__section'
+            />
         </main>
     )
 }

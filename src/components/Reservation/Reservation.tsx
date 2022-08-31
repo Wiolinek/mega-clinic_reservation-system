@@ -33,9 +33,10 @@ const Reservation: React.FC = () => {
     const timeList = availableTimes?.map((item, id) => <option key={id}>{item}</option>);
 
     useEffect(() => {
-        fetch(`http://localhost:3030/specialities`)
+        // fetch(`https://megaclinic.ultra-violet.codes/api/specialities`)
+        fetch(`http://localhost:3030/api/specialities`)
         .then(res => res.json())
-        .then(result => setSpecialitiesData(result))
+        .then(res => setSpecialitiesData(res))
         .catch(error => console.log(`error ${error}`))
     }, []);
 
@@ -45,21 +46,23 @@ const Reservation: React.FC = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ specialityFilter: doctorSpec })
         };
-        fetch(`http://localhost:3030/filter`, doctorSpec !== '' ? requestPost : undefined)
+        // fetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== '' ? requestPost : undefined)
+        fetch(`http://localhost:3030/api/doctors`, doctorSpec !== '' ? requestPost : undefined)
         .then(res => res.json())
-        .then(result => setDoctorsData(result))
+        .then(res => setDoctorsData(res))
         .catch(error => console.log(`error ${error}`))
     }, [doctorSpec]);
 
     useEffect(() => {
         setTimetable([])
-        fetch(`http://localhost:3030/timetable`, {
+        // fetch(`https://megaclinic.ultra-violet.codes/api/timetable`, {
+            fetch(`http://localhost:3030/api/timetable`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ doctorFilter: doctorName })
         })
         .then(res => res.json())
-        .then(result => setChosenDoctor(result))
+        .then(res => setChosenDoctor(res))
         .catch(error => console.log(`error ${error}`))
     }, [doctorName]);
 
@@ -69,9 +72,10 @@ const Reservation: React.FC = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ doctorId: String(chosenDoctor?.[0]?.doctor_id) || null})
         };
-        fetch(`http://localhost:3030/visits`, requestPost)
+        // fetch(`https://megaclinic.ultra-violet.codes/api/visits`, requestPost)
+        fetch(`http://localhost:3030/api/visits`, requestPost)
         .then(res => res.json())
-        .then(result => setBookedVisits(result!))
+        .then(res => setBookedVisits(res!))
         .catch(error => console.log(`error ${error}`))
     }, [chosenDoctor]);
 
@@ -85,7 +89,6 @@ const Reservation: React.FC = () => {
             }
         })
         setTimetable(times)
-        
     }, [chosenDoctor])
 
 

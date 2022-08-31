@@ -11,18 +11,18 @@ const genPassword = (password) => {
         salt: salt,
         hash: genHash
     };
-}
+};
 
 const validatePassword = (password, hash, salt) => {
     const hashVerify = bcrypt.hashSync(password, salt);
 
     return hash === hashVerify;
-}
+};
 
 const veryfiCallback = (username, password, done) => {
     
     Doctor.findOne({ username: username })
-    .then((user) => {
+    .then(user => {
         if(!user) { return done(null, false) }
 
         const isValid = validatePassword(password, user.hash, user.salt);
@@ -33,10 +33,10 @@ const veryfiCallback = (username, password, done) => {
             return done(null, false);
         }
     })
-    .catch((err) => {
+    .catch(err => {
         done(err);
     });
-}
+};
 
 const strategy = new LocalStrategy(veryfiCallback);
 
@@ -48,7 +48,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((userId, done) => {
   Doctor.findById(userId)
-    .then((user) => {
+    .then(user => {
         done(null, user);
     })
     .catch(err => done(err));
