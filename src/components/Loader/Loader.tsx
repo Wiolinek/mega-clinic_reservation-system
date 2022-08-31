@@ -1,4 +1,4 @@
-import './Loader.scss'
+import './Loader.css'
 
 interface Props {
   message: string;
@@ -9,8 +9,8 @@ const Loader:React.FC<Props> = ({ message }) => {
 
   
   return (
-    <div className='loader'>
-      <h3>{message}</h3>
+    <div className='loader login__section'>
+      <h2>{message}</h2>
     </div>
   )
 }

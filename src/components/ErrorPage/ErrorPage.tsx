@@ -14,7 +14,7 @@ const ErrorPage: React.FC = () => {
     useEffect(() => {
         setTimeout(() => {
             navigate('../', { replace: true })
-        }, 4000)
+        }, 2500)
     },[])
 
     

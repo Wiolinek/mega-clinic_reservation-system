@@ -6,7 +6,7 @@ const Banner: React.FC = () => {
     return (
         <article className='banner'>
             <picture>
-                <img src='../../images/banner_hp.jpg'></img>
+                <img src='../../images/banner_hp.jpg' alt='Stetoskop lekarski'></img>
             </picture>
         </article>
     )

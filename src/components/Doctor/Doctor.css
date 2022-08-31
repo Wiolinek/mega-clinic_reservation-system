@@ -30,8 +30,12 @@
     gap: 20px;
 }
 
-.doctor__item--description h2, .doctor__item--description h3{
+.doctor__item--description h2, .doctor__item--description h3 {
     text-align: center;
+}
+
+.doctor__item--description h3 {
+    margin-bottom: 8px;
 }
 
 .doctor__item--description p {
