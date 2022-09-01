@@ -4,11 +4,11 @@
 
 Project was created to learn all technologies used here, and practice.
 
-
 TO LOGIN TO DOCTOR ACCOUNT USE:
-LOGIN NAME.SURNAME: (eg. marek.nowacki)
-PASSOWRD: surname123 (eg. nowacki123)
 
+LOGIN NAME.SURNAME: (eg. marek.nowacki)
+
+PASSOWRD: surname123 (eg. nowacki123)
 
 ## Table of Contents
 
@@ -31,8 +31,9 @@ PASSOWRD: surname123 (eg. nowacki123)
 
 ## Screenshots
 
-![]()
-![]()
+![](public/images/screens/hp.png)
+![](public/images/screens/doctors.png)
+![](public/images/screens/reservation.png)
 
 ## Setup
 
@@ -79,7 +80,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Project Status
 
-Project is: _complete_
+Project is: _in progress_
 
 ## Room for Improvement
 
