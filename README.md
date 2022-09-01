@@ -10,10 +10,6 @@ LOGIN NAME.SURNAME: (eg. marek.nowacki)
 PASSOWRD: surname123 (eg. nowacki123)
 
 
-## I'm also adding life version but it is after midnight (01:10am) so you can skip it ;)
-https://megaclinic.ultra-violet.codes/ - BUT - on localhost page works fine - on PROD login page throw an error after putting credentials, after refreshing the page and changing url to home page it works, user is logged in.. trying to figure out what is going on...
-
-
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
