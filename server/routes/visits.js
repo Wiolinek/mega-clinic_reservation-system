@@ -7,8 +7,9 @@ var mysql = require('./../lib/mysql')
 
 router.post('/', function(req, res, next) {
   let filter = req.body.doctorId
+  let dateFilter = req.body.dateFilter;
 
-  mysql.query("SELECT * FROM reservations WHERE doctor_id = " + '"' + filter + '"', function(error, result, fields) {
+  mysql.query("SELECT * FROM reservations WHERE doctor_id = " + '"' + filter + '"' + (dateFilter !== null ? (" AND date = " + '"' + dateFilter + '"') : ''), function(error, result, fields) {
     res.json(result);
   });
 });

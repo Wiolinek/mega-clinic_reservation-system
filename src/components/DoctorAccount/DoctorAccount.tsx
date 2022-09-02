@@ -28,7 +28,7 @@ const DoctorAccount: React.FC = () => {
         const requestPost = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ doctorId: doctorId})
+            body: JSON.stringify({ doctorId: doctorId, dateFilter: null })
         };
         // fetch(`https://megaclinic.ultra-violet.codes/api/visits`, requestPost)
         fetch(`http://localhost:3030/api/visits`, requestPost)
