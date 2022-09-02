@@ -34,6 +34,7 @@ PASSOWRD: surname123 (eg. nowacki123)
 ![](public/images/screens/hp.png)
 ![](public/images/screens/doctors.png)
 ![](public/images/screens/reservation.png)
+![](public/images/screens/account.png)
 
 ## Setup
 
