@@ -86,7 +86,6 @@ Project is: _in progress_
 
 - implement CSS pre-processor
 - implement Formik for handling reservtion form
-- fix filtering timeschedule for each doctor - now it does not count the date when filter booked visits so if there is a visit booked for 9:00 for specific doctor, it will be removed from his schedule for each day.
 
 ## License
 
