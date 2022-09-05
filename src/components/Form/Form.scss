@@ -1,0 +1,25 @@
+.reservation__form {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin: 0 auto;
+    label {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 24px;
+        > span {
+            font-size: .8rem;
+            color: grey;
+            margin-top: 4px;
+        }
+    }
+    .date-input {
+        pointer-events: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .reservation__form {
+        width: 100%;
+    }
+}

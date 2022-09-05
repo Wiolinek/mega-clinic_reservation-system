@@ -11,7 +11,7 @@ import DoctorAccount from './components/pageTemplates/DoctorAccount/DoctorAccoun
 import Logout from './components/pageTemplates/Logout/Logout';
 import ErrorPage from './components/pageTemplates/ErrorPage/ErrorPage';
 
-import './App.css';
+import './App.scss';
 
 
 const App: React.FC = () => {

@@ -5,7 +5,7 @@ import Form from 'components/Form/Form';
 import { DoctorType } from 'types/doctor';
 import { SpecialityType } from 'types/speciality';
 
-import './Reservation.css';
+import './Reservation.scss';
 
 
 const Reservation: React.FC = () => {

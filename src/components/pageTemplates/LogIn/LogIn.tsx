@@ -4,7 +4,7 @@ import GenericSection from 'components/common/GenericSection/GenericSection';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 import { MyContext } from 'Context';
 
-import './Login.css'
+import './Login.scss'
 
 
 const LogIn: React.FC = () => {

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MyContext } from 'Context';
 
-import './Menu.css';
+import './Menu.scss';
 
 
 interface Props {
@@ -14,8 +14,6 @@ interface Props {
 
 const Menu: React.FC<Props> = ({ isOpen, setOpen, closeMenu }) => {
     const { user, labels } = useContext(MyContext)
-
-    
 
 
     return (

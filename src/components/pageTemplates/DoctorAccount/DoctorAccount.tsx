@@ -5,7 +5,7 @@ import GenericSection from 'components/common/GenericSection/GenericSection';
 import Loader from 'components/Loader/Loader';
 import { VisitType } from 'types/visit';
 
-import './DoctorAccount.css';
+import './DoctorAccount.scss';
 
 
 const DoctorAccount: React.FC = () => {
@@ -15,6 +15,7 @@ const DoctorAccount: React.FC = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        !doctorId &&
         // fetch(`https://megaclinic.ultra-violet.codes/api/user-account`, { credentials: 'include' }, headers: { 'Content-Type': 'application/json' })
         fetch(`http://localhost:3030/api/user-account`, {
           credentials: 'include',
@@ -63,7 +64,9 @@ const DoctorAccount: React.FC = () => {
             <p>{labels?.doctorAccount.visitsFound}<span>{visitsList?.length}</span></p>
         </div>
         <article>
-            {!visitsData && <Loader message='Trwa ładowanie listy..' />}
+            {(!visitsData && labels) &&
+                <Loader message={labels?.loaders.list} />
+            }
             <ol className='doctor-account__visits-list'>
                 {visitsList}
             </ol>

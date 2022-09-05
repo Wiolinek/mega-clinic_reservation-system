@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { SpecialityType } from 'types/speciality';
 import { MyContext } from 'Context';
 
-import './List.css';
+import './List.scss';
 
 interface Props {
     list: SpecialityType[];

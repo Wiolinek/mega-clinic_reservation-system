@@ -1,5 +1,3 @@
-import './Loader.css'
-
 interface Props {
   message: string;
 }

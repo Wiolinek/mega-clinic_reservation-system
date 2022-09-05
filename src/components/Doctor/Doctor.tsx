@@ -3,7 +3,7 @@ import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 import { MyContext } from 'Context';
 import { DoctorType } from 'types/doctor'
 
-import './Doctor.css'
+import './Doctor.scss'
 
 
 const Doctor = (props: DoctorType) => {

@@ -5,7 +5,7 @@ import ButtonLink from 'components/common/ButtonLink/ButtonLink'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStethoscope, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 
-import './Navigation.css';
+import './Navigation.scss';
 
 
 const Navigation: React.FC = () => {

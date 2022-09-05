@@ -7,7 +7,7 @@ import { DoctorType } from 'types/doctor';
 import { VisitType } from 'types/visit';
 import { MyContext } from 'Context';
 
-import './Form.css';
+import './Form.scss';
 
 
 interface Props {
@@ -170,9 +170,10 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, se
                         <input name='date'
                             className='date-input'
                             value={'' || date?.toLocaleDateString('pl-PL')}
-                        onChange={e => setFormData(dataItem => ({...dataItem, [e.target.name]: date.toLocaleDateString('sv')}))}
-                        required>
-                    </input>
+                            onChange={e => setFormData(dataItem => ({...dataItem, [e.target.name]: date.toLocaleDateString('sv')}))}
+                            readOnly
+                            required>
+                        </input>
                     <CalendarComp date={date} setDate={setDate}/>
                 </label>
                 <label>{labels?.form.chooseTime}

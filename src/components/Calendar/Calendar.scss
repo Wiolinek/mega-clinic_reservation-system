@@ -1,0 +1,21 @@
+.react-calendar {
+    margin: 8px auto 0;
+    > div {
+        margin: 0 auto;
+    }
+    button {
+        min-width: 80px !important;
+    }
+    &__month-view__days > .react-calendar__tile,
+    &__month-view__weekdays__weekday {
+        flex-basis: 20% !important;
+        max-width: 20% !important;
+    }
+    &__month-view__weekdays__weekday:nth-child(6),
+    &__month-view__weekdays__weekday:nth-child(7) {
+        display: none !important;
+    }
+    &__month-view__days__day--weekend {
+        display: none !important;
+    }
+}

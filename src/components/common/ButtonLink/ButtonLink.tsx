@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import './ButtonLink.css';
+import './ButtonLink.scss';
 
 interface Props {
     customClass?: string;
