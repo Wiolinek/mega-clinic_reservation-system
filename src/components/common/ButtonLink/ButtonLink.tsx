@@ -17,8 +17,18 @@ const Button: React.FC<Props> = ({customClass, text, type, target, icon, onClick
 
     return (
         type === 'button' || type === 'submit' ? 
-            <button className={customClass} type={type} onClick={onClick}>{text}{icon}</button> : 
-            <NavLink to={target || '/'} className='btn' >{text}</NavLink>
+            <button type={type}
+                className={customClass}
+                onClick={onClick}
+            >
+                {text}{icon}
+            </button>
+            : 
+            <NavLink to={target || '/'}
+                className='btn'
+            >
+                {text}
+            </NavLink>
     )
 }
 

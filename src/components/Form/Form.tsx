@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import CalendarComp from 'components/Calendar/Calendar';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink'
 import { PacientType } from 'types/pacient';
 import { DoctorType } from 'types/doctor';
 import { VisitType } from 'types/visit';
+import { MyContext } from 'Context';
 
 import './Form.css';
+
 
 interface Props {
     specialitiesList: React.ReactNode[];
@@ -18,6 +20,7 @@ interface Props {
 
 
 const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, setChosenDoctor }) => {
+    const { labels } = useContext(MyContext)
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
     const doctorName = searchParams.get('doctor');
@@ -142,28 +145,28 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, se
 
     return (
         <>
-            <h2>Zarezerwuj wizytę</h2>
+            <h2>{labels?.form.header}</h2>
             <form className='reservation__form' onSubmit={formHandler}>
                 <div>
-                    <label>Wybierz specjalizację:
+                    <label>{labels?.form.chooseSpec}
                         <select name='speciality'
                             onChange={selectHandler}
                             required>
                             <option key={defaultValue} value='' >{defaultValue}</option>
                             {specialitiesList}
                         </select>
-                        <span>np. pediatra</span>
+                        <span>{labels?.placeholders.specialization}</span>
                     </label>
-                    <label>Wybierz lekarza:
+                    <label>{labels?.form.chooseDoc}
                         <select name='doctor'
                             onChange={selectHandler}
                             required>
                             <option key={defaultValue} value='' label={defaultValue}>{defaultValue}</option>
                             {doctorsList}
                         </select>
-                        <span>np. Adam Kowalski</span>
+                        <span>{labels?.placeholders.doctor}</span>
                     </label>
-                    <label>Wybierz datę z kalendarza:
+                    <label>{labels?.form.chooseDate}
                         <input name='date'
                             className='date-input'
                             value={'' || date?.toLocaleDateString('pl-PL')}
@@ -172,40 +175,46 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, se
                     </input>
                     <CalendarComp date={date} setDate={setDate}/>
                 </label>
-                <label>Wybierz godzinę:
+                <label>{labels?.form.chooseTime}
                     <select name='time'
                         onChange={timeSelectHandler}
                         required>
                         <option key={defaultValue} value='' selected>{defaultValue}</option>
                         {timeList}
                     </select>
-                    <span>np. 7:30</span>
+                    <span>{labels?.placeholders.time}</span>
                 </label>
-                <label>Imię i nazwisko:
-                    <input type='text' name='pacientName'
+                <label>{labels?.personalData.nameSurname}
+                    <input type='text'
+                        name='pacientName'
                         pattern='[a-zA-Z]+[ ][a-zA-Z]+'
                         onChange={inputHandler}
                         required>
                     </input>
-                    <span>np. Anna Nowak</span>
+                    <span>{labels?.placeholders.nameSurname}</span>
                 </label>
-                <label>Adres email:
-                    <input type='email' name='pacientEmail'
+                <label>{labels?.personalData.email}
+                    <input type='email'
+                        name='pacientEmail'
                         onChange={inputHandler}
                         required>
                     </input>
-                    <span>np. anna.nowak@email.pl</span>
+                    <span>{labels?.placeholders.email}</span>
                 </label>
-                <label>Numer telefonu:
-                    <input type='tel' name='pacientPhone'
+                <label>{labels?.personalData.phone}
+                    <input type='tel'
+                        name='pacientPhone'
                         pattern='[0-9]{9}'
                         onChange={inputHandler}
                         required>
                     </input>
-                    <span>np. 123456789</span>
+                    <span>{labels?.placeholders.phone}</span>
                 </label>
             </div>
-            <ButtonLink type='submit' customClass='btn reservation__form-btn' text='Wyślij'/>
+            <ButtonLink type='submit'
+                customClass='btn reservation__form-btn'
+                text={labels?.buttons.send}
+            />
         </form>
     </>
     )

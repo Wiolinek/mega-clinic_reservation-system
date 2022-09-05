@@ -28,6 +28,7 @@ const login = require('./routes/login');
 const userAccount = require('./routes/user-account');
 const logout = require('./routes/logout');
 const visits = require('./routes/visits');
+const labels = require('./routes/labels');
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -70,6 +71,7 @@ app.use('/api/login', login);
 app.use('/api/user-account', userAccount);
 app.use('/api/logout', logout);
 app.use('/api/visits', visits);
+app.use('/api/labels', labels);
 // app.get('/*', (req, res) => {
 //   res.sendFile(__dirname + '/public/index.html');
 // })

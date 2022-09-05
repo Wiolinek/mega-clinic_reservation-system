@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import GenericSection from 'components/common/GenericSection/GenericSection'
 import Doctor from 'components/Doctor/Doctor'
 import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 import Filters from 'components/Filters/Filtres';
+import { MyContext } from 'Context';
 import { DoctorType } from 'types/doctor'
 import { SpecialityType } from 'types/speciality';
 
 
 const OurDoctors: React.FC = () => {
-
+    const { labels } = useContext(MyContext)
     const [doctorsData, setDoctorsData] = useState<DoctorType[]>();
     const [specialitiesData, setSpecialitiesData] = useState<SpecialityType[]>();
     const [searchParams, setSearchParams] = useSearchParams();
@@ -49,7 +50,11 @@ const OurDoctors: React.FC = () => {
         <main>
             <GenericSection children={<Filters filters={filterList} resultsCounter={doctorsData?.length} />} customClass='filters' />
             <GenericSection children={doctorsList}/>
-            <ButtonLink customClass='btn back-to-top' text='powrót' type='button' onClick={backToTop}/>
+            <ButtonLink type='button'
+                customClass='btn back-to-top'
+                text={labels?.buttons.back}
+                onClick={backToTop}
+            />
         </main>
     )
 }

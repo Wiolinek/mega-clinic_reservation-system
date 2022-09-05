@@ -1,4 +1,7 @@
+import { useContext } from 'react';
 import { SpecialityType } from 'types/speciality';
+import { MyContext } from 'Context';
+
 import './List.css';
 
 interface Props {
@@ -7,13 +10,20 @@ interface Props {
 }
 
 const List: React.FC<Props> = ({ list, customClass }) => {
+    const { labels } = useContext(MyContext)
 
 
     return (
         <>
-            <h2>Nasze specjalizacje</h2>
+            <h2>{labels?.homePage.header}</h2>
             <ul className={customClass}>
-                {list?.map(item => <li key={item.id} ><a href={`/our-doctors/?speciality=${item.speciality}`}>{item.speciality}</a></li>)}
+                {list?.map(item =>
+                    <li key={item.id} >
+                        <a href={`/our-doctors/?speciality=${item.speciality}`}>
+                            {item.speciality}
+                        </a>
+                    </li>
+                )}
             </ul>
         </>
     )

@@ -5,12 +5,12 @@ import { MyContext } from 'Context';
 
 
 const Logout: React.FC = () => {
-    const context = useContext(MyContext)
+    const { setUser, labels } = useContext(MyContext)
     const navigate = useNavigate();
 
     const content: React.ReactNode = <>
-        <h2>Trwa wylogowywanie.</h2>
-        <p>Za chwilę zostaniesz przekierowany na stronę główną.</p>
+        <h2>{labels?.logoutPage.header}</h2>
+        <p>{labels?.redirects.redirectLoginPage}</p>
     </>
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const Logout: React.FC = () => {
         .then(res => {
             res.ok &&
             window.localStorage.removeItem('user');
-            context.setUser?.({user: ''})
+            setUser?.({user: ''})
             setTimeout(() => {
                 navigate('../', { replace: true })
             }, 1200)

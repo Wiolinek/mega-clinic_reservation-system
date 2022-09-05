@@ -1,4 +1,6 @@
+import React, { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { MyContext } from 'Context';
 
 
 interface Props {
@@ -8,6 +10,7 @@ interface Props {
 
 
 const OurDoctors: React.FC<Props> = ({filters,resultsCounter}) => {
+    const { labels } = useContext(MyContext)
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
 
@@ -23,7 +26,7 @@ const OurDoctors: React.FC<Props> = ({filters,resultsCounter}) => {
                     {filterList}
                 </select>
             </label>
-            <p>Znalezionych wyników: <span>{resultsCounter}</span></p>
+            <p>{labels?.filters.resultsFound}<span>{resultsCounter}</span></p>
         </>
     )
 }

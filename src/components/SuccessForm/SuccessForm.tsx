@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GenericSection from 'components/common/GenericSection/GenericSection';
+import { MyContext } from 'Context';
 
 
 const SuccesForm: React.FC = () => {
+    const { labels } = useContext(MyContext)
     const navigate = useNavigate();
 
     const content: React.ReactNode = <>
-        <h2>Otrzymaliśmy Twoją rezerwację.</h2>
-        <h3>Dziękujemy za skorzystanie z naszych usług i zapraszamy na wizytę w zarezerwowanym terminie.</h3>
-        <p>Za chwilę zostaniesz przekierowany na stronę główną.</p>
+        <h2>{labels?.successForm.header}</h2>
+        <h3>{labels?.successForm.successMsg}</h3>
+        <p>{labels?.redirects.redirectLoginPage}</p>
     </>
 
     useEffect(() => {

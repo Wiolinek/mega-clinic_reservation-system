@@ -11,9 +11,9 @@ import './Navigation.css';
 const Navigation: React.FC = () => {
     const [isOpen, setOpen] = useState(false);
 
-    const toggleMenuHandler = () => {
-        setOpen(!isOpen)
-    };
+    const toggleMenuHandler = () => setOpen(!isOpen)
+
+    const closeMenu = () => setOpen(false)
 
     useEffect(() => {
         const closeMenu = () => setOpen(false);
@@ -26,10 +26,20 @@ const Navigation: React.FC = () => {
         <header>
             <nav>
                 <div className='logo'>
-                    <NavLink to='/' onClick={() => setOpen(false)}><FontAwesomeIcon icon={faStethoscope}/>MegaClinic</NavLink>
+                    <NavLink to='/'
+                        onClick={closeMenu}>
+                            <FontAwesomeIcon icon={faStethoscope}/>MegaClinic
+                    </NavLink>
                 </div>
-                <Menu isOpen={isOpen} setOpen={setOpen} />
-                <ButtonLink type='button' icon={isOpen ? <FontAwesomeIcon icon={faXmark}/> : <FontAwesomeIcon icon={faBars}/>} customClass='menu-btn' onClick={toggleMenuHandler}/>
+                <Menu isOpen={isOpen}
+                    setOpen={setOpen}
+                    closeMenu={closeMenu}
+                />
+                <ButtonLink type='button'
+                    icon={isOpen ? <FontAwesomeIcon icon={faXmark}/> : <FontAwesomeIcon icon={faBars}/>}
+                    customClass='menu-btn'
+                    onClick={toggleMenuHandler}
+                />
             </nav>
         </header>
     )

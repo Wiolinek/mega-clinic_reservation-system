@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GenericSection from 'components/common/GenericSection/GenericSection';
+import { MyContext } from 'Context';
 
 
 const ErrorPage: React.FC = () => {
+    const { labels } = useContext(MyContext)
     const navigate = useNavigate();
 
     const content: React.ReactNode = <>
-        <h2>Ooooops... Wygląda na to że nie mamy takiej strony w naszych zasobach.</h2>
-        <p>Za chwilę zostaniesz przekierowany na stronę główną.</p>
+        <h2>{labels?.errorPage.header}</h2>
+        <p>{labels?.redirects.redirectHomePage}</p>
     </>
 
     useEffect(() => {

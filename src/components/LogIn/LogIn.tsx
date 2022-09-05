@@ -1,5 +1,5 @@
-import React, { SyntheticEvent, useContext, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GenericSection from 'components/common/GenericSection/GenericSection';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 import { MyContext } from 'Context';
@@ -8,8 +8,8 @@ import './Login.css'
 
 
 const LogIn: React.FC = () => {
+    const { setUser, labels } = useContext(MyContext)
     const navigate = useNavigate();
-    const context = useContext(MyContext)
     const [error, setError] = useState(false);
     const [userData, setUsername] = useState({
         username: '',
@@ -32,7 +32,7 @@ const LogIn: React.FC = () => {
         })
         .then(res => res.json())
         .then(res => {
-            context.setUser?.({ 'id': res.id, 'name': res.name })
+            setUser?.({ 'id': res.id, 'name': res.name })
             window.localStorage.setItem('user', JSON.stringify({ 'id': res.id, 'name': res.name }))
             navigate('../doctor-account', { replace: true })
         })
@@ -46,9 +46,9 @@ const LogIn: React.FC = () => {
     };
 
     const loginForm: React.ReactNode = <>
-        <h2>Zaloguj się</h2>
+        <h2>{labels?.loginPage.header}</h2>
         <form className='login__form' onSubmit={onSubmit}>
-            <label>Login:
+            <label>{labels?.loginPage.login}
                 <input type='text'
                     name='username'
                     value={userData.username}
@@ -56,7 +56,7 @@ const LogIn: React.FC = () => {
                     required>
                 </input>
             </label>
-            <label>Hasło:
+            <label>{labels?.loginPage.password}
                 <input type='password'
                     name='password'
                     value={userData.password}
@@ -66,15 +66,15 @@ const LogIn: React.FC = () => {
             </label>
             <ButtonLink type='submit'
                 customClass='btn'
-                text='Zaloguj'
+                text={labels?.buttons.login}
             />
         </form>
     </>
 
     const errorMsg = <>
-        <h2>Co poszło nie tak..</h2>
-        <p>Spróbuj ponownie.</p>
-        </>
+        <h2>{labels?.loginPage.errorHeader}</h2>
+        <p>{labels?.loginPage.errorMsg}</p>
+    </>
 
     return (
         <main>

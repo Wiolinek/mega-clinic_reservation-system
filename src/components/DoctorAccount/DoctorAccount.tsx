@@ -2,14 +2,14 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from 'Context';
 import GenericSection from 'components/common/GenericSection/GenericSection';
-import { VisitType } from 'types/visit';
 import Loader from 'components/Loader/Loader';
+import { VisitType } from 'types/visit';
 
 import './DoctorAccount.css';
 
 
 const DoctorAccount: React.FC = () => {
-    const context = useContext(MyContext)
+    const { user, labels } = useContext(MyContext)
     const [visitsData, setVisitsData] = useState<VisitType[]>()
     const [doctorId, setDoctorId] = useState<String>(JSON.parse(window.localStorage.getItem('user') || '{}').id)
     const navigate = useNavigate();
@@ -40,11 +40,11 @@ const DoctorAccount: React.FC = () => {
     const visitsList = visitsData?.map(visit =>
         <li key={visit.id} className='doctor-account__visits-list--item'>
             <div className='doctor-account__visits-list--header'>
-                <p>Data</p>
-                <p>Godzina</p>
-                <p>Pacjent</p>
-                <p>Adres email</p>
-                <p>Nr telefonu</p>
+                <p>{labels?.doctorAccount.date}</p>
+                <p>{labels?.doctorAccount.hour}</p>
+                <p>{labels?.doctorAccount.pacient}</p>
+                <p>{labels?.personalData.email}</p>
+                <p>{labels?.personalData.phone}</p>
             </div>
             <div className='doctor-account__visits-list--pacient-data'>
                 <p>{visit.date.substring(0, 10)}</p>
@@ -57,10 +57,10 @@ const DoctorAccount: React.FC = () => {
     )
 
     const content: React.ReactNode = <>
-        <h2>{`Witaj, ${context?.user?.name || JSON.parse(window.localStorage.getItem('user') || '{}').name}`}</h2>
+        <h2>{`Witaj, ${user?.name || JSON.parse(window.localStorage.getItem('user') || '{}').name}`}</h2>
         <div className='doctor-account__filters'>
-            <h3>Przejrzyj swoje wizyty</h3>
-            <p>Znalezionych wizyt: <span>{visitsList?.length}</span></p>
+            <h3>{labels?.doctorAccount.yourVisits}</h3>
+            <p>{labels?.doctorAccount.visitsFound}<span>{visitsList?.length}</span></p>
         </div>
         <article>
             {!visitsData && <Loader message='Trwa ładowanie listy..' />}
@@ -71,8 +71,8 @@ const DoctorAccount: React.FC = () => {
     </>
 
     const errorAuthenticationMsg: React.ReactNode = <>
-        <h2>Nie jesteś uprawniony do przeglądania tych zasobów</h2>
-        <p>Za chwilę zostaniesz przekierowany do strony logowania</p>
+        <h2>{labels?.doctorAccount.unauthorized}</h2>
+        <p>{labels?.redirects.redirectHomePage}</p>
     </>
 
     useEffect(() => {

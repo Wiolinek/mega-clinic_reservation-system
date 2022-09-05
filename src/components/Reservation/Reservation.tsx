@@ -4,7 +4,6 @@ import GenericSection from 'components/common/GenericSection/GenericSection';
 import Form from 'components/Form/Form';
 import { DoctorType } from 'types/doctor';
 import { SpecialityType } from 'types/speciality';
-import { VisitType } from 'types/visit';
 
 import './Reservation.css';
 
