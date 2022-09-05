@@ -2,14 +2,14 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
-import Homepage from './components/Homepage/Homepage';
-import OurDoctors from './components/OurDoctors/OurDoctors';
-import Reservation from './components/Reservation/Reservation';
-import LogIn from './components/LogIn/LogIn';
-import SuccessForm from './components/SuccessForm/SuccessForm';
-import DoctorAccount from './components/DoctorAccount/DoctorAccount';
-import Logout from './components/Logout/Logout';
-import ErrorPage from './components/ErrorPage/ErrorPage';
+import Homepage from './components/pageTemplates/Homepage/Homepage';
+import OurDoctors from './components/pageTemplates/OurDoctors/OurDoctors';
+import Reservation from './components/pageTemplates/Reservation/Reservation';
+import LogIn from './components/pageTemplates/LogIn/LogIn';
+import SuccessForm from './components/pageTemplates/SuccessForm/SuccessForm';
+import DoctorAccount from './components/pageTemplates/DoctorAccount/DoctorAccount';
+import Logout from './components/pageTemplates/Logout/Logout';
+import ErrorPage from './components/pageTemplates/ErrorPage/ErrorPage';
 
 import './App.css';
 
