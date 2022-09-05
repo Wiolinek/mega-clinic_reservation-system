@@ -48,8 +48,15 @@ const OurDoctors: React.FC = () => {
 
     return (
         <main>
-            <GenericSection children={<Filters filters={filterList} resultsCounter={doctorsData?.length} />} customClass='filters' />
-            <GenericSection children={doctorsList}/>
+            <GenericSection customClass='filters'>
+                <Filters
+                    filters={filterList}
+                    resultsCounter={doctorsData?.length}
+                />
+            </GenericSection>
+            <GenericSection>
+                {doctorsList}
+            </GenericSection>
             <ButtonLink type='button'
                 customClass='btn back-to-top'
                 text={labels?.buttons.back}

@@ -72,7 +72,7 @@ const DoctorAccount: React.FC = () => {
 
     const errorAuthenticationMsg: React.ReactNode = <>
         <h2>{labels?.doctorAccount.unauthorized}</h2>
-        <p>{labels?.redirects.redirectHomePage}</p>
+        <p>{labels?.redirects.redirectLoginPage}</p>
     </>
 
     useEffect(() => {
@@ -85,18 +85,9 @@ const DoctorAccount: React.FC = () => {
 
     return (
         <main>
-            {
-                doctorId ?
-                    <GenericSection
-                        children={content}
-                        customClass='doctor-account__section'
-                    />
-                :
-                    <GenericSection
-                        children={errorAuthenticationMsg}
-                        customClass='doctor-account__section'
-                    /> 
-            }
+            <GenericSection customClass='doctor-account__section'>
+                {doctorId ? content : errorAuthenticationMsg}
+            </GenericSection>
         </main>
     )
 }

@@ -22,7 +22,9 @@ const ErrorPage: React.FC = () => {
     
     return (
         <main>
-            <GenericSection children={content} />
+            <GenericSection>
+                {content}
+            </GenericSection>
         </main>
     )
 }

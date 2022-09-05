@@ -29,8 +29,12 @@ const Homepage: React.FC = () => {
     return (
         <main>
             <Banner />
-            <GenericSection children={list}/>
-            <GenericSection children={content} customClass='article__section'/>
+            <GenericSection>
+                {list}
+            </GenericSection>
+            <GenericSection customClass='article__section'>
+                {content}
+            </GenericSection>
         </main>
     )
 }

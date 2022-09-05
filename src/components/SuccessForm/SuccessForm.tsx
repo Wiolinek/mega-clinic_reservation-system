@@ -23,7 +23,9 @@ const SuccesForm: React.FC = () => {
     
     return (
         <main>
-            <GenericSection children={content} customClass='login__section' />
+            <GenericSection customClass='login__section'>
+                {content}
+            </GenericSection>
         </main>
     )
 }

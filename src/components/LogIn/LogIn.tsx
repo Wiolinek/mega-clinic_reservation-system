@@ -80,15 +80,13 @@ const LogIn: React.FC = () => {
         <main>
             {
                 error &&
-                <GenericSection
-                    children={errorMsg}
-                    customClass='login__section error'
-                />
+                <GenericSection customClass='login__section error'>
+                    {errorMsg}
+                </GenericSection>
             }
-            <GenericSection
-                children={loginForm}
-                customClass='login__section'
-            />
+            <GenericSection customClass='login__section'>
+                {loginForm}
+            </GenericSection>
         </main>
     )
 }
