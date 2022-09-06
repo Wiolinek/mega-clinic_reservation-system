@@ -17,15 +17,14 @@ nav {
             display: flex;
             justify-content: flex-end;
             align-items: flex-end;
-            .svg-inline--fa {
-                height: 40px; 
-                color: var(--white-color);
-            }
-            
             .fa-stethoscope {
                 margin-right: 10px;
             }
         }
+    }
+    .svg-inline--fa {
+        height: 40px; 
+        color: var(--white-color);
     }
 }
 

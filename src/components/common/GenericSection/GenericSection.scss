@@ -3,6 +3,11 @@ section {
     &.filters {
         display: flex;
         justify-content: space-between;
+        label {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.1rem;
+        }
         span {
             font-size: 1.1rem;
             font-weight: 600;
@@ -14,13 +19,12 @@ section {
     .doctors {
         display: flex;
         flex-direction: column;
-        padding: 0 10vw;
     }
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 1200px) {
     .doctors {
-        padding: 0;
+        padding: 0 10vw;
     }
 }
 
@@ -30,9 +34,10 @@ section {
     }
     .filters {
         flex-direction: column;
+        align-items: center;
         gap: 20px;
     }
     .doctors {
-        padding: 0;
+        padding: 20px 3vw;
     }
 }

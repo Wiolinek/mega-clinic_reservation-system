@@ -23,14 +23,17 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        padding: 0 5vw;
         h2, h3 {
             text-align: center;
         }
         h3 {
             margin-bottom: 8px;
         }
-        p {
-            padding: 0 5vw;
+        div {
+            p, h3 {
+                text-align: center;
+            }
         }
     }
 }
