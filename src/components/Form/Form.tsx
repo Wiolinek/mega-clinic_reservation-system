@@ -6,16 +6,22 @@ import { PacientType } from 'types/pacient';
 import { DoctorType } from 'types/doctor';
 import { VisitType } from 'types/visit';
 import { MyContext } from 'Context';
+import useFetch from 'helpers/useFetch';
 
 import './Form.scss';
 
 
 interface Props {
-    specialitiesList: React.ReactNode[];
-    doctorsData?: DoctorType[];
-    timeList?: React.ReactNode[];
+    specialitiesList: React.ReactNode[] | null;
+    doctorsData?: DoctorType[] | null;
     setChosenDoctor: any;
     chosenDoctor: any;
+}
+
+interface Visits {
+    data: VisitType[] | null
+    loading: boolean;
+    error: string | null;
 }
 
 
@@ -26,7 +32,6 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, se
     const doctorName = searchParams.get('doctor');
     const [date, setDate] = useState<any>();
     const [timetable, setTimetable] = useState<string[]>();
-    const [bookedVisits, setBookedVisits] = useState<VisitType[] | null>();
     const defaultValue = '---';
     const navigate = useNavigate();
 
@@ -40,6 +45,14 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, se
         pacientEmail: '',
         pacientPhone: 0,
     });
+
+    const requestPost = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, dateFilter: formData.date })
+    };
+
+    const bookedVisits: Visits = useFetch(`http://localhost:3030/api/visits`, requestPost, chosenDoctor, formData.date);
 
     const doctorsList = doctorsData?.map(item => 
         <option key={item.doctor_id}
@@ -63,14 +76,7 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, se
         );
     };
 
-    const timeSelectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => 
-        setFormData(dataItem => ({
-            ...dataItem,
-            [e.target.name]: e.target.value
-        })
-    );
-
-    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => 
+    const inputHandler = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => 
         setFormData(dataItem => ({
             ...dataItem,
             [e.target.name]: e.target.value
@@ -89,7 +95,7 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, se
         navigate('../success', { replace: true })
     };
 
-    const bookedTimes = bookedVisits?.map(visit => visit.time.substring(0, 5)).map(time => time.startsWith('0') ? time.substring(1, 5) : time)
+    const bookedTimes = bookedVisits?.data?.map(visit => visit.time.substring(0, 5)).map(time => time.startsWith('0') ? time.substring(1, 5) : time)
     const availableTimes = timetable?.filter(time => !bookedTimes?.includes(time));
     const timeList = availableTimes?.map((item, id) => <option key={id}>{item}</option>);
 
@@ -105,19 +111,6 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, se
     }, [date, doctorName, doctorSpec]);
 
     useEffect(() => {
-        const requestPost = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, dateFilter: formData.date })
-        };
-        // fetch(`https://megaclinic.ultra-violet.codes/api/visits`, requestPost)
-        fetch(`http://localhost:3030/api/visits`, requestPost)
-        .then(res => res.json())
-        .then(res => setBookedVisits(res!))
-        .catch(error => console.log(`error ${error}`))
-    }, [chosenDoctor, formData.date]);
-
-    useEffect(() => {
         setTimetable([])
         // fetch(`https://megaclinic.ultra-violet.codes/api/timetable`, {
             fetch(`http://localhost:3030/api/timetable`, {
@@ -128,7 +121,7 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, se
         .then(res => res.json())
         .then(res => setChosenDoctor(res))
         .catch(error => console.log(`error ${error}`))
-    }, [doctorName]);
+    }, [doctorName, date]);
 
     useEffect(() => {
         const times: string[] = []
@@ -178,7 +171,7 @@ const Form: React.FC<Props> = ({ specialitiesList, doctorsData, chosenDoctor, se
                 </label>
                 <label>{labels?.form.chooseTime}
                     <select name='time'
-                        onChange={timeSelectHandler}
+                        onChange={inputHandler}
                         required>
                         <option key={defaultValue} value='' selected>{defaultValue}</option>
                         {timeList}

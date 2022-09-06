@@ -4,41 +4,32 @@ import { MyContext } from 'Context';
 import GenericSection from 'components/common/GenericSection/GenericSection';
 import Loader from 'components/Loader/Loader';
 import { VisitType } from 'types/visit';
+import useFetch from 'helpers/useFetch';
 
 import './DoctorAccount.scss';
 
 
+interface Visits {
+    data: VisitType[] | null;
+    loading: boolean;
+    error: string | null;
+}
+
+
 const DoctorAccount: React.FC = () => {
     const { user, labels } = useContext(MyContext)
-    const [visitsData, setVisitsData] = useState<VisitType[]>()
     const [doctorId, setDoctorId] = useState<String>(JSON.parse(window.localStorage.getItem('user') || '{}').id)
     const navigate = useNavigate();
 
-    useEffect(() => {
-        !doctorId &&
-        // fetch(`https://megaclinic.ultra-violet.codes/api/user-account`, { credentials: 'include' }, headers: { 'Content-Type': 'application/json' })
-        fetch(`http://localhost:3030/api/user-account`, {
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-        })
-        .then(res => res.json())
-        .catch(error => console.log(`error ${error}`))
-    }, []);
+    const requestPost = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ doctorId: doctorId, dateFilter: null })
+    };
 
-    useEffect(() => {
-        const requestPost = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ doctorId: doctorId, dateFilter: null })
-        };
-        // fetch(`https://megaclinic.ultra-violet.codes/api/visits`, requestPost)
-        fetch(`http://localhost:3030/api/visits`, requestPost)
-        .then(res => res.json())
-        .then(res => setVisitsData(res))
-        .catch(error => console.log(`error ${error}`))
-    }, [doctorId]);
+    const visitsData: Visits = useFetch(`http://localhost:3030/api/visits`, requestPost, doctorId);
 
-    const visitsList = visitsData?.map(visit =>
+    const visitsList = visitsData?.data?.map((visit: VisitType) =>
         <li key={visit.id} className='doctor-account__visits-list--item'>
             <div className='doctor-account__visits-list--header'>
                 <p>{labels?.doctorAccount.date}</p>
@@ -64,7 +55,7 @@ const DoctorAccount: React.FC = () => {
             <p>{labels?.doctorAccount.visitsFound}<span>{visitsList?.length}</span></p>
         </div>
         <article>
-            {(!visitsData && labels) &&
+            {(visitsData?.loading && labels) &&
                 <Loader message={labels?.loaders.list} />
             }
             <ol className='doctor-account__visits-list'>

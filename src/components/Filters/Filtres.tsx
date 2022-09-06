@@ -4,7 +4,7 @@ import { MyContext } from 'Context';
 
 
 interface Props {
-    filters: string[];
+    filters: string[] | any;
     resultsCounter?: number;
 }
 
@@ -14,7 +14,7 @@ const OurDoctors: React.FC<Props> = ({filters,resultsCounter}) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
 
-    const filterList = filters?.map(filter => <option key={filter} value={filter} selected={doctorSpec === filter} >
+    const filterList = filters?.map((filter: any) => <option key={filter} value={filter} selected={doctorSpec === filter} >
         {filter}</option>)
         
 
