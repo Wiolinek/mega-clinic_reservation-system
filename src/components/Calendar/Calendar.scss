@@ -3,8 +3,13 @@
     > div {
         margin: 0 auto;
     }
-    button {
-        min-width: 80px !important;
+    &__navigation__arrow {
+        min-width: 34px !important;
+        width: 34px !important;
+        padding: 0.8rem .2rem;
+    }
+    &__navigation__label {
+        padding: 0.8rem .4rem;
     }
     &__month-view__days > .react-calendar__tile,
     &__month-view__weekdays__weekday {
@@ -18,4 +23,32 @@
     &__month-view__days__day--weekend {
         display: none !important;
     }
+    &__calendar__navigation__arrow {
+        min-width: 30px !important;
+    }
+    
 }
+
+@media (min-width: 400px) {
+    .react-calendar {
+        &__viewContainer {
+            button {
+                min-width: 70px !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 399px) {
+    .react-calendar {
+        &__viewContainer {
+            button {
+                min-width: 50px !important;
+            }
+        }
+        &__month-view__days__day {
+            padding: 0.8rem .4rem;
+        }
+    }
+}
+
