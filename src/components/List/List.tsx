@@ -15,7 +15,7 @@ const List: React.FC<Props> = ({ list, customClass }) => {
 
     return (
         <>
-            <h2>{labels?.homePage.header}</h2>
+            <h2>{labels?.homePage.specializationsList}</h2>
             <ul className={customClass}>
                 {list?.map(item =>
                     <li key={item.id} >
