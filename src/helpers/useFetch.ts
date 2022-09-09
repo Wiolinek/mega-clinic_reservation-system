@@ -1,13 +1,31 @@
 import { useEffect, useState } from 'react';
 
-const useFetch = (url: string, req?: object, param1?: any, param2?: any) => {
+interface Request {
+  method: string,
+  credentials?: string | null | any,
+  headers: {
+    'Content-Type': string
+  },
+  body?: object | null | any,
+}
+
+
+const useFetch = (url: string, req?: any, param1?: any, param2?: any) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const request = req || {
-    credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
+  const request: Request = req ?
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify( req ),
+    }
+    : 
+    {
+      method: 'GET',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
     };
 
   useEffect(() => {

@@ -5,8 +5,8 @@ const Labels = require('../lib/models/labelsSchema');
 
 /* GET labels. */
 
-router.get('/', (req, res) => {
-  Labels.find({}, (err, data) => {
+router.post('/', (req, res) => {
+  Labels.find(req.body, (err, data) => {
     res.json(data);
   });
 });

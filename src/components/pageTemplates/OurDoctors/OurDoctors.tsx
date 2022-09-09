@@ -29,13 +29,7 @@ const OurDoctors: React.FC = () => {
 
     const specialitiesData: Specialities = useFetch(`http://localhost:3030/api/specialities`);
 
-    const requestPost = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ specialityFilter: doctorSpec, doctorFilter: '' })
-    };
-
-    const doctorsData: Doctors = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== null ? requestPost : undefined, searchParams);
+    const doctorsData: Doctors = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
 
     const backToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 

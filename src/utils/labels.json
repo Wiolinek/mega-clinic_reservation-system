@@ -1,0 +1,194 @@
+{
+    "pl": {
+        "lang": "pl",
+        "buttons": {
+            "login":"Zaloguj",
+            "bookVisit": "Zarezerwuj wizytę",
+            "send": "Wyślij",
+            "back": "Powrót"
+        },
+        "doctor": {
+            "specialization": "Specjalizacja",
+            "hours": "Godziny przyjęć"
+        },
+        "doctorAccount": {
+            "greetings": "Witam,",
+            "yourVisits": "Przejrzyj swoje wizyty",
+            "visitsFound": "Znalezionych wizyt: ",
+            "date": "Data",
+            "hour": "Godzina",
+            "pacient": "Pacjent",
+            "unauthorized": "Nie jesteś uprawniony do przeglądania tych zasobów"
+        },
+        "errorPage": {
+            "header": "Ooooops... Wygląda na to że nie mamy takiej strony w naszych zasobach."
+        },
+        "filters": {
+            "specializations": "Specjalizacje:",
+            "resultsFound": "Znalezionych wyników: "
+        },
+        "form":{
+            "header": "Zarezerwuj wizytę",
+            "email":"E-mail",
+            "password":"Hasło",
+            "chooseSpec": "Wybierz specjalizację:",
+            "chooseDoc": "Wybierz lekarza:",
+            "chooseDate": "Wybierz datę z kalendarza:",
+            "chooseTime": "Wybierz godzinę:"
+        },
+        "formErrors": {
+            "speciality": "Specjalizacja jest wymagana",
+            "doctor": "Lekarz jest wymagany",
+            "date": "Data jest wymagana",
+            "time": "Godzina jest wymagana",
+            "pacientName": "Imię i nazwisko jest wymagane",
+            "pacientNameLength": "Imię i nazwisko powinny zawierać co najmniej 2 znaki",
+            "pacientPhone": "Numer telefonu jest wymagany",
+            "pacientPhoneLength": "Numer telefonu powinien zawierać co najmniej 9 cyfr",
+            "pacientEmail": "Adres email jest wymagany",
+            "pacientEmailLength": "Adres email powinien zawierać co najmniej 5 znaków",
+            "pacientEmailMatch": "Adres email powinien zawierać '@'"
+        },
+        "homePage": {
+            "header": "Dlaczego warto nam zaufać",
+            "specializationsList": "Nasze specjalizacje"
+        },
+        "loaders": {
+            "list": "Trwa ładowanie listy.."
+        },
+        "loginPage": {
+            "header": "Zaloguj się",
+            "login": "Login:",
+            "password": "Hasło:",
+            "errorHeader": "Co poszło nie tak..",
+            "errorMsg": "Spróbuj ponownie."
+        },
+        "logoutPage": {
+            "header": "Trwa wylogowywanie."
+        },
+        "menu": {
+            "ourDoctors": "Nasi lekarze",
+            "bookVisit": "Zarezerwuj wizytę",
+            "myAccount": "Moje konto",
+            "logout": "Wyloguj się",
+            "doctorAccount": "Strefa lekarza"
+        },
+        "personalData": {
+            "email": "Adres email",
+            "phone": "Nr telefonu",
+            "nameSurname": "Imię i nazwisko"
+        },
+        "placeholders": {
+            "specialization": "np. pediatra",
+            "doctor": "np. Adam Kowalski",
+            "time": "np. 7:30",
+            "nameSurname": "np. Anna Nowak",
+            "email": "np. anna.nowak@email.pl",
+            "phone": "np. 123456789"
+        },
+        "redirects": {
+            "redirectHomePage": "Za chwilę zostaniesz przekierowany na stronę główną.",
+            "redirectLoginPage": "Za chwilę zostaniesz przekierowany na stronę logowania."
+        },
+        "successForm": {
+            "header": "Otrzymaliśmy Twoją rezerwację.",
+            "succesMsg": "Dziękujemy za skorzystanie z naszych usług i zapraszamy na wizytę w zarezerwowanym terminie."
+        }
+    },
+    "en": {
+        "lang": "en",
+        "buttons": {
+            "login":"Log in",
+            "bookVisit": "Book a visit",
+            "send": "Send",
+            "back": "Back"
+        },
+        "doctor": {
+            "specialization": "Specialization",
+            "hours": "Hours"
+        },
+        "doctorAccount": {
+            "greetings": "Hello,",
+            "yourVisits": "Browse your visits",
+            "visitsFound": "Found visits: ",
+            "date": "Date",
+            "hour": "Time",
+            "pacient": "Pacient",
+            "unauthorized": "You are not allowed to browse this page."
+        },
+        "errorPage": {
+            "header": "Ooooops... It looks like we do not have the page you are looking for."
+        },
+        "filters": {
+            "specializations": "Specializations:",
+            "resultsFound": "Found results: "
+        },
+        "form":{
+            "header": "Book a visit",
+            "email":"E-mail",
+            "password":"Password",
+            "chooseSpec": "Choose a specialization:",
+            "chooseDoc": "Choose a doctor:",
+            "chooseDate": "Choose a date from calendar below:",
+            "chooseTime": "Choose a time:"
+        },
+        "formErrors": {
+            "speciality": "Specialization is required",
+            "doctor": "Doctor is required",
+            "date": "Date is required",
+            "time": "Time is required",
+            "pacientName": "Name and surname are required",
+            "pacientNameLength": "Name and surname should have at least 2 letters",
+            "pacientPhone": "Phone number is required",
+            "pacientPhoneLength": "Phone number should have at least 9 numbers",
+            "pacientEmail": "E-mail address is required",
+            "pacientEmailLength": "E-mail addres should have at least 5 letters",
+            "pacientEmailMatch": "E-mail address should contain '@'"
+        },
+        "homePage": {
+            "header": "Why you should trust us",
+            "specializationsList": "Our specializations"
+        },
+        "loaders": {
+            "list": "Loading in progress..."
+        },
+        "loginPage": {
+            "header": "Log in",
+            "login": "Username:",
+            "password": "Password:",
+            "errorHeader": "Something went wrong...",
+            "errorMsg": "Try again."
+        },
+        "logoutPage": {
+            "header": "Log out process in progress."
+        },
+        "menu": {
+            "ourDoctors": "Our doctors",
+            "bookVisit": "Book a visit",
+            "myAccount": "My account",
+            "logout": "Log out",
+            "doctorAccount": "Doctor zone"
+        },
+        "personalData": {
+            "email": "E-mail address",
+            "phone": "Phone number",
+            "nameSurname": "Name and surname"
+        },
+        "placeholders": {
+            "specialization": "e.g. pediatra",
+            "doctor": "e.g. Adam Kowalski",
+            "time": "e.g. 7:30",
+            "nameSurname": "e.g. Anna Nowak",
+            "email": "e.g. anna.nowak@email.pl",
+            "phone": "e.g. 123456789"
+        },
+        "redirects": {
+            "redirectHomePage": "You will be redirected to home page in few seconds.",
+            "redirectLoginPage": "You will be redirected to login page in few seconds."
+        },
+        "successForm": {
+            "header": "We have received your reservation.",
+            "succesMsg": "Thank you for choosing our clinic."
+        }
+    }
+}

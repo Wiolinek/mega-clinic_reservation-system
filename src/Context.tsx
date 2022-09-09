@@ -7,18 +7,21 @@ const MyContext = createContext<Partial<ContextType>>({})
 
 
 const Context = (props: PropsWithChildren<any>) => {
-  const { data } = useFetch(`http://localhost:3030/api/labels`);
+  const [language, setLanguage] = useState<string>('pl')
+  const { data } = useFetch(`http://localhost:3030/api/labels`, { lang: language }, language);
   const [user, setUser] = useState<any>(JSON.parse(window.localStorage.getItem('user') || '{}'))
   const [labels, setLabels] = useState()
 
   useEffect(() => {
-    setLabels(data?.[0])
+    data && setLabels(data?.[0])
   }, [data]);
 
   const providedValues = {
     user,
     setUser,
-    labels
+    labels,
+    language,
+    setLanguage
   }
 
   return (

@@ -16,6 +16,7 @@ const labelsSchema = new Schema ({
     placeholders: Object,
     redirects: Object,
     successForm: Object,
+    lang: String,
 });
 
 module.exports = mongoose.model('Labels', labelsSchema);

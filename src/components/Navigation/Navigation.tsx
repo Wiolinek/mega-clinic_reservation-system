@@ -1,17 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Menu from 'components/Menu/Menu';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStethoscope, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { MyContext } from 'Context';
 
 import './Navigation.scss';
 
 
 const Navigation: React.FC = () => {
+    const { language, setLanguage } = useContext(MyContext)
     const [isOpen, setOpen] = useState(false);
 
     const toggleMenuHandler = () => setOpen(!isOpen)
+
+    const toggleLanguage = () => setLanguage?.(language === 'pl' ? 'en' : 'pl')
 
     const closeMenu = () => setOpen(false)
 
@@ -35,11 +39,18 @@ const Navigation: React.FC = () => {
                     setOpen={setOpen}
                     closeMenu={closeMenu}
                 />
-                <ButtonLink type='button'
-                    icon={isOpen ? <FontAwesomeIcon icon={faXmark}/> : <FontAwesomeIcon icon={faBars}/>}
-                    customClass='menu-btn'
-                    onClick={toggleMenuHandler}
-                />
+                <div className='buttons-group'>
+                    <ButtonLink type='button'
+                        icon={isOpen ? <FontAwesomeIcon icon={faXmark}/> : <FontAwesomeIcon icon={faBars}/>}
+                        customClass='menu-btn'
+                        onClick={toggleMenuHandler}
+                    />
+                    <ButtonLink type='button'
+                        text={language === 'pl' ? 'ENG' : 'PL'}
+                        customClass='lang-btn'
+                        onClick={toggleLanguage}
+                    />
+                </div>
             </nav>
         </header>
     )

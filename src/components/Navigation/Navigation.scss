@@ -24,7 +24,16 @@ nav {
     }
     .svg-inline--fa {
         height: 40px; 
-        color: var(--white-color);
+    }
+    .buttons-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2vw;
+        margin-right: 0;
+        button {
+            color: var(--white-color);
+        }
     }
 }
 

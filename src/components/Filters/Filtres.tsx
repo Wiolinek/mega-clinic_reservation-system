@@ -20,7 +20,7 @@ const OurDoctors: React.FC<Props> = ({filters,resultsCounter}) => {
 
     return (
         <>
-            <label>Specjalizacje:
+            <label>{labels?.filters.specializations}
                 <select onChange={e => setSearchParams(e.target.selectedOptions[0].value !== '---' ? {speciality: e.target.selectedOptions[0].value} : {})}>
                 <option key='---' value='---'>---</option>
                     {filterList}

@@ -8,5 +8,7 @@ export interface ContextType {
         [key: string]: {
             [key: string]: string
         };
-    }
+    },
+    language: string,
+    setLanguage: React.Dispatch<React.SetStateAction<string>>,
 }

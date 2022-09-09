@@ -71,17 +71,14 @@ const LogIn: React.FC = () => {
         </form>
     </>
 
-    const errorMsg = <>
-        <h2>{labels?.loginPage.errorHeader}</h2>
-        <p>{labels?.loginPage.errorMsg}</p>
-    </>
 
     return (
         <main>
             {
                 error &&
                 <GenericSection customClass='login__section error'>
-                    {errorMsg}
+                    <h2>{labels?.loginPage.errorHeader}</h2>
+                    <p>{labels?.loginPage.errorMsg}</p>
                 </GenericSection>
             }
             <GenericSection customClass='login__section'>

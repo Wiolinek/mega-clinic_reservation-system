@@ -21,13 +21,7 @@ const DoctorAccount: React.FC = () => {
     const [doctorId, setDoctorId] = useState<String>(JSON.parse(window.localStorage.getItem('user') || '{}').id)
     const navigate = useNavigate();
 
-    const requestPost = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ doctorId: doctorId, dateFilter: null })
-    };
-
-    const visitsData: Visits = useFetch(`http://localhost:3030/api/visits`, requestPost, doctorId);
+    const visitsData: Visits = useFetch(`http://localhost:3030/api/visits`, { doctorId: doctorId, dateFilter: null }, doctorId);
 
     const visitsList = visitsData?.data?.map((visit: VisitType) =>
         <li key={visit.id} className='doctor-account__visits-list--item'>
@@ -49,7 +43,7 @@ const DoctorAccount: React.FC = () => {
     )
 
     const content: React.ReactNode = <>
-        <h2>{`Witaj, ${user?.name || JSON.parse(window.localStorage.getItem('user') || '{}').name}`}</h2>
+        <h2>{`${labels?.doctorAccount.greetings} ${user?.name || JSON.parse(window.localStorage.getItem('user') || '{}').name}`}</h2>
         <div className='doctor-account__filters'>
             <h3>{labels?.doctorAccount.yourVisits}</h3>
             <p>{labels?.doctorAccount.visitsFound}<span>{visitsList?.length}</span></p>
