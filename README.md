@@ -1,16 +1,18 @@
 # MegaClinic.
 
 > MegaClinic is a website providing variety of medical services. It is home page of medical clinic with reservation system.
-
+>
 > Pacient can:
+>
 > - browse available doctors
 > - filter doctors by specialization
 > - book a visit by reservation form
-
+>
 > Doctor can:
+>
 > - log in to personal account
 > - browse booked visits
-
+>
 > Project was created to learn all technologies used here, and practice.
 
 TO LOGIN TO DOCTOR ACCOUNT USE:
@@ -96,7 +98,7 @@ Project is: _in progress_
 
 ## Room for Improvement
 
-- implement Formik for handling reservation form -> in progress
+- implement Formik for handling reservation form --> in progress
 - add Nodemailer for booking confirmation by email
 - add option for booking cancelation for pacient
 - implement filters for upcoming and past visits for doctor account
