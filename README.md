@@ -1,14 +1,23 @@
 # MegaClinic.
 
-> MegaClinic is a website providing variety of medical services. It is home page of medical clinic with reservation system. UPacient can choose a specialist and send reservation. Doctor can login to personal account and check all the bookings made by pacients.
+> MegaClinic is a website providing variety of medical services. It is home page of medical clinic with reservation system.
 
-Project was created to learn all technologies used here, and practice.
+> Pacient can:
+> - browse available doctors
+> - filter doctors by specialization
+> - book a visit by reservation form
+
+> Doctor can:
+> - log in to personal account
+> - browse booked visits
+
+> Project was created to learn all technologies used here, and practice.
 
 TO LOGIN TO DOCTOR ACCOUNT USE:
 
 LOGIN NAME.SURNAME: (eg. marek.nowacki)
 
-PASSOWRD: surname123 (eg. nowacki123)
+PASSWORD: surname123 (eg. nowacki123)
 
 ## Table of Contents
 
@@ -27,6 +36,8 @@ PASSOWRD: surname123 (eg. nowacki123)
 - Express.js
 - MySQL
 - React Calendar
+- Formik
+- Yup
 - Typescript
 
 ## Screenshots
@@ -85,8 +96,10 @@ Project is: _in progress_
 
 ## Room for Improvement
 
-- implement CSS pre-processor
-- implement Formik for handling reservtion form
+- implement Formik for handling reservation form -> in progress
+- add Nodemailer for booking confirmation by email
+- add option for booking cancelation for pacient
+- implement filters for upcoming and past visits for doctor account
 
 ## License
 
