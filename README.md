@@ -102,6 +102,7 @@ Project is: _in progress_
 - add Nodemailer for booking confirmation by email
 - add option for booking cancelation for pacient
 - implement filters for upcoming and past visits for doctor account
+- translate specializations into english (homepage and reservation filters)
 
 ## License
 
