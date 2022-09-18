@@ -14,8 +14,8 @@ const Logout: React.FC = () => {
     </>
 
     useEffect(() => {
-        // fetch(`https://megaclinic.ultra-violet.codes/api/logout`, {
-        fetch(`http://localhost:3030/api/logout`, {
+        fetch(`https://megaclinic.ultra-violet.codes/api/logout`, {
+        // fetch(`http://localhost:3030/api/logout`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',

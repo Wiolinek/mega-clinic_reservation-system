@@ -16,6 +16,7 @@ interface Specialities {
 const Homepage: React.FC = () => {
     const { labels } = useContext(MyContext)
     const specialitiesData: Specialities = useFetch(`http://localhost:3030/api/specialities`);
+    // const specialitiesData: Specialities = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
     
     
     return (

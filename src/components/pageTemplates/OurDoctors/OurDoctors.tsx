@@ -28,8 +28,10 @@ const OurDoctors: React.FC = () => {
     const doctorSpec = searchParams.get('speciality');
 
     const specialitiesData: Specialities = useFetch(`http://localhost:3030/api/specialities`);
+    // const specialitiesData: Specialities = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
 
     const doctorsData: Doctors = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
+    // const doctorsData: Doctors = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
 
     const backToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 
