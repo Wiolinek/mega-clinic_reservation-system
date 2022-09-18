@@ -77,7 +77,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         setChosenDoctor(doctor)
         // setDoctorId(e.target.selectedOptions[0].value)
         setDoctorId(String(doctor?.[0].doctor_id) || '0',)
-    }, [doctorName]);
+    }, [doctorName, date]);
 
 
     const validationSchema = Yup.object({
