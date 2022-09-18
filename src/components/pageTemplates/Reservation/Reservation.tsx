@@ -40,7 +40,7 @@ const Reservation: React.FC = () => {
 
     const doctorsData: Doctors = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
 
-    const bookedVisits: Visits = useFetch(`http://localhost:3030/api/visits`, { doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date }, chosenDoctor, date);
+    const bookedVisits: Visits = useFetch(`http://localhost:3030/api/visits`, { doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor, date);
 
     const specialitiesList = Array.from(new Set(specialitiesData?.data?.map((item: any) => item.speciality)))?.map((filter: any) => 
         <option key={filter}
