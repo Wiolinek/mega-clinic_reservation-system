@@ -1,10 +1,11 @@
+@import './_mixins.scss';
+
 .doctor-account__section article {
     margin-top: 30px;
 }
 
 .doctor-account__filters {
-    display: flex;
-    justify-content: space-between;
+    @include flex-just-between;
     align-items: center;
     span {
         font-size: 1.1rem;
@@ -13,13 +14,11 @@
 }
 
 .doctor-account__visits-list {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     gap: 10px;
     &--header,
     &--pacient-data {
-        display: flex;
-        justify-content: space-between;
+        @include flex-just-between;
         padding: .4rem 1rem;
         border-radius: 6px; 
     }
@@ -68,8 +67,7 @@
     }
     .doctor-account__visits-list--header,
     .doctor-account__visits-list--pacient-data {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
     }
     .doctor-account__visits-list--item p:not(:last-child) {
         border-bottom: 1px solid var(--primary-color)

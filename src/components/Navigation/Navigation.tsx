@@ -32,7 +32,7 @@ const Navigation: React.FC = () => {
                 <div className='logo'>
                     <NavLink to='/'
                         onClick={closeMenu}>
-                            <FontAwesomeIcon icon={faStethoscope}/>MegaClinic
+                            <FontAwesomeIcon icon={faStethoscope}/><span>MegaClinic</span>
                     </NavLink>
                 </div>
                 <Menu isOpen={isOpen}

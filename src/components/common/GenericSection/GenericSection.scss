@@ -1,11 +1,11 @@
+@import './_mixins.scss';
+
 section {
     padding: 60px 8vw;
     &.filters {
-        display: flex;
-        justify-content: space-between;
+        @include flex-just-between;
         label {
-            display: flex;
-            flex-direction: column;
+            @include flex-column;
             font-size: 1.1rem;
         }
         span {
@@ -17,8 +17,7 @@ section {
         margin: 20px 0;
     }
     .doctors {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
     }
 }
 

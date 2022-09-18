@@ -1,3 +1,5 @@
+@import './_mixins.scss';
+
 .doctor__item {
     display: flex;
     border-bottom: 1px solid var(--primary-color);
@@ -11,16 +13,14 @@
         }
     }
     &--details {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         align-items: center;
         width: 100%;
         padding: 20px 0;
         gap: 24px;
     }
     &--description {
-        display: flex;
-        flex-direction: column;
+        @include flex-column;
         align-items: center;
         gap: 20px;
         padding: 0 5vw;
