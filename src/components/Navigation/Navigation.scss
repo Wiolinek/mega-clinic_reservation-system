@@ -2,7 +2,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2vw;
+    gap: 1.4vw;
     background-color: var(--primary-color);
     padding: 1rem 8vw;
     letter-spacing: 1px;
@@ -37,7 +37,7 @@ nav {
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     nav {
         padding: 1rem 3vw;
     }

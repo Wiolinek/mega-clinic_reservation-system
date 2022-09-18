@@ -44,7 +44,7 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
     .doctor__item {
         flex-wrap: nowrap;
     }
@@ -54,7 +54,7 @@
     }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 576px) {
     .doctor__item {
         flex-wrap: wrap;
     }

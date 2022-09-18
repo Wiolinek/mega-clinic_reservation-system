@@ -7,7 +7,7 @@ footer {
     color: var(--white-color);
 }
 
-@media (min-width: 800px) {
+@media (min-width: 769px) {
     footer {
         p {
             width: 100%;
@@ -15,7 +15,7 @@ footer {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     footer {
         padding: 1rem 3vw;
         p {
