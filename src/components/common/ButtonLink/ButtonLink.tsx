@@ -8,11 +8,12 @@ interface Props {
     type?: string;
     target?: string;
     icon?: React.ReactNode;
+    aria?: string;
     onClick?: () => void;
 }
 
 
-const Button: React.FC<Props> = ({customClass, text, type, target, icon, onClick}) => {
+const Button: React.FC<Props> = ({customClass, text, type, target, icon, aria, onClick}) => {
 
 
     return (
@@ -20,6 +21,7 @@ const Button: React.FC<Props> = ({customClass, text, type, target, icon, onClick
             <button type={type}
                 className={customClass}
                 onClick={onClick}
+                aria-label={aria}
             >
                 {text}{icon}
             </button>

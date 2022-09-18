@@ -1,6 +1,9 @@
 {
     "pl": {
         "lang": "pl",
+        "aria": {
+            "burger": "Menu rozwijane"
+        },
         "buttons": {
             "login":"Zaloguj",
             "bookVisit": "Zarezerwuj wizytę",
@@ -97,6 +100,9 @@
     },
     "en": {
         "lang": "en",
+        "aria": {
+            "burger": "Toggle menu"
+        },
         "buttons": {
             "login":"Log in",
             "bookVisit": "Book a visit",

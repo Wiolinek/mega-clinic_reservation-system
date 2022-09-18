@@ -10,7 +10,7 @@ import './Navigation.scss';
 
 
 const Navigation: React.FC = () => {
-    const { language, setLanguage } = useContext(MyContext)
+    const { language, setLanguage, labels } = useContext(MyContext)
     const [isOpen, setOpen] = useState(false);
 
     const toggleMenuHandler = () => setOpen(!isOpen)
@@ -44,6 +44,7 @@ const Navigation: React.FC = () => {
                         icon={isOpen ? <FontAwesomeIcon icon={faXmark}/> : <FontAwesomeIcon icon={faBars}/>}
                         customClass='menu-btn'
                         onClick={toggleMenuHandler}
+                        aria={labels?.aria.burger}
                     />
                     <ButtonLink type='button'
                         text={language === 'pl' ? 'ENG' : 'PL'}

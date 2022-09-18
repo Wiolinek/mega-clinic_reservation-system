@@ -12,7 +12,7 @@ const Doctor = (props: DoctorType) => {
     return (
         <li className='doctor__item'>
             <div className='doctor__item--picture'>
-                <img src={props.photo}></img>
+                <img src={props.photo} alt={`portrait of ${props?.name}`}></img>
             </div>
             <div className='doctor__item--details'>
                 <div className='doctor__item--description'>
