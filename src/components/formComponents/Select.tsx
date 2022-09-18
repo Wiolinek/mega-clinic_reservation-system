@@ -1,16 +1,6 @@
 import { Field, ErrorMessage, useField, FieldHookConfig } from 'formik';
 
 
-// interface Props {
-//     label?: string;
-//     name: string;
-//     example?: string;
-//     value?: string | number | readonly string[] | undefined | null;
-//     required?: boolean;
-//     eventHandler?: any;
-//     options?: React.ReactNode[] | null | undefined;
-// }
-
 type Props = FieldHookConfig<string> & {
     label?: string;
     value?: string | number | readonly string[] | undefined;
@@ -31,8 +21,6 @@ const Select: React.FC<Props> = (props) => {
             <label>{label}
                 <Field
                     as='select'
-                    // {...props}
-                    // {...field}
                     name={name}
                     value={value}
                     onChange={eventHandler}

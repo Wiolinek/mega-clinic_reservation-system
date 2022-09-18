@@ -50,13 +50,6 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         );
     };
 
-    // const inputHandler = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => 
-    //     setFormData(dataItem => ({
-    //         ...dataItem,
-    //         [e.target.name]: e.target.value
-    //     })
-    // );
-
     const formHandler = (values: any) => {
         console.log(values)
         console.log('wysyłam')
@@ -68,14 +61,11 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         })
         .then(() => navigate('../success', { replace: true }))
         .catch(error => console.log(`error ${error}`));
-        // navigate('../success', { replace: true })
-        // onSubmitProps.resetForm();
     };
 
     useEffect(() => {
         const doctor = doctorsData?.filter(doctor => doctor?.name === doctorName && doctor);
         setChosenDoctor(doctor)
-        // setDoctorId(e.target.selectedOptions[0].value)
         setDoctorId(String(doctor?.[0]?.doctor_id) || '0',)
     }, [doctorName, date]);
 
@@ -123,16 +113,14 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         >
             {(props: any) => (
                 
-            <Form className='reservation__form' noValidate /*onSubmit={props.handleSubmit}*/>
+            <Form className='reservation__form' noValidate >
                 <h2>{labels?.form.header}</h2>
-                {/* {console.log(props.values)} */}
                 <div>
                     <FormFieldControler
                         as='select'
                         name='speciality'
                         label={labels?.form.chooseSpec}
                         example={labels?.placeholders.specialization}
-                        // value={doctorSpec}
                         options={specialitiesList}
                         eventHandler={(e: any) => {
                             specSelectHandler(e);
@@ -146,7 +134,6 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         name='doctor'
                         label={labels?.form.chooseDoc}
                         example={labels?.placeholders.doctor}
-                        // value={doctorName}
                         options={doctorsList}
                         eventHandler={(e: any) => {
                             docSelectHandler(e);
@@ -163,9 +150,6 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         value={'' || date?.toLocaleDateString('pl-PL')}
                         readOnly={true}
                         label={labels?.form.chooseDate}
-                        // eventHandler={(e: any) => {
-                        //     props.handleChange(e)
-                        // }}
                         required
                     />
                     <CalendarComp date={date} setDate={setDate}/>
@@ -189,9 +173,6 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         pattern='[a-zA-Z]+[ ][a-zA-Z]+'
                         label={labels?.personalData.nameSurname}
                         example={labels?.placeholders.nameSurname}
-                        // eventHandler={(e: any) => {
-                        //     props.handleChange(e)
-                        // }}
                         required
                     />
 
@@ -201,9 +182,6 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         name='pacientEmail'
                         label={labels?.personalData.email}
                         example={labels?.placeholders.email}
-                        // eventHandler={(e: any) => {
-                        //     props.handleChange(e)
-                        // }}
                         required
                     />
 
@@ -214,10 +192,6 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         pattern='[0-9]{9}'
                         label={labels?.personalData.phone}
                         value={props.pacientPhone}
-                        // example={labels?.placeholders.phone}
-                        // eventHandler={(e: any) => {
-                        //     props.handleChange(e)
-                        // }}
                         required
                     />
                 </div>

@@ -1,17 +1,6 @@
 import { ErrorMessage, useField, FieldHookConfig } from 'formik';
 
 
-// interface Props {
-//     label?: string | undefined;
-//     type?: string;
-//     name: string;
-//     pattern?: string;
-//     value?: string | number | readonly string[] | undefined | null;
-//     placeholder?: string;
-//     required?: boolean;
-//     eventHandler?: any;
-// }
-
 type Props = FieldHookConfig<string> & {
     label?: string;
     value?: string | number | readonly string[] | undefined;
@@ -31,7 +20,6 @@ const InputComp: React.FC<Props> = (props) => {
         <>
             <label>{label}
                 <input
-                    // {...props}
                     {...field}
                     type={type}
                     className={`${customClass} ${(meta.touched && meta.error) ? 'error-border' : ''}`}
