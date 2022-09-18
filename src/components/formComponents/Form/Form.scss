@@ -9,12 +9,22 @@
         margin-bottom: 24px;
         > span {
             font-size: .8rem;
-            color: grey;
+            color: var(--secondary-color);
             margin-top: 4px;
         }
     }
     .date-input {
         pointer-events: none;
+    }
+    .error-msg {
+        font-size: .86rem;
+        font-weight: 600;
+        color: var(--red-color);
+        margin-top: -18px;
+        margin-bottom: 12px;
+    }
+    .error-border {
+        border: 2px solid var(--red-color);
     }
 }
 

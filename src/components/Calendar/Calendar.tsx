@@ -10,7 +10,7 @@ interface Props {
 
 
 const CalendarComp: React.FC<Props> = ({ date, setDate }) => {
-
+  
     return (
       <Calendar defaultActiveStartDate={new Date()}
         minDate={new Date()}

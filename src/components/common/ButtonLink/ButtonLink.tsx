@@ -9,10 +9,11 @@ interface Props {
     target?: string;
     icon?: React.ReactNode;
     onClick?: () => void;
+    disabled?: boolean;
 }
 
 
-const Button: React.FC<Props> = ({customClass, text, type, target, icon, onClick}) => {
+const Button: React.FC<Props> = ({customClass, text, type, target, icon, onClick, disabled}) => {
 
 
     return (
@@ -20,6 +21,7 @@ const Button: React.FC<Props> = ({customClass, text, type, target, icon, onClick
             <button type={type}
                 className={customClass}
                 onClick={onClick}
+                disabled={disabled}
             >
                 {text}{icon}
             </button>

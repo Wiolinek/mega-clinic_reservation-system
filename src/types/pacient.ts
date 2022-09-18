@@ -6,5 +6,5 @@ export interface PacientType {
     time: string,
     pacientName: string,
     pacientEmail: string,
-    pacientPhone: number,
+    pacientPhone: string,
 }
