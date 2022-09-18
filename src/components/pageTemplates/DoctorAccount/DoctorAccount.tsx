@@ -23,8 +23,10 @@ const DoctorAccount: React.FC = () => {
 
     const visitsData: Visits = useFetch(`http://localhost:3030/api/visits`, { doctorId: doctorId, dateFilter: null }, doctorId);
 
-    const visitsList = visitsData?.data?.map((visit: VisitType) =>
-        <li key={visit.id} className='doctor-account__visits-list--item'>
+    const visitsList = visitsData?.data?.map((visit: VisitType) => {
+        const date = new Date(visit.date);
+    
+        return <li key={visit.id} className='doctor-account__visits-list--item'>
             <div className='doctor-account__visits-list--header'>
                 <p>{labels?.doctorAccount.date}</p>
                 <p>{labels?.doctorAccount.hour}</p>
@@ -33,14 +35,14 @@ const DoctorAccount: React.FC = () => {
                 <p>{labels?.personalData.phone}</p>
             </div>
             <div className='doctor-account__visits-list--pacient-data'>
-                <p>{visit.date.substring(0, 10)}</p>
+                <p>{date.toLocaleDateString('sv')}</p>
                 <p>{visit.time.substring(0, 5)}</p>
                 <p>{visit.pacientName}</p>
                 <p>{visit.pacientEmail}</p>
                 <p>{visit.pacientPhone}</p>
             </div>
         </li>
-    )
+    })
 
     const content: React.ReactNode = <>
         <h2>{`${labels?.doctorAccount.greetings} ${user?.name || JSON.parse(window.localStorage.getItem('user') || '{}').name}`}</h2>

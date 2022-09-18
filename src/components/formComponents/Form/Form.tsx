@@ -76,7 +76,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         const doctor = doctorsData?.filter(doctor => doctor?.name === doctorName && doctor);
         setChosenDoctor(doctor)
         // setDoctorId(e.target.selectedOptions[0].value)
-        setDoctorId(String(doctor?.[0].doctor_id) || '0',)
+        setDoctorId(String(doctor?.[0]?.doctor_id) || '0',)
     }, [doctorName, date]);
 
 
