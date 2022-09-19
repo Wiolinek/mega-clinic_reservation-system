@@ -103,6 +103,7 @@ Project is: _in progress_
 - add option for booking cancelation for pacient
 - implement filters for upcoming and past visits for doctor account
 - translate specializations into english (homepage and reservation filters)
+- transfer article content (HP) to database
 
 ## License
 
