@@ -102,7 +102,6 @@ const Reservation: React.FC = () => {
                     specialitiesList={specialitiesList}
                     doctorsData={doctorsData.data}
                     doctorsList={doctorsList}
-                    chosenDoctor={chosenDoctor}
                     setChosenDoctor={setChosenDoctor}
                     timeList={timeList}
                     date={date}

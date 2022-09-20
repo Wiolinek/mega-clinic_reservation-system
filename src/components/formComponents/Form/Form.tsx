@@ -15,12 +15,11 @@ import './Form.scss';
 interface Props {
     specialitiesList: React.ReactNode[] | null;
     doctorsData: DoctorType[] | null;
-    doctorsList: React.ReactNode[] | null | undefined;
-    setChosenDoctor: any;
-    chosenDoctor: any;
+    doctorsList?: React.ReactNode[];
+    setChosenDoctor: React.Dispatch<React.SetStateAction<DoctorType[] | undefined>>;
     timeList?: React.ReactNode[];
-    date: any;
-    setDate: any;
+    date?: Date | undefined;
+    setDate: React.Dispatch<React.SetStateAction<Date>>;
 }
 
 
@@ -50,7 +49,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         );
     };
 
-    const formHandler = (values: any) => {
+    const formHandler = (values: object) => {
         console.log(values)
         console.log('wysyłam')
         // fetch(`https://megaclinic.ultra-violet.codes/api/form`, {
@@ -64,6 +63,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
     };
 
     useEffect(() => {
+        console.log(doctorsData)
         const doctor = doctorsData?.filter(doctor => doctor?.name === doctorName && doctor);
         setChosenDoctor(doctor)
         setDoctorId(String(doctor?.[0]?.doctor_id) || '0',)
@@ -122,7 +122,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseSpec}
                         example={labels?.placeholders.specialization}
                         options={specialitiesList}
-                        eventHandler={(e: any) => {
+                        eventHandler={e => {
                             specSelectHandler(e);
                             props.handleChange(e)
                         }}
@@ -135,7 +135,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseDoc}
                         example={labels?.placeholders.doctor}
                         options={doctorsList}
-                        eventHandler={(e: any) => {
+                        eventHandler={e => {
                             docSelectHandler(e);
                             props.handleChange(e)
                         }}
@@ -160,9 +160,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseTime}
                         example={labels?.placeholders.time}
                         options={timeList}
-                        eventHandler={(e: any) => {
-                            props.handleChange(e)
-                        }}
+                        eventHandler={e => props.handleChange(e)}
                         required
                     />
 
