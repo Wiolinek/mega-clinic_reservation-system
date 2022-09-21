@@ -35,7 +35,7 @@ const OurDoctors: React.FC = () => {
 
     const backToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 
-    const filterList = Array.from(new Set(specialitiesData?.data?.map((item: any) => item.speciality)))
+    const filterList = Array.from(new Set(specialitiesData?.data?.map((item: SpecialityType) => item.speciality)))
 
 
     return (
@@ -48,7 +48,7 @@ const OurDoctors: React.FC = () => {
             </GenericSection>
             <GenericSection>
                 <ul className='doctors'>
-                    {doctorsData?.data?.map(doctor => 
+                    {doctorsData?.data?.map((doctor: DoctorType) => 
                         <Doctor key={doctor.doctor_id} {...doctor}/>
                     )}
                 </ul>

@@ -14,7 +14,7 @@ interface Props {
 }
 
 
-const Button: React.FC<Props> = ({customClass, text, type, target, icon, aria, onClick, disabled}) => {
+const Button: React.FC<Props> = ({ customClass, text, type, target, icon, aria, onClick, disabled }) => {
 
 
     return (

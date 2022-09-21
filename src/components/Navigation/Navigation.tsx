@@ -11,7 +11,7 @@ import './Navigation.scss';
 
 const Navigation: React.FC = () => {
     const { language, setLanguage, labels } = useContext(MyContext)
-    const [isOpen, setOpen] = useState(false);
+    const [isOpen, setOpen] = useState<React.SetStateAction<boolean | any>>(false);
 
     const toggleMenuHandler = () => setOpen(!isOpen)
 

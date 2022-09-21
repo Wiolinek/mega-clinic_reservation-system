@@ -28,7 +28,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
     const doctorName = searchParams.get('doctor');
-    const [doctorId, setDoctorId] = useState('');
+    const [doctorId, setDoctorId] = useState<React.SetStateAction<string | any>>();
     const defaultValue = '---';
     const navigate = useNavigate();
 
@@ -64,7 +64,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
 
     useEffect(() => {
         console.log(doctorsData)
-        const doctor = doctorsData?.filter(doctor => doctor?.name === doctorName && doctor);
+        const doctor = doctorsData?.filter((doctor: DoctorType) => doctor?.name === doctorName && doctor);
         setChosenDoctor(doctor)
         setDoctorId(String(doctor?.[0]?.doctor_id) || '0',)
     }, [doctorName, date]);
@@ -108,7 +108,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={values => formHandler(values)}
+            onSubmit={(values: PacientType) => formHandler(values)}
             enableReinitialize
         >
             {(props: any) => (
@@ -122,7 +122,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseSpec}
                         example={labels?.placeholders.specialization}
                         options={specialitiesList}
-                        eventHandler={e => {
+                        eventHandler={(e: React.ChangeEvent<HTMLSelectElement>) => {
                             specSelectHandler(e);
                             props.handleChange(e)
                         }}
@@ -135,7 +135,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseDoc}
                         example={labels?.placeholders.doctor}
                         options={doctorsList}
-                        eventHandler={e => {
+                        eventHandler={(e: React.ChangeEvent<HTMLSelectElement>) => {
                             docSelectHandler(e);
                             props.handleChange(e)
                         }}
@@ -160,7 +160,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseTime}
                         example={labels?.placeholders.time}
                         options={timeList}
-                        eventHandler={e => props.handleChange(e)}
+                        eventHandler={(e: React.ChangeEvent<HTMLSelectElement>) => props.handleChange(e)}
                         required
                     />
 

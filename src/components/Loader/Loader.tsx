@@ -3,7 +3,7 @@ interface Props {
 }
 
 
-const Loader:React.FC<Props> = ({ message }) => {
+const Loader: React.FC<Props> = ({ message }) => {
 
   
   return (

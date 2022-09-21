@@ -14,14 +14,19 @@ const OurDoctors: React.FC<Props> = ({ filters, resultsCounter }) => {
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
 
-    const filterList = filters?.map((filter: string) => <option key={filter} value={filter} selected={doctorSpec === filter} >
-        {filter}</option>)
+    const filterList = filters?.map((filter: string) => 
+        <option key={filter}
+            value={filter}
+            selected={doctorSpec === filter}
+        >
+            {filter}
+        </option>)
         
 
     return (
         <>
             <label>{labels?.filters.specializations}
-                <select onChange={e => setSearchParams(e.target.selectedOptions[0].value !== '---' ? {speciality: e.target.selectedOptions[0].value} : {})}>
+                <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSearchParams(e.target.selectedOptions[0].value !== '---' ? {speciality: e.target.selectedOptions[0].value} : {})}>
                 <option key='---' value='---'>---</option>
                     {filterList}
                 </select>

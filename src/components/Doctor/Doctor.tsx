@@ -6,7 +6,7 @@ import { DoctorType } from 'types/doctor'
 import './Doctor.scss'
 
 
-const Doctor = (props: DoctorType) => {
+const Doctor: React.FC<DoctorType> = (props) => {
     const { labels } = useContext(MyContext)
 
     return (
