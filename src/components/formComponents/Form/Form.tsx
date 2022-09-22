@@ -17,7 +17,7 @@ interface Props {
     doctorsData: DoctorType[] | null;
     doctorsList?: React.ReactNode[];
     setChosenDoctor: React.Dispatch<React.SetStateAction<DoctorType[] | undefined>>;
-    timeList?: React.ReactNode[];
+    timeList?: React.ReactNode[] | boolean;
     date?: Date | undefined;
     setDate: React.Dispatch<React.SetStateAction<Date>>;
 }
@@ -28,7 +28,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
     const doctorName = searchParams.get('doctor');
-    const [doctorId, setDoctorId] = useState<React.SetStateAction<string | any>>();
+    const [doctorId, setDoctorId] = useState<string | undefined>();
     const defaultValue = '---';
     const navigate = useNavigate();
 
@@ -95,7 +95,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
     const initialValues: PacientType = {
         speciality: doctorSpec || '',
         doctor: doctorName || '',
-        doctorId: doctorId,
+        doctorId: doctorId!,
         date: date?.toLocaleDateString('sv') || '',
         time: '',
         pacientName: '',

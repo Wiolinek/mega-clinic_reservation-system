@@ -14,7 +14,7 @@ interface Props {
     readOnly?: boolean;
     required: boolean;
     eventHandler?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    options?: React.ReactNode[] | null;
+    options?: React.ReactNode[] | boolean | undefined | null;
 }
 
 

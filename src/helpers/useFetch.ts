@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 
 interface Request {
   method: string,
-  credentials?: string | null | any,
+  credentials?: RequestCredentials | undefined,
   headers: {
     'Content-Type': string
   },
-  body?: object | null | any,
+  body?: BodyInit | null | undefined,
 }
 
 
