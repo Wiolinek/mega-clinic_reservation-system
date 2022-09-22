@@ -3,10 +3,10 @@ import { Field, ErrorMessage, useField, FieldHookConfig } from 'formik';
 
 type Props = FieldHookConfig<string> & {
     label?: string;
-    value?: string | number | readonly string[] | undefined;
+    value?: string;
     example?: string;
-    eventHandler?: any;
-    options?: React.ReactNode[] | null | undefined;
+    eventHandler?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    options?: React.ReactNode[] | boolean | undefined | null;
 };
 
 
@@ -40,4 +40,4 @@ const Select: React.FC<Props> = (props) => {
     );
 }
   
-  export default Select;
+export default Select;

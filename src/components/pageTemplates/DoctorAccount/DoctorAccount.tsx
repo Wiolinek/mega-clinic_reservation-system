@@ -18,11 +18,11 @@ interface Visits {
 
 const DoctorAccount: React.FC = () => {
     const { user, labels } = useContext(MyContext)
-    const [doctorId, setDoctorId] = useState<String>(JSON.parse(window.localStorage.getItem('user') || '{}').id)
+    const [doctorId, setDoctorId] = useState<React.SetStateAction<String>>(JSON.parse(window.localStorage.getItem('user') || '{}').id)
     const navigate = useNavigate();
 
-    // const visitsData: Visits = useFetch(`http://localhost:3030/api/visits`, { doctorId: doctorId, dateFilter: null }, doctorId);
-    const visitsData: Visits = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, { doctorId: doctorId, dateFilter: null }, doctorId);
+    const visitsData: Visits = useFetch(`http://localhost:3030/api/visits`, { doctorId: doctorId, dateFilter: null }, doctorId);
+    // const visitsData: Visits = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, { doctorId: doctorId, dateFilter: null }, doctorId);
 
     const visitsList = visitsData?.data?.map((visit: VisitType) => {
         const date = new Date(visit.date);

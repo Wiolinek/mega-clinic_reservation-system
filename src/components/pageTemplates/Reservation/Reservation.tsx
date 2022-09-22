@@ -32,9 +32,9 @@ const Reservation: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
     const doctorName = searchParams.get('doctor');
-    const [chosenDoctor, setChosenDoctor] = useState<DoctorType[]>();
-    const [timetable, setTimetable] = useState<string[]>();
-    const [date, setDate] = useState<any>();
+    const [chosenDoctor, setChosenDoctor] = useState<React.SetStateAction<DoctorType[] | undefined>>();
+    const [timetable, setTimetable] = useState<React.SetStateAction<string[] | undefined>>();
+    const [date, setDate] = useState<React.SetStateAction<Date | undefined | any>>();
 
     const specialitiesData: Specialities = useFetch(`http://localhost:3030/api/specialities`);
     // const specialitiesData: Specialities = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
@@ -42,10 +42,10 @@ const Reservation: React.FC = () => {
     const doctorsData: Doctors = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
     // const doctorsData: Doctors = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
 
-    const bookedVisits: Visits = useFetch(`http://localhost:3030/api/visits`, { doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor, date);
+    const bookedVisits: Visits = useFetch(`http://localhost:3030/api/visits`, { doctorId: String(Array.isArray(chosenDoctor) && chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor!, date);
     // const bookedVisits: Visits = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, { doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor, date);
 
-    const specialitiesList = Array.from(new Set(specialitiesData?.data?.map((item: any) => item.speciality)))?.map((filter: any) => 
+    const specialitiesList = Array.from(new Set(specialitiesData?.data?.map((item: SpecialityType) => item.speciality)))?.map((filter: string) => 
         <option key={filter}
             value={filter}
             label={filter}
@@ -55,7 +55,7 @@ const Reservation: React.FC = () => {
         </option>
     )
 
-    const doctorsList = doctorsData?.data?.map((item: any) =>
+    const doctorsList = doctorsData?.data?.map((item: DoctorType) =>
         <option key={item.doctor_id}
             value={item.doctor_id}
             label={item.name}
@@ -65,9 +65,12 @@ const Reservation: React.FC = () => {
         </option>
     )
 
-    const bookedTimes = bookedVisits?.data?.map((visit: any) => visit.time.substring(0, 5)).map((time: any) => time.startsWith('0') ? time.substring(1, 5) : time)
-    const availableTimes = timetable?.filter(time => !bookedTimes?.includes(time));
-    const timeList = availableTimes?.map((item, id) => <option key={id}>{item}</option>);
+    const bookedTimes = bookedVisits?.data?.map((visit: VisitType) => visit.time.substring(0, 5)).map((time: string) => time.startsWith('0') ? time.substring(1, 5) : time);
+
+    const availableTimes = Array.isArray(timetable) && timetable.filter((time: string) => !bookedTimes?.includes(time));
+
+    const timeList = Array.isArray(availableTimes) && availableTimes.map((item: string, id: number) => 
+        <option key={id}>{item}</option>);
 
     useEffect(() => {
         setTimetable([])
@@ -85,7 +88,7 @@ const Reservation: React.FC = () => {
     useEffect(() => {
         const times: string[] = []
         
-        chosenDoctor?.map((item: any) => {
+        Array.isArray(chosenDoctor) && chosenDoctor.map((item: DoctorType) => {
             for (let i: number = Number(item.working_hours_start.substring(0, 2)); i < Number(item.working_hours_end.substring(0, 2)); i++) {
                 times.push(`${i}:00`).toString()
                 times.push(`${i}:30`).toString()
@@ -102,7 +105,6 @@ const Reservation: React.FC = () => {
                     specialitiesList={specialitiesList}
                     doctorsData={doctorsData.data}
                     doctorsList={doctorsList}
-                    chosenDoctor={chosenDoctor}
                     setChosenDoctor={setChosenDoctor}
                     timeList={timeList}
                     date={date}

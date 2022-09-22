@@ -10,17 +10,15 @@ interface Props {
     pattern?: string;
     example?: string;
     customClass?: string;
-    value?: string | number | readonly string[] | undefined;
+    value?: string;
     readOnly?: boolean;
     required: boolean;
-    onChange?: any;
-    eventHandler?: any;
-    options?: React.ReactNode[] | null | undefined;
-    helperComp?: any;
+    eventHandler?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    options?: React.ReactNode[] | boolean | undefined | null;
 }
 
 
-const FormFieldControler: React.FC<Props> = ({as, ...props}) => {
+const FormFieldControler: React.FC<Props> = ({ as, ...props }) => {
     
   
   switch(as) {

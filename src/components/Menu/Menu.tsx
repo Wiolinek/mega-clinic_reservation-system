@@ -43,7 +43,9 @@ const Menu: React.FC<Props> = ({ isOpen, setOpen, closeMenu }) => {
                         </NavLink>
                     </li>
                     <li className='nav__item nav__item--doctor-zone'>
-                        <NavLink to='/logout'>
+                        <NavLink to='/logout'
+                            onClick={closeMenu}
+                        >
                             {labels?.menu.logout}
                         </NavLink>
                     </li>

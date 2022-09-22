@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 
+
 interface Request {
   method: string,
-  credentials?: string | null | any,
+  credentials?: RequestCredentials | undefined,
   headers: {
     'Content-Type': string
   },
-  body?: object | null | any,
+  body?: BodyInit | null | undefined,
 }
 
 
-const useFetch = (url: string, req?: any, param1?: any, param2?: any) => {
+const useFetch = (url: string, req?: object, param1?: string | null | object, param2?: string) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

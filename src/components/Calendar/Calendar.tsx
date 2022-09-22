@@ -4,7 +4,7 @@ import Calendar from 'react-calendar';
 import './Calendar.scss';
 
 interface Props {
-  date: any;
+  date?: Date;
   setDate: React.Dispatch<React.SetStateAction<Date>>;
 }
 

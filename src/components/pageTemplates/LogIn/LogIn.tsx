@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { SyntheticEvent, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import GenericSection from 'components/common/GenericSection/GenericSection';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink';
@@ -6,21 +6,26 @@ import { MyContext } from 'Context';
 
 import './Login.scss'
 
+interface LoginData {
+    username: string;
+    password: string;
+}
+
 
 const LogIn: React.FC = () => {
     const { setUser, labels } = useContext(MyContext)
     const navigate = useNavigate();
-    const [error, setError] = useState(false);
-    const [userData, setUsername] = useState({
+    const [error, setError] = useState<React.SetStateAction<boolean>>(false);
+    const [userData, setUsername] = useState<React.SetStateAction<LoginData | any>>({
         username: '',
         password: ''
     });
 
-    const inputHandler = (e: any) => {
-        setUsername(dataItem => ({...dataItem, [e.target.name]: e.target.value}))
+    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUsername((dataItem: LoginData) => ({...dataItem, [e.target.name]: e.target.value}))
     }
 
-    const onSubmit = async (e: any) => {
+    const onSubmit = async (e: SyntheticEvent) => {
         e.preventDefault()
         
         // await fetch(`https://megaclinic.ultra-violet.codes/api/login`, {

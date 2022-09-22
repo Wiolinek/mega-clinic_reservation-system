@@ -15,12 +15,11 @@ import './Form.scss';
 interface Props {
     specialitiesList: React.ReactNode[] | null;
     doctorsData: DoctorType[] | null;
-    doctorsList: React.ReactNode[] | null | undefined;
-    setChosenDoctor: any;
-    chosenDoctor: any;
-    timeList?: React.ReactNode[];
-    date: any;
-    setDate: any;
+    doctorsList?: React.ReactNode[];
+    setChosenDoctor: React.Dispatch<React.SetStateAction<DoctorType[] | undefined>>;
+    timeList?: React.ReactNode[] | boolean;
+    date?: Date | undefined;
+    setDate: React.Dispatch<React.SetStateAction<Date>>;
 }
 
 
@@ -29,7 +28,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
     const doctorName = searchParams.get('doctor');
-    const [doctorId, setDoctorId] = useState('');
+    const [doctorId, setDoctorId] = useState<string | undefined>();
     const defaultValue = '---';
     const navigate = useNavigate();
 
@@ -50,7 +49,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         );
     };
 
-    const formHandler = (values: any) => {
+    const formHandler = (values: object) => {
         console.log(values)
         console.log('wysyłam')
         // fetch(`https://megaclinic.ultra-violet.codes/api/form`, {
@@ -64,7 +63,8 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
     };
 
     useEffect(() => {
-        const doctor = doctorsData?.filter(doctor => doctor?.name === doctorName && doctor);
+        console.log(doctorsData)
+        const doctor = doctorsData?.filter((doctor: DoctorType) => doctor?.name === doctorName && doctor);
         setChosenDoctor(doctor)
         setDoctorId(String(doctor?.[0]?.doctor_id) || '0',)
     }, [doctorName, date]);
@@ -95,7 +95,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
     const initialValues: PacientType = {
         speciality: doctorSpec || '',
         doctor: doctorName || '',
-        doctorId: doctorId,
+        doctorId: doctorId!,
         date: date?.toLocaleDateString('sv') || '',
         time: '',
         pacientName: '',
@@ -108,7 +108,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={values => formHandler(values)}
+            onSubmit={(values: PacientType) => formHandler(values)}
             enableReinitialize
         >
             {(props: any) => (
@@ -122,7 +122,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseSpec}
                         example={labels?.placeholders.specialization}
                         options={specialitiesList}
-                        eventHandler={(e: any) => {
+                        eventHandler={(e: React.ChangeEvent<HTMLSelectElement>) => {
                             specSelectHandler(e);
                             props.handleChange(e)
                         }}
@@ -135,7 +135,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseDoc}
                         example={labels?.placeholders.doctor}
                         options={doctorsList}
-                        eventHandler={(e: any) => {
+                        eventHandler={(e: React.ChangeEvent<HTMLSelectElement>) => {
                             docSelectHandler(e);
                             props.handleChange(e)
                         }}
@@ -160,9 +160,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseTime}
                         example={labels?.placeholders.time}
                         options={timeList}
-                        eventHandler={(e: any) => {
-                            props.handleChange(e)
-                        }}
+                        eventHandler={(e: React.ChangeEvent<HTMLSelectElement>) => props.handleChange(e)}
                         required
                     />
 
