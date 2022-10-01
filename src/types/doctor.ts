@@ -7,3 +7,9 @@ export interface DoctorType {
     working_hours_start: string;
     working_hours_end: string;
 }
+
+export interface DoctorsType {
+    data: DoctorType[] | null;
+    loading: boolean;
+    error: string | null;
+}

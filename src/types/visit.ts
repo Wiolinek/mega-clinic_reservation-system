@@ -9,3 +9,9 @@ export interface VisitType {
     speciality: string;
     time: string;
 }
+
+export interface VisitsType {
+    data: VisitType[] | null
+    loading: boolean;
+    error: string | null;
+}
