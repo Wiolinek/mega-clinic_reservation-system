@@ -1,22 +1,13 @@
 import { useEffect, useState } from 'react';
+import { RequestType } from 'types/request'
 
 
-interface Request {
-  method: string,
-  credentials?: RequestCredentials | undefined,
-  headers: {
-    'Content-Type': string
-  },
-  body?: BodyInit | null | undefined,
-}
-
-
-const useFetch = (url: string, req?: object, param1?: string | null | object, param2?: string) => {
+const useFetch = (url: string, req?: object, param1?: string | null | object, param2?: string | null) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const request: Request = req ?
+  const request: RequestType = req ?
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -28,7 +19,7 @@ const useFetch = (url: string, req?: object, param1?: string | null | object, pa
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
     };
-
+    
   useEffect(() => {
     setLoading(true);
     fetch(url, request)

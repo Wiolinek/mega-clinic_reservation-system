@@ -3,17 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { MyContext } from 'Context';
 import GenericSection from 'components/common/GenericSection/GenericSection';
 import Loader from 'components/Loader/Loader';
-import { VisitType } from 'types/visit';
+import { VisitType, VisitsType } from 'types/visit';
 import useFetch from 'helpers/useFetch';
 
 import './DoctorAccount.scss';
-
-
-interface Visits {
-    data: VisitType[] | null;
-    loading: boolean;
-    error: string | null;
-}
 
 
 const DoctorAccount: React.FC = () => {
@@ -21,8 +14,8 @@ const DoctorAccount: React.FC = () => {
     const [doctorId, setDoctorId] = useState<React.SetStateAction<String>>(JSON.parse(window.localStorage.getItem('user') || '{}').id)
     const navigate = useNavigate();
 
-    const visitsData: Visits = useFetch(`http://localhost:3030/api/visits`, { doctorId: doctorId, dateFilter: null }, doctorId);
-    // const visitsData: Visits = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, { doctorId: doctorId, dateFilter: null }, doctorId);
+    const visitsData: VisitsType = useFetch(`http://localhost:3030/api/visits`, { doctorId: doctorId, dateFilter: null }, doctorId);
+    // const visitsData: VisitsType = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, { doctorId: doctorId, dateFilter: null }, doctorId);
 
     const visitsList = visitsData?.data?.map((visit: VisitType) => {
         const date = new Date(visit.date);

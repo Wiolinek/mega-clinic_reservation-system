@@ -16,7 +16,6 @@ const Doctor: React.FC<DoctorType> = (props) => {
             </div>
             <div className='doctor__item--details'>
                 <div className='doctor__item--description'>
-                    
                     <h2>{props.name}</h2>
                     <p>{props.description}</p>
                     <div>

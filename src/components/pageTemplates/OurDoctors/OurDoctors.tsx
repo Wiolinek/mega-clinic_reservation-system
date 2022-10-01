@@ -5,21 +5,9 @@ import Doctor from 'components/Doctor/Doctor'
 import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 import Filters from 'components/Filters/Filtres';
 import { MyContext } from 'Context';
-import { DoctorType } from 'types/doctor'
-import { SpecialityType } from 'types/speciality';
+import { DoctorType, DoctorsType } from 'types/doctor'
+import { SpecialityType, SpecialitiesType } from 'types/speciality';
 import useFetch from 'helpers/useFetch';
-
-interface Specialities {
-    data: SpecialityType[] | null;
-    loading: boolean;
-    error: string | null;
-}
-
-interface Doctors {
-    data: DoctorType[] | null;
-    loading: boolean;
-    error: string | null;
-}
 
 
 const OurDoctors: React.FC = () => {
@@ -27,11 +15,11 @@ const OurDoctors: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
 
-    const specialitiesData: Specialities = useFetch(`http://localhost:3030/api/specialities`);
-    // const specialitiesData: Specialities = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
+    const specialitiesData: SpecialitiesType = useFetch(`http://localhost:3030/api/specialities`);
+    // const specialitiesData: SpecialitiesType = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
 
-    const doctorsData: Doctors = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
-    // const doctorsData: Doctors = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
+    const doctorsData: DoctorsType = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
+    // const doctorsData: DoctorsType = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
 
     const backToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 

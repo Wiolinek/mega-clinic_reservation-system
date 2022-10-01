@@ -4,19 +4,14 @@ import Banner from 'components/common/Banner/Banner';
 import GenericSection from 'components/common/GenericSection/GenericSection';
 import List from 'components/List/List';
 import Loader from 'components/Loader/Loader';
-import { SpecialityType } from 'types/speciality';
+import { SpecialitiesType } from 'types/speciality';
 import useFetch from '../../../helpers/useFetch';
 
-interface Specialities {
-    data: SpecialityType[] | null;
-    loading: boolean;
-    error: string | null;
-}
 
 const Homepage: React.FC = () => {
     const { labels } = useContext(MyContext)
-    const specialitiesData: Specialities = useFetch(`http://localhost:3030/api/specialities`);
-    // const specialitiesData: Specialities = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
+    const specialitiesData: SpecialitiesType = useFetch(`http://localhost:3030/api/specialities`);
+    // const specialitiesData: SpecialitiesType = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
     
     
     return (

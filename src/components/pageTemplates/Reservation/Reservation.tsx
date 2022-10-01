@@ -2,31 +2,13 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import GenericSection from 'components/common/GenericSection/GenericSection';
 import Form from 'components/formComponents/Form/Form';
-import { DoctorType } from 'types/doctor';
-import { SpecialityType } from 'types/speciality';
-import { VisitType } from 'types/visit';
+import { DoctorType, DoctorsType } from 'types/doctor';
+import { SpecialityType, SpecialitiesType } from 'types/speciality';
+import { VisitType, VisitsType } from 'types/visit';
 import useFetch from 'helpers/useFetch';
 
 import './Reservation.scss';
 
-
-interface Specialities {
-    data: SpecialityType[] | null;
-    loading: boolean;
-    error: string | null;
-}
-
-interface Doctors {
-    data: DoctorType[] | null;
-    loading: boolean;
-    error: string | null;
-}
-
-interface Visits {
-    data: VisitType[] | null
-    loading: boolean;
-    error: string | null;
-}
 
 const Reservation: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -36,14 +18,14 @@ const Reservation: React.FC = () => {
     const [timetable, setTimetable] = useState<React.SetStateAction<string[] | undefined>>();
     const [date, setDate] = useState<React.SetStateAction<Date | undefined | any>>();
 
-    const specialitiesData: Specialities = useFetch(`http://localhost:3030/api/specialities`);
-    // const specialitiesData: Specialities = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
+    const specialitiesData: SpecialitiesType = useFetch(`http://localhost:3030/api/specialities`);
+    // const specialitiesData: SpecialitiesTYpe = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
 
-    const doctorsData: Doctors = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
-    // const doctorsData: Doctors = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
+    const doctorsData: DoctorsType = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
+    // const doctorsData: DoctorsType = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
 
-    const bookedVisits: Visits = useFetch(`http://localhost:3030/api/visits`, { doctorId: String(Array.isArray(chosenDoctor) && chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor!, date);
-    // const bookedVisits: Visits = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, { doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor, date);
+    const bookedVisits: VisitsType = useFetch(`http://localhost:3030/api/visits`, { doctorId: String(Array.isArray(chosenDoctor) && chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor!, date);
+    // const bookedVisits: VisitsType = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, { doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor, date);
 
     const specialitiesList = Array.from(new Set(specialitiesData?.data?.map((item: SpecialityType) => item.speciality)))?.map((filter: string) => 
         <option key={filter}
