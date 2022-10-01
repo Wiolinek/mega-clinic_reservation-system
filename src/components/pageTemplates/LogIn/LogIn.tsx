@@ -50,32 +50,6 @@ const LogIn: React.FC = () => {
         })
     };
 
-    const loginForm: React.ReactNode = <>
-        <h2>{labels?.loginPage.header}</h2>
-        <form className='login__form' onSubmit={onSubmit}>
-            <label>{labels?.loginPage.login}
-                <input type='text'
-                    name='username'
-                    value={userData.username}
-                    onChange={inputHandler}
-                    required>
-                </input>
-            </label>
-            <label>{labels?.loginPage.password}
-                <input type='password'
-                    name='password'
-                    value={userData.password}
-                    onChange={inputHandler}
-                    required>
-                </input>
-            </label>
-            <ButtonLink type='submit'
-                customClass='btn'
-                text={labels?.buttons.login}
-            />
-        </form>
-    </>
-
 
     return (
         <main>
@@ -87,7 +61,29 @@ const LogIn: React.FC = () => {
                 </GenericSection>
             }
             <GenericSection customClass='login__section'>
-                {loginForm}
+                <h2>{labels?.loginPage.header}</h2>
+                <form className='login__form' onSubmit={onSubmit}>
+                    <label>{labels?.loginPage.login}
+                        <input type='text'
+                            name='username'
+                            value={userData.username}
+                            onChange={inputHandler}
+                            required>
+                        </input>
+                    </label>
+                    <label>{labels?.loginPage.password}
+                        <input type='password'
+                            name='password'
+                            value={userData.password}
+                            onChange={inputHandler}
+                            required>
+                        </input>
+                    </label>
+                    <ButtonLink type='submit'
+                        customClass='btn'
+                        text={labels?.buttons.login}
+                    />
+                </form>
             </GenericSection>
         </main>
     )

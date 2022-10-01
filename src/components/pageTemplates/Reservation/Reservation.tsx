@@ -3,9 +3,10 @@ import { useSearchParams } from 'react-router-dom';
 import GenericSection from 'components/common/GenericSection/GenericSection';
 import Form from 'components/formComponents/Form/Form';
 import { DoctorType, DoctorsType } from 'types/doctor';
-import { SpecialityType, SpecialitiesType } from 'types/speciality';
-import { VisitType, VisitsType } from 'types/visit';
+import { SpecialitiesType } from 'types/speciality';
+import { VisitsType } from 'types/visit';
 import useFetch from 'helpers/useFetch';
+import { specialitiesHandler, doctorsHandler, bookedTimesHandler, availableTimesHandler, timeListHandler } from 'helpers/reservationHelpers'
 
 import './Reservation.scss';
 
@@ -27,32 +28,7 @@ const Reservation: React.FC = () => {
     const bookedVisits: VisitsType = useFetch(`http://localhost:3030/api/visits`, { doctorId: String(Array.isArray(chosenDoctor) && chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor!, date);
     // const bookedVisits: VisitsType = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, { doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor, date);
 
-    const specialitiesList = Array.from(new Set(specialitiesData?.data?.map((item: SpecialityType) => item.speciality)))?.map((filter: string) => 
-        <option key={filter}
-            value={filter}
-            label={filter}
-            selected={filter === doctorSpec}
-        >
-            {filter}
-        </option>
-    )
-
-    const doctorsList = doctorsData?.data?.map((item: DoctorType) =>
-        <option key={item.doctor_id}
-            value={item.doctor_id}
-            label={item.name}
-            selected={item.name === doctorName}
-        >   
-            {item.name}
-        </option>
-    )
-
-    const bookedTimes = bookedVisits?.data?.map((visit: VisitType) => visit.time.substring(0, 5)).map((time: string) => time.startsWith('0') ? time.substring(1, 5) : time);
-
-    const availableTimes = Array.isArray(timetable) && timetable.filter((time: string) => !bookedTimes?.includes(time));
-
-    const timeList = Array.isArray(availableTimes) && availableTimes.map((item: string, id: number) => 
-        <option key={id}>{item}</option>);
+    const availableTimes = availableTimesHandler(timetable, bookedTimesHandler(bookedVisits));
 
     useEffect(() => {
         setTimetable([])
@@ -84,11 +60,11 @@ const Reservation: React.FC = () => {
         <main>
             <GenericSection customClass='login__section'>
                 <Form
-                    specialitiesList={specialitiesList}
+                    specialitiesList={specialitiesHandler(specialitiesData, doctorSpec)}
                     doctorsData={doctorsData.data}
-                    doctorsList={doctorsList}
+                    doctorsList={doctorsHandler(doctorsData, doctorName)}
                     setChosenDoctor={setChosenDoctor}
-                    timeList={timeList}
+                    timeList={timeListHandler(availableTimes)}
                     date={date}
                     setDate={setDate}
                 />

@@ -8,11 +8,6 @@ const Logout: React.FC = () => {
     const { setUser, labels } = useContext(MyContext)
     const navigate = useNavigate();
 
-    const content: React.ReactNode = <>
-        <h2>{labels?.logoutPage.header}</h2>
-        <p>{labels?.redirects.redirectLoginPage}</p>
-    </>
-
     useEffect(() => {
         // fetch(`https://megaclinic.ultra-violet.codes/api/logout`, {
         fetch(`http://localhost:3030/api/logout`, {
@@ -35,7 +30,8 @@ const Logout: React.FC = () => {
     return (
         <main>
             <GenericSection customClass='login__section'>
-                {content}
+                <h2>{labels?.logoutPage.header}</h2>
+                <p>{labels?.redirects.redirectLoginPage}</p>
             </GenericSection>
         </main>
     )

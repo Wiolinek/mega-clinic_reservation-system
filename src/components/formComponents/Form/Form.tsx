@@ -63,7 +63,6 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
     };
 
     useEffect(() => {
-        console.log(doctorsData)
         const doctor = doctorsData?.filter((doctor: DoctorType) => doctor?.name === doctorName && doctor);
         setChosenDoctor(doctor)
         setDoctorId(String(doctor?.[0]?.doctor_id) || '0',)
@@ -122,7 +121,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseSpec}
                         example={labels?.placeholders.specialization}
                         options={specialitiesList}
-                        eventHandler={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                        eventHandler={e => {
                             specSelectHandler(e);
                             props.handleChange(e)
                         }}
@@ -135,7 +134,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseDoc}
                         example={labels?.placeholders.doctor}
                         options={doctorsList}
-                        eventHandler={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                        eventHandler={e => {
                             docSelectHandler(e);
                             props.handleChange(e)
                         }}
@@ -160,7 +159,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         label={labels?.form.chooseTime}
                         example={labels?.placeholders.time}
                         options={timeList}
-                        eventHandler={(e: React.ChangeEvent<HTMLSelectElement>) => props.handleChange(e)}
+                        eventHandler={e => props.handleChange(e)}
                         required
                     />
 
