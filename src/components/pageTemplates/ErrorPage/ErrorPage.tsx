@@ -8,11 +8,6 @@ const ErrorPage: React.FC = () => {
     const { labels } = useContext(MyContext)
     const navigate = useNavigate();
 
-    const content: React.ReactNode = <>
-        <h2>{labels?.errorPage.header}</h2>
-        <p>{labels?.redirects.redirectHomePage}</p>
-    </>
-
     useEffect(() => {
         setTimeout(() => {
             navigate('../', { replace: true })
@@ -23,7 +18,8 @@ const ErrorPage: React.FC = () => {
     return (
         <main>
             <GenericSection>
-                {content}
+                <h2>{labels?.errorPage.header}</h2>
+                <p>{labels?.redirects.redirectHomePage}</p>
             </GenericSection>
         </main>
     )

@@ -8,12 +8,6 @@ const SuccesForm: React.FC = () => {
     const { labels } = useContext(MyContext)
     const navigate = useNavigate();
 
-    const content: React.ReactNode = <>
-        <h2>{labels?.successForm.header}</h2>
-        <h3>{labels?.successForm.successMsg}</h3>
-        <p>{labels?.redirects.redirectLoginPage}</p>
-    </>
-
     useEffect(() => {
         setTimeout(() => {
             navigate('../', { replace: true })
@@ -24,7 +18,9 @@ const SuccesForm: React.FC = () => {
     return (
         <main>
             <GenericSection customClass='login__section'>
-                {content}
+                <h2>{labels?.successForm.header}</h2>
+                <h3>{labels?.successForm.successMsg}</h3>
+                <p>{labels?.redirects.redirectLoginPage}</p>
             </GenericSection>
         </main>
     )

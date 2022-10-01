@@ -9,7 +9,7 @@ interface Props {
 }
 
 
-const OurDoctors: React.FC<Props> = ({ filters, resultsCounter }) => {
+const Filters: React.FC<Props> = ({ filters, resultsCounter }) => {
     const { labels } = useContext(MyContext)
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
@@ -21,12 +21,20 @@ const OurDoctors: React.FC<Props> = ({ filters, resultsCounter }) => {
         >
             {filter}
         </option>)
+
+    const selectHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setSearchParams(e.target.selectedOptions[0].value !== '---' ?
+            {speciality: e.target.selectedOptions[0].value}
+            :
+            {}
+        )
+    }
         
 
     return (
         <>
             <label>{labels?.filters.specializations}
-                <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setSearchParams(e.target.selectedOptions[0].value !== '---' ? {speciality: e.target.selectedOptions[0].value} : {})}>
+                <select onChange={e => selectHandler(e)}>
                 <option key='---' value='---'>---</option>
                     {filterList}
                 </select>
@@ -36,4 +44,4 @@ const OurDoctors: React.FC<Props> = ({ filters, resultsCounter }) => {
     )
 }
 
-export default OurDoctors;
+export default Filters;
