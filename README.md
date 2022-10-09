@@ -1,4 +1,4 @@
-# MegaClinic.
+# MegaClinic
 
 > MegaClinic is a website providing variety of medical services. It is home page of medical clinic with reservation system.
 >
