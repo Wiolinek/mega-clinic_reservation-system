@@ -7,11 +7,13 @@
 > - browse available doctors
 > - filter doctors by specialization
 > - book a visit by reservation form
+> - toggle between polish and english languages
 >
 > Doctor can:
 >
 > - log in to personal account
 > - browse booked visits
+> - toggle between polish and english languages
 >
 > Project was created to learn all technologies used here, and practice.
 
@@ -38,6 +40,7 @@ PASSWORD: surname123 (eg. nowacki123)
 - Express.js
 - MySQL
 - React Calendar
+- Nodemailer
 - Formik
 - Yup
 - Typescript
@@ -98,8 +101,7 @@ Project is: _in progress_
 
 ## Room for Improvement
 
-- implement Formik for handling reservation form --> in progress
-- add Nodemailer for booking confirmation by email
+- fix Typescript types --> in progress
 - add option for booking cancelation for pacient
 - implement filters for upcoming and past visits for doctor account
 - translate specializations into english (homepage and reservation filters)
