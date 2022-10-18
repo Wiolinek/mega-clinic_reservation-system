@@ -7,6 +7,7 @@
 > - browse available doctors
 > - filter doctors by specialization
 > - book a visit by reservation form
+> - receive an email with booking confirmation
 > - toggle between polish and english languages
 >
 > Doctor can:
