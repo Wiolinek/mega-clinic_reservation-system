@@ -50,7 +50,8 @@
             "pacientPhoneLength": "Numer telefonu powinien zawierać co najmniej 9 cyfr",
             "pacientEmail": "Adres email jest wymagany",
             "pacientEmailLength": "Adres email powinien zawierać co najmniej 5 znaków",
-            "pacientEmailMatch": "Adres email powinien zawierać '@'"
+            "pacientEmailMatch": "Adres email powinien zawierać '@'",
+            "pacientEmailValid": "E-mail musi mieć właściwy format"
         },
         "homePage": {
             "header": "Dlaczego warto nam zaufać",
@@ -149,7 +150,8 @@
             "pacientPhoneLength": "Phone number should have at least 9 numbers",
             "pacientEmail": "E-mail address is required",
             "pacientEmailLength": "E-mail addres should have at least 5 letters",
-            "pacientEmailMatch": "E-mail address should contain '@'"
+            "pacientEmailMatch": "E-mail address should contain '@'",
+            "pacientEmailValid": "E-mail must be a valid e-mail address"
         },
         "homePage": {
             "header": "Why you should trust us",

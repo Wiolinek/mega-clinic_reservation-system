@@ -13,8 +13,6 @@ const Context = (props: PropsWithChildren<any>) => {
   const [user, setUser] = useState<React.SetStateAction<UserType | undefined | any>>(JSON.parse(window.localStorage.getItem('user') || '{}'))
   const [labels, setLabels] = useState<React.SetStateAction<LabelsType | undefined | any>>()
 
-  console.log(user)
-
   useEffect(() => {
     data && setLabels(data?.[0])
   }, [data]);

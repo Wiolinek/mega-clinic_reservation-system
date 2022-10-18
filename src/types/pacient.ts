@@ -7,4 +7,5 @@ export interface PacientType {
     pacientName: string,
     pacientEmail: string,
     pacientPhone: string,
+    language: string | undefined,
 }
