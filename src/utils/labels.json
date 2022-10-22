@@ -37,7 +37,8 @@
             "chooseSpec": "Wybierz specjalizację:",
             "chooseDoc": "Wybierz lekarza:",
             "chooseDate": "Wybierz datę z kalendarza:",
-            "chooseTime": "Wybierz godzinę:"
+            "chooseTime": "Wybierz godzinę:",
+            "sending": "Wysyłam..."
         },
         "formErrors": {
             "speciality": "Specjalizacja jest wymagana",
@@ -46,8 +47,10 @@
             "time": "Godzina jest wymagana",
             "pacientName": "Imię i nazwisko jest wymagane",
             "pacientNameLength": "Imię i nazwisko powinny zawierać co najmniej 2 znaki",
+            "nameMatch": "Imię musi miec co najmniej 2 litery i nazwisko musi mieć co najmniej 2 litery",
             "pacientPhone": "Numer telefonu jest wymagany",
             "pacientPhoneLength": "Numer telefonu powinien zawierać co najmniej 9 cyfr",
+            "pacientPhoneNumber": "Numer telefonu musi się składać tylko z cyfr 0-9",
             "pacientEmail": "Adres email jest wymagany",
             "pacientEmailLength": "Adres email powinien zawierać co najmniej 5 znaków",
             "pacientEmailMatch": "Adres email powinien zawierać '@'",
@@ -137,7 +140,8 @@
             "chooseSpec": "Choose a specialization:",
             "chooseDoc": "Choose a doctor:",
             "chooseDate": "Choose a date from calendar below:",
-            "chooseTime": "Choose a time:"
+            "chooseTime": "Choose a time:",
+            "sending": "Sending..."
         },
         "formErrors": {
             "speciality": "Specialization is required",
@@ -146,8 +150,10 @@
             "time": "Time is required",
             "pacientName": "Name and surname are required",
             "pacientNameLength": "Name and surname should have at least 2 letters",
+            "nameMatch": "Name should have at least 2 letters and surname should have at least 2 letters",
             "pacientPhone": "Phone number is required",
             "pacientPhoneLength": "Phone number should have at least 9 numbers",
+            "pacientPhoneNumber": "Phone number must have only numbers 0-9",
             "pacientEmail": "E-mail address is required",
             "pacientEmailLength": "E-mail addres should have at least 5 letters",
             "pacientEmailMatch": "E-mail address should contain '@'",

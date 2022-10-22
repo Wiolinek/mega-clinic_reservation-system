@@ -58,7 +58,7 @@ const Reservation: React.FC = () => {
 
     return (
         <main>
-            <GenericSection customClass='login__section'>
+            <GenericSection>
                 <Form
                     specialitiesList={specialitiesHandler(specialitiesData, doctorSpec)}
                     doctorsData={doctorsData.data}

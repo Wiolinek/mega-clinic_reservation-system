@@ -7,6 +7,7 @@
   --logo-font-family: 'Titan One', cursive;
   --white-color: rgb(255, 255, 255);
   --red-color: rgb(226, 35, 38);
+  --loader-color: rgba(87, 153, 191, 0.301);
 }
 
 * {
@@ -65,8 +66,11 @@ label {
   font-weight: 600;
 }
 
-select, input {
+select {
   text-transform: uppercase;
+}
+
+select, input {
   border: 1px solid var(--primary-color);
   border-radius: 6px;
   background-color: transparent;

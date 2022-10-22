@@ -26,6 +26,18 @@
     .error-border {
         border: 2px solid var(--red-color);
     }
+    .loader {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--loader-color);
+        z-index: 3;
+    }
+    .hidden {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {

@@ -22,7 +22,7 @@ const InputComp: React.FC<Props> = (props) => {
                 <input
                     {...field}
                     type={type}
-                    className={`${customClass} ${(meta.touched && meta.error) ? 'error-border' : ''}`}
+                    className={`${customClass || ''} ${(meta.touched && meta.error) ? 'error-border' : ''}`}
                     readOnly={readOnly}
                 >   
                 </input>

@@ -30,6 +30,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
     const doctorSpec = searchParams.get('speciality');
     const doctorName = searchParams.get('doctor');
     const [doctorId, setDoctorId] = useState<string | undefined>();
+    const [loading, setLoading] = useState<boolean | undefined>()
     const defaultValue = '---';
     const navigate = useNavigate();
 
@@ -51,6 +52,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
     };
 
     const formHandler = async(values: PacientType) => {
+        setLoading(true)
 
         const message = emailMessageHandler(values);
 
@@ -59,7 +61,8 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({values, message})
         })
-        .then((res) => { res.status === 200 &&
+        .then((res) => { res.status === 200 && 
+            setLoading(false)
         
         // fetch(`https://megaclinic.ultra-violet.codes/api/form`, {
         fetch(`http://localhost:3030/api/form`, { 
@@ -91,10 +94,13 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
             .required(labels?.formErrors.time),
         pacientName: Yup.string()
             .required(labels?.formErrors.pacientName)
-            .min(2, labels?.formErrors.pacientNameLength),
-        pacientPhone: Yup.number()
+            .min(2, labels?.formErrors.pacientNameLength)
+            .matches(/^[a-zA-Z]{2,}[ ][a-zA-Z]{2,}/, labels?.formErrors.nameMatch),
+        pacientPhone: Yup.string()
             .required(labels?.formErrors.pacientPhone)
-            .min(9, labels?.formErrors.pacientPhoneLength),
+            .min(9, labels?.formErrors.pacientPhoneLength)
+            .matches(/^[0-9]/, labels?.formErrors.Start)
+            .typeError(labels?.formErrors.pacientPhoneNumber || ''),
         pacientEmail: Yup.string()
             .email(labels?.formErrors.pacientEmailValid)
             .required(labels?.formErrors.pacientEmail)
@@ -125,6 +131,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
             {(props: any) => (
                 
             <Form className='reservation__form' noValidate >
+                <div className={`loader ${!loading && 'hidden'}`}></div>
                 <h2>{labels?.form.header}</h2>
                 <div>
                     <FormFieldControler
@@ -179,7 +186,6 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         as='input'
                         type='text'
                         name='pacientName'
-                        pattern='[a-zA-Z]+[ ][a-zA-Z]+'
                         label={labels?.personalData.nameSurname}
                         example={labels?.placeholders.nameSurname}
                         required
@@ -198,7 +204,6 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                         as='input'
                         type='tel'
                         name='pacientPhone'
-                        pattern='[0-9]{9}'
                         label={labels?.personalData.phone}
                         value={props.pacientPhone}
                         required
@@ -206,7 +211,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                 </div>
                 <ButtonLink type='submit'
                     customClass='btn reservation__form-btn'
-                    text={labels?.buttons.send}
+                    text={props.isSubmitting ? 'Wysyłanie...' : labels?.buttons.send}
                     disabled={props.isSubmitting}
                 />
             </Form>
