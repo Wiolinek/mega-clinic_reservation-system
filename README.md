@@ -106,7 +106,6 @@ Project is: _in progress_
 - fix Typescript types --> in progress
 - add option for booking cancelation for pacient
 - translate specializations into english (homepage and reservation filters)
-- transfer article content (HP) to database
 
 ## License
 
