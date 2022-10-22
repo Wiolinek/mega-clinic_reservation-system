@@ -60,7 +60,6 @@
             "pacientEmailValid": "E-mail musi mieć właściwy format"
         },
         "homePage": {
-            "header": "Dlaczego warto nam zaufać",
             "specializationsList": "Nasze specjalizacje"
         },
         "loaders": {
@@ -166,7 +165,6 @@
             "pacientEmailValid": "E-mail must be a valid e-mail address"
         },
         "homePage": {
-            "header": "Why you should trust us",
             "specializationsList": "Our specializations"
         },
         "loaders": {
