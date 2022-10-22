@@ -80,7 +80,7 @@ const LogIn: React.FC = () => {
                         </input>
                     </label>
                     <ButtonLink type='submit'
-                        customClass='btn'
+                        customClass='blue-btn'
                         text={labels?.buttons.login}
                     />
                 </form>

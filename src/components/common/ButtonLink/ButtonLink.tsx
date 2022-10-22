@@ -20,7 +20,7 @@ const Button: React.FC<Props> = ({ customClass, text, type, target, icon, aria, 
     return (
         type === 'button' || type === 'submit' ? 
             <button type={type}
-                className={customClass}
+                className={`btn ${customClass || ''}`}
                 onClick={onClick}
                 disabled={disabled}
                 aria-label={aria}
@@ -29,7 +29,7 @@ const Button: React.FC<Props> = ({ customClass, text, type, target, icon, aria, 
             </button>
             : 
             <NavLink to={target || '/'}
-                className='btn'
+                className={`btn ${customClass || ''}`}
             >
                 {text}
             </NavLink>

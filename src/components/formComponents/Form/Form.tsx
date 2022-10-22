@@ -210,7 +210,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                     />
                 </div>
                 <ButtonLink type='submit'
-                    customClass='btn reservation__form-btn'
+                    customClass='blue-btn reservation__form-btn'
                     text={props.isSubmitting ? 'Wysyłanie...' : labels?.buttons.send}
                     disabled={props.isSubmitting}
                 />

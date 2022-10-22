@@ -42,7 +42,7 @@ const OurDoctors: React.FC = () => {
                 </ul>
             </GenericSection>
             <ButtonLink type='button'
-                customClass='btn back-to-top'
+                customClass='blue-btn back-to-top'
                 text={labels?.buttons.back}
                 onClick={backToTop}
             />

@@ -5,13 +5,12 @@ import { VisitType } from 'types/visit';
 
 interface Props {
     visit: VisitType;
-    date: Date;
 }
 
 
-const Visit: React.FC<Props> = ({ visit, date }) => {
+const Visit: React.FC<Props> = ({ visit }) => {
     const { labels } = useContext(MyContext)
-
+    
 
     return (
         <li key={visit.id} className='doctor-account__visits-list--item'>
@@ -23,7 +22,7 @@ const Visit: React.FC<Props> = ({ visit, date }) => {
                 <p>{labels?.personalData.phone}</p>
             </div>
             <div className='doctor-account__visits-list--pacient-data'>
-                <p>{date.toLocaleDateString('sv')}</p>
+                <p>{visit.date.toLocaleString('sv').substring(0, 10)}</p>
                 <p>{visit.time.substring(0, 5)}</p>
                 <p>{visit.pacientName}</p>
                 <p>{visit.pacientEmail}</p>

@@ -1,38 +1,54 @@
 @import './_mixins.scss';
 
-.doctor-account__section article {
-    margin-top: 30px;
-}
 
-.doctor-account__filters {
-    @include flex-just-between;
-    align-items: center;
-    span {
+.doctor-account {
+    article span {
         font-size: 1.1rem;
         font-weight: 600;
     }
-}
-
-.doctor-account__visits-list {
-    @include flex-column;
-    gap: 10px;
-    &--header,
-    &--pacient-data {
-        @include flex-just-between;
-        padding: .4rem 1rem;
-        border-radius: 6px; 
+    &__filters {
+        span {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        &--header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        &--btns {
+            display: flex;
+            padding: 1vh 0;
+            gap: 1.4vw;
+            .active-filter {
+                background-color: var(--primary-color);
+                color: var(--white-color);
+                border: 1px solid var(--white-color);
+            }
+        }
     }
-    &--pacient-data {
-        border: 1px solid var(--primary-color);
-    }
-    &--header p,
-    &--pacient-data p {
-        min-width: 20%;
-        padding: .4rem 1rem;
-    }
-    &--header {
-        background-color: var(--primary-color);
-        color: var(--white-color);
+    &__visits-list {
+        @include flex-column;
+        gap: 10px;
+        &--header,
+        &--pacient-data {
+            @include flex-just-between;
+            padding: .4rem 1rem;
+            border-radius: 6px; 
+        }
+        &--pacient-data {
+            border: 1px solid var(--primary-color);
+        }
+        &--header p,
+        &--pacient-data p {
+            min-width: 20%;
+            padding: .4rem 1rem;
+        }
+        &--header {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
     }
 }
 

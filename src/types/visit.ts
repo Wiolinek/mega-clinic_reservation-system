@@ -1,5 +1,5 @@
 export interface VisitType {
-    date: string;
+    date: Date;
     doctor: string;
     id: string;
     doctor_id: string;

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from 'Context';
 import GenericSection from 'components/common/GenericSection/GenericSection';
-import VisitsContent from './VisitsContent';
+import VisitsContent from 'components/Visits/VisitsContent';
 import { VisitsType } from 'types/visit';
 import useFetch from 'helpers/useFetch';
 
@@ -32,7 +32,7 @@ const DoctorAccount: React.FC = () => {
 
     return (
         <main>
-            <GenericSection customClass='doctor-account__section'>
+            <GenericSection customClass='doctor-account'>
                 {
                     doctorId ? 
                         <VisitsContent visitsData={visitsData} />
