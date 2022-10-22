@@ -9,6 +9,7 @@
             "bookVisit": "Zarezerwuj wizytę",
             "send": "Wyślij",
             "back": "Powrót",
+            "sending": "Wysyłam...",
             "past": "minione",
             "future": "nadchodzące",
             "hideVisits": "ukryj wizyty"
@@ -40,8 +41,7 @@
             "chooseSpec": "Wybierz specjalizację:",
             "chooseDoc": "Wybierz lekarza:",
             "chooseDate": "Wybierz datę z kalendarza:",
-            "chooseTime": "Wybierz godzinę:",
-            "sending": "Wysyłam..."
+            "chooseTime": "Wybierz godzinę:"
         },
         "formErrors": {
             "speciality": "Specjalizacja jest wymagana",
@@ -102,7 +102,7 @@
         },
         "successForm": {
             "header": "Otrzymaliśmy Twoją rezerwację.",
-            "succesMsg": "Dziękujemy za skorzystanie z naszych usług i zapraszamy na wizytę w zarezerwowanym terminie."
+            "successMsg": "Dziękujemy za skorzystanie z naszych usług i zapraszamy na wizytę w zarezerwowanym terminie."
         }
     },
     "en": {
@@ -115,6 +115,7 @@
             "bookVisit": "Book a visit",
             "send": "Send",
             "back": "Back",
+            "sending": "Sending...",
             "past": "past",
             "future": "future",
             "hideVisits": "hide visits"
@@ -146,8 +147,7 @@
             "chooseSpec": "Choose a specialization:",
             "chooseDoc": "Choose a doctor:",
             "chooseDate": "Choose a date from calendar below:",
-            "chooseTime": "Choose a time:",
-            "sending": "Sending..."
+            "chooseTime": "Choose a time:"
         },
         "formErrors": {
             "speciality": "Specialization is required",
@@ -208,7 +208,7 @@
         },
         "successForm": {
             "header": "We have received your reservation.",
-            "succesMsg": "Thank you for choosing our clinic."
+            "successMsg": "Thank you for choosing our clinic."
         }
     }
 }

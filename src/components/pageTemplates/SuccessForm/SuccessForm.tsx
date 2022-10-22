@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import GenericSection from 'components/common/GenericSection/GenericSection';
 import { MyContext } from 'Context';
 
+import './SuccessForm.scss'
 
 const SuccesForm: React.FC = () => {
     const { labels } = useContext(MyContext)
@@ -11,16 +12,16 @@ const SuccesForm: React.FC = () => {
     useEffect(() => {
         setTimeout(() => {
             navigate('../', { replace: true })
-        }, 4000)
+        }, 4500)
     },[])
 
     
     return (
         <main>
-            <GenericSection customClass='login__section'>
+            <GenericSection>
                 <h2>{labels?.successForm.header}</h2>
                 <h3>{labels?.successForm.successMsg}</h3>
-                <p>{labels?.redirects.redirectLoginPage}</p>
+                <p>{labels?.redirects.redirectHomePage}</p>
             </GenericSection>
         </main>
     )

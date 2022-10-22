@@ -29,7 +29,7 @@ const Logout: React.FC = () => {
     
     return (
         <main>
-            <GenericSection customClass='login__section'>
+            <GenericSection>
                 <h2>{labels?.logoutPage.header}</h2>
                 <p>{labels?.redirects.redirectLoginPage}</p>
             </GenericSection>
