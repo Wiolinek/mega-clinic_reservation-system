@@ -13,6 +13,7 @@
 > Doctor can:
 >
 > - log in to personal account
+> - browse pacient by name
 > - browse booked visits
 > - filter past and future visits
 > - toggle between polish and english languages
