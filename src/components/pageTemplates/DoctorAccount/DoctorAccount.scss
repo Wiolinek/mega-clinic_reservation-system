@@ -2,58 +2,75 @@
 
 
 .doctor-account {
-    article span {
-        font-size: 1.1rem;
-        font-weight: 600;
-    }
-    &__filters {
+    article {
+        padding: 5vh 0;
+        border-bottom: 1px solid var(--primary-color);
         span {
             font-size: 1.1rem;
             font-weight: 600;
         }
-        &--header{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
+        &__filters {
+            span {
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+            &--header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 30px;
+                h3 {
+                    margin-bottom: 0;
+                }      
+            }
+            &--btns {
+                display: flex;
+                padding: 1vh 0;
+                gap: 1.4vw;
+                .active-filter {
+                    background-color: var(--primary-color);
+                    color: var(--white-color);
+                    border: 1px solid var(--white-color);
+                }
+            }
+            &--input {
+                padding: 1vh 0;
+                label {
+                    display: flex;
+                }
+            }  
         }
-        &--btns {
-            display: flex;
-            padding: 1vh 0;
-            gap: 1.4vw;
-            .active-filter {
+        &__list {
+            @include flex-column;
+            gap: 10px;
+            &--header,
+            &--pacient-data {
+                @include flex-just-between;
+                padding: .4rem 1rem;
+                border-radius: 6px; 
+                border: 1px solid var(--primary-color);
+            }
+            &--header p,
+            &--pacient-data p {
+                min-width: 20%;
+                padding: .4rem 1rem;
+            }
+            &--header {
                 background-color: var(--primary-color);
                 color: var(--white-color);
-                border: 1px solid var(--white-color);
+            } 
+        }
+        .pacients .doctor-account__list--pacient-data {
+            margin: 30px 0 0;
+            p {
+                border-right: 1px solid var(--primary-color);
             }
-        }
-    }
-    &__visits-list {
-        @include flex-column;
-        gap: 10px;
-        &--header,
-        &--pacient-data {
-            @include flex-just-between;
-            padding: .4rem 1rem;
-            border-radius: 6px; 
-        }
-        &--pacient-data {
-            border: 1px solid var(--primary-color);
-        }
-        &--header p,
-        &--pacient-data p {
-            min-width: 20%;
-            padding: .4rem 1rem;
-        }
-        &--header {
-            background-color: var(--primary-color);
-            color: var(--white-color);
         }
     }
 }
 
 @media (min-width: 1100px) {
-    .doctor-account__visits-list {
+    .doctor-account__list {
         &--header {
             margin: 30px 0 10px;
         }
@@ -63,11 +80,11 @@
         &--header p:not(:last-child) {
             border-right: 1px solid var(--white-color)
         } 
-    }    
+    }
 }
 
 @media (max-width: 1099px) {
-    .doctor-account__visits-list {
+    .doctor-account__list {
         flex-direction: row;
         flex-wrap: wrap;
         &--header {
@@ -93,10 +110,24 @@
             border-bottom: 1px solid var(--white-color)
         } 
     }
+    .pacients .doctor-account__list--pacient-data {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 768px) {
+    .doctor-account__filters {
+        flex-direction: column;
+        gap: 20px;
+        &--btns {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
 }
 
 @media (max-width: 576px) {
-    .doctor-account__visits-list {
+    .doctor-account__list {
         &--item {
             justify-content: space-between;
         }
@@ -111,11 +142,18 @@
             word-break: break-word;
         }
     }
+    .doctor-account article {
+        padding: 3vh 0;
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 420px) {
     .doctor-account__filters {
-        flex-direction: column;
-        gap: 20px;
+        &--header {
+            flex-direction: column;
+            h3 {
+                margin-bottom: 10px;
+            }
+        }
     }
 }

@@ -13,15 +13,15 @@ const Visit: React.FC<Props> = ({ visit }) => {
     
 
     return (
-        <li key={visit.id} className='doctor-account__visits-list--item'>
-            <div className='doctor-account__visits-list--header'>
+        <li key={visit.id} className='doctor-account__list--item'>
+            <div className='doctor-account__list--header'>
                 <p>{labels?.doctorAccount.date}</p>
                 <p>{labels?.doctorAccount.hour}</p>
                 <p>{labels?.doctorAccount.pacient}</p>
                 <p>{labels?.personalData.email}</p>
                 <p>{labels?.personalData.phone}</p>
             </div>
-            <div className='doctor-account__visits-list--pacient-data'>
+            <div className='doctor-account__list--pacient-data'>
                 <p>{visit.date.toLocaleString('sv').substring(0, 10)}</p>
                 <p>{visit.time.substring(0, 5)}</p>
                 <p>{visit.pacientName}</p>

@@ -12,7 +12,8 @@
             "sending": "Wysyłam...",
             "past": "minione",
             "future": "nadchodzące",
-            "hideVisits": "ukryj wizyty"
+            "hideVisits": "ukryj wizyty",
+            "details": "pokaż szczegóły"
         },
         "doctor": {
             "specialization": "Specjalizacja",
@@ -25,7 +26,10 @@
             "date": "Data",
             "hour": "Godzina",
             "pacient": "Pacjent",
-            "unauthorized": "Nie jesteś uprawniony do przeglądania tych zasobów"
+            "unauthorized": "Nie jesteś uprawniony do przeglądania tych zasobów",
+            "pacients": "Przejrzyj pacjentów",
+            "pacientsFound": "Znalezionych pacjentów: ",
+            "inputLabel": "Wprowadż nazwisko pacjenta"
         },
         "errorPage": {
             "header": "Ooooops... Wygląda na to że nie mamy takiej strony w naszych zasobach."
@@ -80,7 +84,8 @@
             "bookVisit": "Zarezerwuj wizytę",
             "myAccount": "Moje konto",
             "logout": "Wyloguj się",
-            "doctorAccount": "Strefa lekarza"
+            "doctorAccount": "Strefa lekarza",
+            "pacientAccount": "Strefa pacjenta"
         },
         "personalData": {
             "email": "Adres email",
@@ -117,7 +122,8 @@
             "sending": "Sending...",
             "past": "past",
             "future": "future",
-            "hideVisits": "hide visits"
+            "hideVisits": "hide visits",
+            "details": "show details"
         },
         "doctor": {
             "specialization": "Specialization",
@@ -130,7 +136,10 @@
             "date": "Date",
             "hour": "Time",
             "pacient": "Pacient",
-            "unauthorized": "You are not allowed to browse this page."
+            "unauthorized": "You are not allowed to browse this page.",
+            "pacients": "Browse pacients",
+            "pacientsFound": "Found pacients: ",
+            "inputLabel": "Put pacient name"
         },
         "errorPage": {
             "header": "Ooooops... It looks like we do not have the page you are looking for."
@@ -185,7 +194,8 @@
             "bookVisit": "Book a visit",
             "myAccount": "My account",
             "logout": "Log out",
-            "doctorAccount": "Doctor zone"
+            "doctorAccount": "Doctor zone",
+            "pacientAccount": "Pacient zone"
         },
         "personalData": {
             "email": "E-mail address",

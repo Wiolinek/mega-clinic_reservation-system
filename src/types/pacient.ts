@@ -1,4 +1,5 @@
 export interface PacientType {
+    id?: string | number,
     speciality: string,
     doctor: string,
     doctorId: string,
@@ -8,4 +9,10 @@ export interface PacientType {
     pacientEmail: string,
     pacientPhone: string,
     language: string | undefined,
+}
+
+export interface PacientsType {
+    data: PacientType[] | null
+    loading: boolean;
+    error: string | null;
 }

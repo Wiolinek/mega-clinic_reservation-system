@@ -31,6 +31,7 @@ const visits = require('./routes/visits');
 const labels = require('./routes/labels');
 const sendEmail = require('./routes/sendEmail');
 const articles = require('./routes/articles');
+const pacients = require('./routes/pacients');
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -76,6 +77,7 @@ app.use('/api/visits', visits);
 app.use('/api/labels', labels);
 app.use('/api/send', sendEmail);
 app.use('/api/articles', articles);
+app.use('/api/pacients', pacients);
 // app.get('/*', (req, res) => {
 //   res.sendFile(__dirname + '/public/index.html');
 // })
