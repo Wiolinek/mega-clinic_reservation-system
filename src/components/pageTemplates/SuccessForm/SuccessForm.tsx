@@ -17,7 +17,7 @@ const SuccesForm: React.FC = () => {
 
     
     return (
-        <main>
+        <main className='success-form'>
             <GenericSection>
                 <h2>{labels?.successForm.header}</h2>
                 <h3>{labels?.successForm.successMsg}</h3>
