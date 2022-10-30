@@ -3,7 +3,7 @@ import { ErrorMessage, useField, FieldHookConfig } from 'formik';
 
 type Props = FieldHookConfig<string> & {
     label?: string;
-    value?: string | number | readonly string[] | undefined;
+    value?: string | number | readonly string[];
     example?: string;
     type?: string;
     customClass?: string;
@@ -22,7 +22,7 @@ const InputComp: React.FC<Props> = (props) => {
                 <input
                     {...field}
                     type={type}
-                    className={`${customClass} ${(meta.touched && meta.error) ? 'error-border' : ''}`}
+                    className={`${customClass || ''} ${(meta.touched && meta.error) ? 'error-border' : ''}`}
                     readOnly={readOnly}
                 >   
                 </input>

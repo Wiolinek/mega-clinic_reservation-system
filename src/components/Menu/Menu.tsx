@@ -37,6 +37,7 @@ const Menu: React.FC<Props> = ({ isOpen, setOpen, closeMenu }) => {
                 <>
                     <li className='nav__item nav__item--doctor-zone'>
                         <NavLink to='/doctor-account'
+                        className='red-btn'
                             onClick={closeMenu}
                         >
                             {labels?.menu.myAccount}

@@ -1,12 +1,13 @@
 :root {
-  --primary-color: rgb(86, 152, 190);
+  --primary-color: rgb(87, 153, 191);
   --secondary-color: rgb(105, 105, 114);
   --primary-font-family: 'Noto Sans Display', sans-serif;
   --secondary-font-family: 'Dosis', sans-serif;
   --menu-font-family: 'Abril Fatface', cursive;
   --logo-font-family: 'Titan One', cursive;
-  --white-color: #fff;
-  --red-color: #e22326;
+  --white-color: rgb(255, 255, 255);
+  --red-color: rgb(226, 35, 38);
+  --loader-color: rgba(87, 153, 191, 0.301);
 }
 
 * {
@@ -18,7 +19,7 @@
 }
 
 main {
-  min-height: calc(100vh - 134px);
+  min-height: calc(100vh - 150px);
 }
 
 h1 {
@@ -65,8 +66,11 @@ label {
   font-weight: 600;
 }
 
-select, input {
+select {
   text-transform: uppercase;
+}
+
+select, input {
   border: 1px solid var(--primary-color);
   border-radius: 6px;
   background-color: transparent;
@@ -76,7 +80,7 @@ select, input {
   margin-top: 8px;
 }
 
-select, button {
+select, button, a {
   cursor: pointer;
 }
 

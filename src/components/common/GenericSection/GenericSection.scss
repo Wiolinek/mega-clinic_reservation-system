@@ -6,15 +6,14 @@ section {
         @include flex-just-between;
         label {
             @include flex-column;
-            font-size: 1.1rem;
         }
         span {
-            font-size: 1.1rem;
             font-weight: 600;
         }
     }
     &.article__section p {
         margin: 20px 0;
+        white-space: pre-wrap;
     }
     .doctors {
         @include flex-column;

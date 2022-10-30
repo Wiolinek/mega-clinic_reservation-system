@@ -8,7 +8,19 @@
             "login":"Zaloguj",
             "bookVisit": "Zarezerwuj wizytę",
             "send": "Wyślij",
-            "back": "Powrót"
+            "back": "Powrót",
+            "sending": "Wysyłam...",
+            "past": "minione",
+            "future": "nadchodzące",
+            "hideVisits": "ukryj wizyty",
+            "visitDetails": "szczegóły wizyty",
+            "patientCard": "karta pacjenta",
+            "save": "Zapisz",
+            "edit": "Edytuj dane",
+            "addNote": "Dodaj notatkę",
+            "editNote": "Edytuj notatkę",
+            "cancel": "Anuluj",
+            "clear": "Wyczyść"
         },
         "doctor": {
             "specialization": "Specjalizacja",
@@ -20,8 +32,29 @@
             "visitsFound": "Znalezionych wizyt: ",
             "date": "Data",
             "hour": "Godzina",
-            "pacient": "Pacjent",
-            "unauthorized": "Nie jesteś uprawniony do przeglądania tych zasobów"
+            "patient": "Pacjent",
+            "unauthorized": "Nie jesteś uprawniony do przeglądania tych zasobów",
+            "patients": "Przejrzyj pacjentów",
+            "patientsFound": "Znalezionych pacjentów: ",
+            "inputLabel": "Wprowadż nazwisko pacjenta"
+        },
+        "visitDetails": {
+            "patient": "Pacjent:",
+            "phoneNumber": "Numer telefonu:",
+            "emailAddress": "Adres e-mail:",
+            "date": "Data:",
+            "time": "Godzina:",
+            "notes": "Notatki:"
+        },
+        "patientCard": {
+            "title": "Karta pacjenta",
+            "patient": "Pacjent:",
+            "phoneNumber": "Numer telefonu:",
+            "emailAddress": "Adres e-mail:",
+            "birthDate": "Data urodzenia:",
+            "sex": "Płeć:",
+            "medications": "Przyjmowane leki:",
+            "visitsHistory": "Historia wizyt:"
         },
         "errorPage": {
             "header": "Ooooops... Wygląda na to że nie mamy takiej strony w naszych zasobach."
@@ -44,16 +77,18 @@
             "doctor": "Lekarz jest wymagany",
             "date": "Data jest wymagana",
             "time": "Godzina jest wymagana",
-            "pacientName": "Imię i nazwisko jest wymagane",
-            "pacientNameLength": "Imię i nazwisko powinny zawierać co najmniej 2 znaki",
-            "pacientPhone": "Numer telefonu jest wymagany",
-            "pacientPhoneLength": "Numer telefonu powinien zawierać co najmniej 9 cyfr",
-            "pacientEmail": "Adres email jest wymagany",
-            "pacientEmailLength": "Adres email powinien zawierać co najmniej 5 znaków",
-            "pacientEmailMatch": "Adres email powinien zawierać '@'"
+            "patientName": "Imię i nazwisko jest wymagane",
+            "patientNameLength": "Imię i nazwisko powinny zawierać co najmniej 2 znaki",
+            "nameMatch": "Imię musi miec co najmniej 2 litery i nazwisko musi mieć co najmniej 2 litery",
+            "patientPhone": "Numer telefonu jest wymagany",
+            "patientPhoneLength": "Numer telefonu powinien zawierać co najmniej 9 cyfr",
+            "patientPhoneNumber": "Numer telefonu musi się składać tylko z cyfr 0-9",
+            "patientEmail": "Adres email jest wymagany",
+            "patientEmailLength": "Adres email powinien zawierać co najmniej 5 znaków",
+            "patientEmailMatch": "Adres email powinien zawierać '@'",
+            "patientEmailValid": "E-mail musi mieć właściwy format"
         },
         "homePage": {
-            "header": "Dlaczego warto nam zaufać",
             "specializationsList": "Nasze specjalizacje"
         },
         "loaders": {
@@ -74,7 +109,8 @@
             "bookVisit": "Zarezerwuj wizytę",
             "myAccount": "Moje konto",
             "logout": "Wyloguj się",
-            "doctorAccount": "Strefa lekarza"
+            "doctorAccount": "Strefa lekarza",
+            "patientAccount": "Strefa pacjenta"
         },
         "personalData": {
             "email": "Adres email",
@@ -95,7 +131,7 @@
         },
         "successForm": {
             "header": "Otrzymaliśmy Twoją rezerwację.",
-            "succesMsg": "Dziękujemy za skorzystanie z naszych usług i zapraszamy na wizytę w zarezerwowanym terminie."
+            "successMsg": "Dziękujemy za skorzystanie z naszych usług i zapraszamy na wizytę w zarezerwowanym terminie."
         }
     },
     "en": {
@@ -107,7 +143,19 @@
             "login":"Log in",
             "bookVisit": "Book a visit",
             "send": "Send",
-            "back": "Back"
+            "back": "Back",
+            "sending": "Sending...",
+            "past": "past",
+            "future": "future",
+            "hideVisits": "hide visits",
+            "visitDetails": "visit details",
+            "patientCard": "patient's card",
+            "save": "Save",
+            "edit": "Edit data",
+            "editNote": "Edit note",
+            "addNote": "Add note",
+            "cancel": "Cancel",
+            "clear": "Clear"
         },
         "doctor": {
             "specialization": "Specialization",
@@ -119,8 +167,29 @@
             "visitsFound": "Found visits: ",
             "date": "Date",
             "hour": "Time",
-            "pacient": "Pacient",
-            "unauthorized": "You are not allowed to browse this page."
+            "patient": "Patient",
+            "unauthorized": "You are not allowed to browse this page.",
+            "patients": "Browse patients",
+            "patientsFound": "Found patients: ",
+            "inputLabel": "Put patient name"
+        },
+        "visitDetails": {
+            "patient": "Patient:",
+            "phoneNumber": "Phone number:",
+            "emailAddress": "E-mail address:",
+            "date": "Date:",
+            "time": "Time:",
+            "notes": "Notes:"
+        },
+        "patientCard": {
+            "title": "Patient's card",
+            "patient": "Patient:",
+            "phoneNumber": "Phone number:",
+            "emailAddress": "E-mail address:",
+            "birthDate": "Birth date:",
+            "sex": "Sex:",
+            "medications": "Medications:",
+            "visitsHistory": "Visits history:"
         },
         "errorPage": {
             "header": "Ooooops... It looks like we do not have the page you are looking for."
@@ -143,16 +212,18 @@
             "doctor": "Doctor is required",
             "date": "Date is required",
             "time": "Time is required",
-            "pacientName": "Name and surname are required",
-            "pacientNameLength": "Name and surname should have at least 2 letters",
-            "pacientPhone": "Phone number is required",
-            "pacientPhoneLength": "Phone number should have at least 9 numbers",
-            "pacientEmail": "E-mail address is required",
-            "pacientEmailLength": "E-mail addres should have at least 5 letters",
-            "pacientEmailMatch": "E-mail address should contain '@'"
+            "patientName": "Name and surname are required",
+            "patientNameLength": "Name and surname should have at least 2 letters",
+            "nameMatch": "Name should have at least 2 letters and surname should have at least 2 letters",
+            "patientPhone": "Phone number is required",
+            "patientPhoneLength": "Phone number should have at least 9 numbers",
+            "patientPhoneNumber": "Phone number must have only numbers 0-9",
+            "patientEmail": "E-mail address is required",
+            "patientEmailLength": "E-mail addres should have at least 5 letters",
+            "patientEmailMatch": "E-mail address should contain '@'",
+            "patientEmailValid": "E-mail must be a valid e-mail address"
         },
         "homePage": {
-            "header": "Why you should trust us",
             "specializationsList": "Our specializations"
         },
         "loaders": {
@@ -173,7 +244,8 @@
             "bookVisit": "Book a visit",
             "myAccount": "My account",
             "logout": "Log out",
-            "doctorAccount": "Doctor zone"
+            "doctorAccount": "Doctor zone",
+            "patientAccount": "Patient zone"
         },
         "personalData": {
             "email": "E-mail address",
@@ -194,7 +266,7 @@
         },
         "successForm": {
             "header": "We have received your reservation.",
-            "succesMsg": "Thank you for choosing our clinic."
+            "successMsg": "Thank you for choosing our clinic."
         }
     }
 }

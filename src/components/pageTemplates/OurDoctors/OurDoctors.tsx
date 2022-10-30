@@ -12,14 +12,16 @@ import useFetch from 'helpers/useFetch';
 
 const OurDoctors: React.FC = () => {
     const { labels } = useContext(MyContext)
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
 
-    const specialitiesData: SpecialitiesType = useFetch(`http://localhost:3030/api/specialities`);
-    // const specialitiesData: SpecialitiesType = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
+    const specialitiesData: SpecialitiesType = useFetch(`http://localhost:3030/api/specialities`, 'GET');
+    // const specialitiesData: SpecialitiesType = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`, 'GET');
 
-    const doctorsData: DoctorsType = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
-    // const doctorsData: DoctorsType = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
+    const doctorsData: DoctorsType = useFetch(`http://localhost:3030/api/doctors`,
+        doctorSpec !== null ? 'POST' : 'GET',
+        doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
+    // const doctorsData: DoctorsType = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== null ? 'POST' : 'GET', doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
 
     const backToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 
@@ -42,7 +44,7 @@ const OurDoctors: React.FC = () => {
                 </ul>
             </GenericSection>
             <ButtonLink type='button'
-                customClass='btn back-to-top'
+                customClass='blue-btn back-to-top'
                 text={labels?.buttons.back}
                 onClick={backToTop}
             />

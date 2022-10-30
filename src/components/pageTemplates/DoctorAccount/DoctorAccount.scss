@@ -1,105 +1,19 @@
 @import './_mixins.scss';
 
-.doctor-account__section article {
-    margin-top: 30px;
-}
 
-.doctor-account__filters {
-    @include flex-just-between;
-    align-items: center;
-    span {
-        font-size: 1.1rem;
-        font-weight: 600;
-    }
-}
-
-.doctor-account__visits-list {
-    @include flex-column;
-    gap: 10px;
-    &--header,
-    &--pacient-data {
-        @include flex-just-between;
-        padding: .4rem 1rem;
-        border-radius: 6px; 
-    }
-    &--pacient-data {
-        border: 1px solid var(--primary-color);
-    }
-    &--header p,
-    &--pacient-data p {
-        min-width: 20%;
-        padding: .4rem 1rem;
-    }
-    &--header {
-        background-color: var(--primary-color);
-        color: var(--white-color);
-    }
-}
-
-@media (min-width: 1100px) {
-    .doctor-account__visits-list {
-        &--header {
-            margin: 30px 0 10px;
+.doctor-account {
+    article {
+        padding: 5vh 0;
+        border-bottom: 1px solid var(--primary-color);
+        span {
+            font-size: 1.1rem;
+            font-weight: 600;
         }
-        &--item p:not(:last-child) {
-            border-right: 1px solid var(--primary-color)
-        }
-        &--header p:not(:last-child) {
-            border-right: 1px solid var(--white-color)
-        } 
-    }    
-}
-
-@media (max-width: 1099px) {
-    .doctor-account__visits-list {
-        flex-direction: row;
-        flex-wrap: wrap;
-        &--header {
-        width: max-content;
-        min-width: 180px;
-        }
-        &--pacient-data {
-            flex-grow: 1;
-        }
-        &--item {
-            display: flex;
-            gap: 10px;
-            width: 100%;
-        }
-        &--header,
-        &--pacient-data {
-            @include flex-column;
-        }
-        &--item p:not(:last-child) {
-            border-bottom: 1px solid var(--primary-color)
-        }
-        &--header p:not(:last-child) {
-            border-bottom: 1px solid var(--white-color)
-        } 
     }
 }
 
 @media (max-width: 576px) {
-    .doctor-account__visits-list {
-        &--item {
-            justify-content: space-between;
-        }
-        &--header {
-            min-width: 136px;
-        }
-        &--header,
-        &--header p,
-        &--pacient-data,
-        &--pacient-data p {
-            padding: .4rem .4rem;
-            word-break: break-word;
-        }
-    }
-}
-
-@media (max-width: 768px) {
-    .doctor-account__filters {
-        flex-direction: column;
-        gap: 20px;
+    .doctor-account section {
+        padding: 3vh 0;
     }
 }

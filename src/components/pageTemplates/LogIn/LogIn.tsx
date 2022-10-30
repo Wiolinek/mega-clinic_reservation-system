@@ -41,7 +41,7 @@ const LogIn: React.FC = () => {
             window.localStorage.setItem('user', JSON.stringify({ 'id': res.id, 'name': res.name }))
             navigate('../doctor-account', { replace: true })
         })
-        .catch(error => {
+        .catch(err => {
             setUsername({
                 username: '',
                 password: ''
@@ -55,12 +55,12 @@ const LogIn: React.FC = () => {
         <main>
             {
                 error &&
-                <GenericSection customClass='login__section error'>
+                <GenericSection customClass='error'>
                     <h2>{labels?.loginPage.errorHeader}</h2>
                     <p>{labels?.loginPage.errorMsg}</p>
                 </GenericSection>
             }
-            <GenericSection customClass='login__section'>
+            <GenericSection>
                 <h2>{labels?.loginPage.header}</h2>
                 <form className='login__form' onSubmit={onSubmit}>
                     <label>{labels?.loginPage.login}
@@ -80,7 +80,7 @@ const LogIn: React.FC = () => {
                         </input>
                     </label>
                     <ButtonLink type='submit'
-                        customClass='btn'
+                        customClass='blue-btn'
                         text={labels?.buttons.login}
                     />
                 </form>

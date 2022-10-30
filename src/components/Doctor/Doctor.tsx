@@ -29,7 +29,8 @@ const Doctor: React.FC<DoctorType> = (props) => {
                 </div>
                 <ButtonLink
                     text={labels?.buttons.bookVisit}
-                    target={`/reservation/?speciality=${props.speciality}&doctor=${props.name}`}
+                    target={`/reservation?speciality=${props.speciality}&doctor=${props.name}`}
+                    customClass='blue-btn'
                 />
             </div>
         </li>

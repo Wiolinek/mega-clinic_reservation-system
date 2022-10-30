@@ -1,0 +1,100 @@
+@import './_mixins.scss';
+
+.doctor-account {
+    &__visit-details,
+    &__patient-details {
+        h3 {
+            margin-bottom: 30px;
+        }
+        & > div {
+            display: flex;
+            p:first-child {
+                margin-right: 8px;
+            }
+            p:nth-child(2) {
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+        }
+        &--personal-data {
+            justify-content: space-between;
+        }
+        &--name,
+        &--date-time {
+            div {
+                display: flex;
+                padding: 1vh 0;
+            }
+        }
+        &--name .name{
+            text-transform: capitalize;
+        }
+        &--date-time div {
+            justify-content: flex-end;
+        }
+        &--notes {
+            flex-direction: column;
+            padding: 2vh 0 1vh;
+            label {
+                font-size: 1.1rem;
+                line-height: 1.7rem;
+                font-weight: 400;
+                textarea {
+                    width: 100%;
+                    height: fit-content;
+                    border: 1px solid var(--primary-color);
+                    border-radius: 6px;
+                    margin-top: 1vh;
+                    resize: vertical;
+                } 
+            }
+            &-area {
+                p:first-child {
+                    margin-bottom: 1vh;
+                }
+            }
+        }
+        &--notes-btns,
+        &--btns {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1.4vw;
+            margin-top: 1.4vh;
+        }
+        &--medicine,
+        &--visits {
+            flex-direction: column;
+            padding: 1vh 0;
+            p:first-child {
+                margin-bottom: 1vh;
+            }
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .doctor-account {
+        &__visit-details,
+        &__patient-details  {
+            &--date-time {
+                align-items: flex-start;
+            }
+            &--date-time div {
+                justify-content: flex-start;
+            }
+        }
+        &__visit-details {
+            &--personal-data {
+                flex-direction: column-reverse;
+            }
+            &--date-time {
+                align-items: flex-start;
+            }
+        }
+        &__patient-details {
+            &--personal-data {
+                flex-direction: column;
+            }
+        }
+    }
+}

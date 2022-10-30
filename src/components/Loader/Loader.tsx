@@ -7,7 +7,7 @@ const Loader: React.FC<Props> = ({ message }) => {
 
   
   return (
-    <div className='loader login__section'>
+    <div className='loader'>
       <h2>{message}</h2>
     </div>
   )

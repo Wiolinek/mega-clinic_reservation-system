@@ -7,12 +7,15 @@
 > - browse available doctors
 > - filter doctors by specialization
 > - book a visit by reservation form
+> - receive an email with booking confirmation
 > - toggle between polish and english languages
 >
 > Doctor can:
 >
 > - log in to personal account
+> - browse pacient by name
 > - browse booked visits
+> - filter past and future visits
 > - toggle between polish and english languages
 >
 > Project was created to learn all technologies used here, and practice.
@@ -22,6 +25,8 @@ TO LOGIN TO DOCTOR ACCOUNT USE:
 LOGIN NAME.SURNAME: (eg. marek.nowacki)
 
 PASSWORD: surname123 (eg. nowacki123)
+
+## Live demo [_here_]()
 
 ## Table of Contents
 
@@ -41,6 +46,7 @@ PASSWORD: surname123 (eg. nowacki123)
 - Express.js
 - MySQL
 - MongoDB
+- Nodemailer
 - Formik
 - Yup
 - Typescript
@@ -102,13 +108,12 @@ Project is: _in progress_
 
 ## Room for Improvement
 
-- implement Formik for handling reservation form --> in progress
 - fix Typescript types --> in progress
-- add Nodemailer for booking confirmation by email
+- add patient account with login option
 - add option for booking cancelation for pacient
-- implement filters for upcoming and past visits for doctor account
 - translate specializations into english (homepage and reservation filters)
-- transfer article content (HP) to database
+- doctor account - finish patient card section with visits history
+- doctor account - add patient's data edit option
 
 ## License
 

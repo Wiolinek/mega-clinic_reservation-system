@@ -3,8 +3,9 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import CalendarComp from 'components/Calendar/Calendar';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink'
 import FormFieldControler from '../FormFieldControler';
+import { emailMessageHandler } from 'helpers/form.helper';
 import { DoctorType } from 'types/doctor';
-import { PacientType } from 'types/pacient';
+import { PatientType } from 'types/patient';
 import { MyContext } from 'Context';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -18,17 +19,18 @@ interface Props {
     doctorsList?: React.ReactNode[];
     setChosenDoctor: React.Dispatch<React.SetStateAction<DoctorType[] | undefined>>;
     timeList?: React.ReactNode[] | boolean;
-    date?: Date | undefined;
+    date?: Date;
     setDate: React.Dispatch<React.SetStateAction<Date>>;
 }
 
 
 const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList, setChosenDoctor, timeList, date, setDate }) => {
-    const { labels } = useContext(MyContext)
+    const { labels, language } = useContext(MyContext)
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
     const doctorName = searchParams.get('doctor');
     const [doctorId, setDoctorId] = useState<string | undefined>();
+    const [loading, setLoading] = useState<boolean | undefined>()
     const defaultValue = '---';
     const navigate = useNavigate();
 
@@ -49,17 +51,28 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         );
     };
 
-    const formHandler = (values: object) => {
-        console.log(values)
-        console.log('wysyłam')
+    const formHandler = async(values: PatientType) => {
+        setLoading(true)
+
+        const message = emailMessageHandler(values);
+
+        await fetch(`http://localhost:3030/api/send`, { 
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({ values, message })
+        })
+        .then(res => { res.status === 200 && 
+            setLoading(false)
+        
         // fetch(`https://megaclinic.ultra-violet.codes/api/form`, {
         fetch(`http://localhost:3030/api/form`, { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify({values})
+            body: JSON.stringify({ values })
         })
         .then(() => navigate('../success', { replace: true }))
-        .catch(error => console.log(`error ${error}`));
+        .catch(err => console.log(`error ${err}`))
+        })
     };
 
     useEffect(() => {
@@ -78,28 +91,32 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
             .required(labels?.formErrors.date),
         time: Yup.string()
             .required(labels?.formErrors.time),
-        pacientName: Yup.string()
-            .required(labels?.formErrors.pacientName)
-            .min(2, labels?.formErrors.pacientNameLength),
-        pacientPhone: Yup.number()
-            .required(labels?.formErrors.pacientPhone)
-            .min(9, labels?.formErrors.pacientPhoneLength),
-        pacientEmail: Yup.string()
-            .email('must be a valid email')
-            .required(labels?.formErrors.pacientEmail)
-            .min(5, labels?.formErrors.pacientEmailLength)
-            .matches(/^[^@]+@[^@]+\.[^@]+$/, labels?.formErrors.pacientEmailMatch)
+        patientName: Yup.string()
+            .required(labels?.formErrors.patientName)
+            .min(2, labels?.formErrors.patientNameLength)
+            .matches(/^[a-zA-Z]{2,}[ ][a-zA-Z]{2,}/, labels?.formErrors.nameMatch),
+        patientPhone: Yup.string()
+            .required(labels?.formErrors.patientPhone)
+            .min(9, labels?.formErrors.patientPhoneLength)
+            .matches(/^[0-9]/, labels?.formErrors.Start)
+            .typeError(labels?.formErrors.patientPhoneNumber || ''),
+        patientEmail: Yup.string()
+            .email(labels?.formErrors.patientEmailValid)
+            .required(labels?.formErrors.patientEmail)
+            .min(5, labels?.formErrors.patientEmailLength)
+            .matches(/^[^@]+@[^@]+\.[^@]+$/, labels?.formErrors.patientEmailMatch)
     });
 
-    const initialValues: PacientType = {
+    const initialValues: PatientType = {
         speciality: doctorSpec || '',
         doctor: doctorName || '',
         doctorId: doctorId!,
         date: date?.toLocaleDateString('sv') || '',
         time: '',
-        pacientName: '',
-        pacientEmail: '',
-        pacientPhone: '',
+        patientName: '',
+        patientEmail: '',
+        patientPhone: '',
+        language,
     }
 
 
@@ -107,12 +124,13 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={(values: PacientType) => formHandler(values)}
+            onSubmit={(values: PatientType): void | Promise<any> => formHandler(values)}
             enableReinitialize
         >
             {(props: any) => (
                 
             <Form className='reservation__form' noValidate >
+                <div className={`loader ${!loading && 'hidden'}`}></div>
                 <h2>{labels?.form.header}</h2>
                 <div>
                     <FormFieldControler
@@ -166,8 +184,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                     <FormFieldControler
                         as='input'
                         type='text'
-                        name='pacientName'
-                        pattern='[a-zA-Z]+[ ][a-zA-Z]+'
+                        name='patientName'
                         label={labels?.personalData.nameSurname}
                         example={labels?.placeholders.nameSurname}
                         required
@@ -176,7 +193,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                     <FormFieldControler
                         as='input'
                         type='email'
-                        name='pacientEmail'
+                        name='patientEmail'
                         label={labels?.personalData.email}
                         example={labels?.placeholders.email}
                         required
@@ -185,16 +202,15 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                     <FormFieldControler
                         as='input'
                         type='tel'
-                        name='pacientPhone'
-                        pattern='[0-9]{9}'
+                        name='patientPhone'
                         label={labels?.personalData.phone}
-                        value={props.pacientPhone}
+                        value={props.patientPhone}
                         required
                     />
                 </div>
                 <ButtonLink type='submit'
-                    customClass='btn reservation__form-btn'
-                    text={labels?.buttons.send}
+                    customClass='blue-btn reservation__form-btn'
+                    text={props.isSubmitting ? labels?.buttons.sending : labels?.buttons.send}
                     disabled={props.isSubmitting}
                 />
             </Form>

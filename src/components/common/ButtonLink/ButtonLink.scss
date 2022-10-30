@@ -7,20 +7,48 @@
     font-family: var(--menu-font-family);
     font-size: 1.2rem;
     letter-spacing: 1px;
-    color: var(--white-color);
-    background-color: var(--primary-color);
-    border: 1px solid var(--white-color);
+    text-align: center;
     min-width: 140px;
     border-radius: 6px;
     padding: 0.8rem 2rem;
     transition: all .3s ease-out;
-    cursor: pointer;
 }
 
-.btn:not(.menu-btn):hover {
+.react-calendar__tile,
+.react-calendar__navigation__arrow,
+.react-calendar__navigation__label,
+.blue-btn {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--white-color);
+    &:not(.menu-btn):hover {
+        color: var(--primary-color);
+        background-color: var(--white-color);
+        border: 1px solid var(--primary-color);
+    }
+}
+
+.white-btn {
+    background-color: transparent;
     color: var(--primary-color);
-    background-color: var(--white-color);
     border: 1px solid var(--primary-color);
+    &:hover {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        border: 1px solid var(--white-color);
+    }
+}
+
+.red-btn {
+    background-color: var(--red-color);
+    border: 1px solid var(--red-color);
+    border-radius: 6px;
+    color: var(--white-color);
+    &:hover {
+        background-color: var(--white-color);
+        border: 1px solid var(--red-color);
+        color: var(--red-color);
+    }
 }
 
 .back-to-top {
@@ -54,14 +82,11 @@
 }
 
 .lang-btn {
-    font-family: var(--menu-font-family);
     font-size: 1.4rem;
-    color: var(--white-color);
-    background-color: transparent;
     min-width: 74px;
     padding: .8rem .6vw;
-    border-radius: 6px;
-    transition: all .3s ease-out;
+    color: var(--white-color);
+    background-color: transparent;
     border: 1px solid var(--white-color);
     &:hover {
         color: var(--primary-color);
@@ -69,6 +94,7 @@
         border: 1px solid var(--white-color);
     }
 }
+
 
 @media (min-width: 1300px) {
     .menu-btn {
