@@ -1,4 +1,4 @@
-import Visit from 'components/Visits/Visit';
+import VisitItem from 'components/Visits/VisitItem';
 import { VisitType } from 'types/visit';
 
 
@@ -11,7 +11,7 @@ export const convertDate = (data: VisitType[] | null) => {
 export const listVisitsGenerate = (visitsList: VisitType[] | undefined) => {
     
     return visitsList?.map((visit: VisitType) => visit &&
-        <Visit key={visit.id} visit={visit}/>)
+        <VisitItem key={visit.id} visit={visit}/>)
 }
 
 
