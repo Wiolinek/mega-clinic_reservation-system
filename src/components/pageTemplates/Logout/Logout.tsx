@@ -5,12 +5,11 @@ import { MyContext } from 'Context';
 
 
 const Logout: React.FC = () => {
-    const { setUser, labels } = useContext(MyContext)
+    const { setUser, labels } = useContext(MyContext);
     const navigate = useNavigate();
 
     useEffect(() => {
-        // fetch(`https://megaclinic.ultra-violet.codes/api/logout`, {
-        fetch(`http://localhost:3030/api/logout`, {
+        fetch(`${process.env.REACT_APP_SITE_HOST}/api/logout`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',

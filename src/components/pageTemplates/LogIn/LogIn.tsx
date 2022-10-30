@@ -4,7 +4,7 @@ import GenericSection from 'components/common/GenericSection/GenericSection';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 import { MyContext } from 'Context';
 
-import './Login.scss'
+import './Login.scss';
 
 interface LoginData {
     username: string;
@@ -13,7 +13,7 @@ interface LoginData {
 
 
 const LogIn: React.FC = () => {
-    const { setUser, labels } = useContext(MyContext)
+    const { setUser, labels } = useContext(MyContext);
     const navigate = useNavigate();
     const [error, setError] = useState<React.SetStateAction<boolean>>(false);
     const [userData, setUsername] = useState<React.SetStateAction<LoginData | any>>({
@@ -23,13 +23,12 @@ const LogIn: React.FC = () => {
 
     const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUsername((dataItem: LoginData) => ({...dataItem, [e.target.name]: e.target.value}))
-    }
+    };
 
     const onSubmit = async (e: SyntheticEvent) => {
         e.preventDefault()
-        
-        // await fetch(`https://megaclinic.ultra-violet.codes/api/login`, {
-        await fetch(`http://localhost:3030/api/login`, {
+
+        await fetch(`${process.env.REACT_APP_SITE_HOST}/api/login`, {
             method: 'POST',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },

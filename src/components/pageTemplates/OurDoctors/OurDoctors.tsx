@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import GenericSection from 'components/common/GenericSection/GenericSection'
-import Doctor from 'components/Doctor/Doctor'
+import GenericSection from 'components/common/GenericSection/GenericSection';
+import Doctor from 'components/Doctor/Doctor';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 import Filters from 'components/Filters/Filtres';
 import { MyContext } from 'Context';
@@ -11,22 +11,20 @@ import useFetch from 'helpers/useFetch';
 
 
 const OurDoctors: React.FC = () => {
-    const { labels } = useContext(MyContext)
+    const { labels } = useContext(MyContext);
     const [searchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
 
-    const specialitiesData: SpecialitiesType = useFetch(`http://localhost:3030/api/specialities`, 'GET');
-    // const specialitiesData: SpecialitiesType = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`, 'GET');
+    const specialitiesData: SpecialitiesType = useFetch(`${process.env.REACT_APP_SITE_HOST}/api/specialities`, 'GET');
 
-    const doctorsData: DoctorsType = useFetch(`http://localhost:3030/api/doctors`,
+    const doctorsData: DoctorsType = useFetch(`${process.env.REACT_APP_SITE_HOST}/api/doctors`,
         doctorSpec !== null ? 'POST' : 'GET',
         doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
-    // const doctorsData: DoctorsType = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== null ? 'POST' : 'GET', doctorSpec !== null ? { specialityFilter: doctorSpec, doctorFilter: '' } : undefined, searchParams);
 
-    const backToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+    const backToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
 
-    const filterList = Array.from(new Set(specialitiesData?.data?.map((item: SpecialityType) => item.speciality)))
-
+    const filterList = Array.from(new Set(specialitiesData?.data?.map((item: SpecialityType) => item.speciality)));
+    
 
     return (
         <main>
