@@ -20,12 +20,10 @@ const DoctorAccount: React.FC = () => {
     const visit = searchParams.get('visit');
     const visitsType = searchParams.get('visits');
     const patientQuery = searchParams.get('patient-query');
-    const [doctorId] = useState<React.SetStateAction<string>>(JSON.parse(window.localStorage.getItem('user') || '{}').id)
+    const [doctorId] = useState<React.SetStateAction<string>>(JSON.parse(window.localStorage.getItem('user') || '{}').id);
     const [searchText, setSearchText] = useState<string>(patientQuery || '');
-    
-     // const visitsData: VisitsType = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, 'POST', { doctorId: doctorId, date: null }, doctorId);
-    const visitsData: VisitsType = useFetch(`http://localhost:3030/api/visits`, 'POST', { doctorId: doctorId, date: null }, doctorId);
 
+    const visitsData: VisitsType = useFetch(`${process.env.REACT_APP_SITE_HOST}/api/visits`, 'POST', { doctorId: doctorId, date: null }, doctorId);
 
     useEffect(() => {
         setSearchParams(searchText !== '' ?

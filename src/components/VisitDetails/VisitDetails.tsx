@@ -16,34 +16,37 @@ interface Props {
 const VisitDetails: React.FC<Props> = ({ visitId }) => {
     const { labels } = useContext(MyContext);
     const navigate = useNavigate();
-    const [editMode, setEditMode] = useState<boolean>(false);
+    
     const [notes, setNotes] = useState<string>();
     const [newNotes, setNewNotes] = useState<string>();
     
-    // const { data } = useFetch('https://megaclinic.ultra-violet.codes/api/visits', 'POST', { visitId }, visitId);
-    const { data } = useFetch('http://localhost:3030/api/visits', 'POST', { visitId }, visitId);
-    // const { executeFetch } = useFetch('https://megaclinic.ultra-violet.codes/single-visit', 'POST', { visitId }, visitId);
-    const { executeFetch } = useFetch('http://localhost:3030/api/single-visit');
+    const { data } = useFetch(`${process.env.REACT_APP_SITE_HOST}/api/visits`, 'POST', { visitId }, visitId);
+
+    const [editMode, setEditMode] = useState<boolean>(Boolean(data?.[0]['notes'] || newNotes));
 
     const onSubmit = async (e: SyntheticEvent) => {
         e.preventDefault()
-        // await fetch('https://megaclinic.ultra-violet.codes/api/single-visit', {
-        await fetch('http://localhost:3030/api/single-visit', {
+        await fetch(`${process.env.REACT_APP_SITE_HOST}/api/single-visit`, {
             method: 'PATCH',
             credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ notes, visitId }),
         })
         .then(res => { res.status === 200 && 
-        // executeFetch('https://megaclinic.ultra-violet.codes/api/single-visit', 'POST', { visitId })
-        executeFetch('http://localhost:3030/api/single-visit', 'POST', { visitId })
-        .then(res => setNewNotes(res?.[0].notes))
+        fetch(`${process.env.REACT_APP_SITE_HOST}/api/single-visit`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ visitId }),
+        })
+        .then(res => res.json())
+        .then(res => setNewNotes(res[0]['notes']))
         .then(() => setEditMode(false))
         .catch(err => console.log(`error ${err}`))
-    })
+        })
     };
 
-
+    
     return (
         <>
             <ButtonLink
@@ -80,30 +83,30 @@ const VisitDetails: React.FC<Props> = ({ visitId }) => {
                     </div>
                 </div>
                 <div className='doctor-account__visit-details--notes'>
-                {(data?.[0]['notes'] && !editMode) &&
+                {!editMode &&
                     <>
                         <div className='doctor-account__visit-details--notes-area'>
                             <p>{labels?.visitDetails.notes}</p>
-                            <p>{newNotes !== null ? newNotes : data?.[0]['notes']}</p>
+                            <p>{(newNotes && newNotes.length >= 0) ? newNotes : data?.[0]['notes']}</p>
                         </div>
                         <div className='doctor-account__visit-details--notes-btns'>
                         <ButtonLink
                             type='button'
-                            text={(data?.[0]['notes'] && !editMode && newNotes) ? labels?.buttons.editNote : labels?.buttons.addNote}
+                            text={((data?.[0]['notes']) || newNotes) ? labels?.buttons.editNote : labels?.buttons.addNote}
                             customClass='blue-btn'
                             onClick={() => setEditMode(true)}
                         />
                         </div>
                     </>
                 }
-                {(!data?.[0]['notes'] || editMode) &&
+                {editMode &&
                     <form onSubmit={onSubmit}>
                         <label>{labels?.visitDetails.notes}<br/>
                             <textarea
                                 rows={6}
                                 cols={40}
                                 onChange={e => setNotes(e.target.value)}>
-                                {newNotes !== null ? newNotes : data?.[0]['notes']}
+                                {newNotes || data?.[0]['notes']}
                             </textarea>
                         </label>
                         <div className='doctor-account__visit-details--notes-btns'>
@@ -117,6 +120,7 @@ const VisitDetails: React.FC<Props> = ({ visitId }) => {
                                 type='submit'
                                 text={editMode ? labels?.buttons.save : labels?.buttons.addNote}
                                 customClass='blue-btn'
+                                disabled={!notes ? true : false}
                             />
                         </div>
                     </form>  

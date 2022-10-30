@@ -3,22 +3,22 @@ import { useSearchParams } from 'react-router-dom';
 import { MyContext } from 'Context';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 import PatientItem from 'components/Patients/PatientItem';
-import useFetch from 'helpers/useFetch'
+import useFetch from 'helpers/useFetch';
 import { PatientsType } from 'types/patient';
 
 
 interface Props {
     searchText: string;
     setSearchText: (value: string) => void;
-}
+};
 
 
 const PatientsContent: React.FC<Props> = ({ searchText, setSearchText }) => {
-    const { labels } = useContext(MyContext)
+    const { labels } = useContext(MyContext);
     const [searchParams] = useSearchParams();
     const patientQuery = searchParams.get('patient-query');
 
-    const patientsData: PatientsType = useFetch(`http://localhost:3030/api/patients`, 'POST', { patientName: patientQuery }, patientQuery);
+    const patientsData: PatientsType = useFetch(`${process.env.REACT_APP_SITE_HOST}/api/patients`, 'POST', { patientName: patientQuery }, patientQuery);
     
 
     return (

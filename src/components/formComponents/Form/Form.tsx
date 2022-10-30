@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import CalendarComp from 'components/Calendar/Calendar';
-import ButtonLink from 'components/common/ButtonLink/ButtonLink'
+import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 import FormFieldControler from '../FormFieldControler';
 import { emailMessageHandler } from 'helpers/form.helper';
 import { DoctorType } from 'types/doctor';
@@ -25,12 +25,12 @@ interface Props {
 
 
 const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList, setChosenDoctor, timeList, date, setDate }) => {
-    const { labels, language } = useContext(MyContext)
+    const { labels, language } = useContext(MyContext);
     const [searchParams, setSearchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
     const doctorName = searchParams.get('doctor');
     const [doctorId, setDoctorId] = useState<string | undefined>();
-    const [loading, setLoading] = useState<boolean | undefined>()
+    const [loading, setLoading] = useState<boolean | undefined>();
     const defaultValue = '---';
     const navigate = useNavigate();
 
@@ -56,7 +56,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
 
         const message = emailMessageHandler(values);
 
-        await fetch(`http://localhost:3030/api/send`, { 
+        await fetch(`${process.env.REACT_APP_SITE_HOST}/api/send`, { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({ values, message })
@@ -64,8 +64,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         .then(res => { res.status === 200 && 
             setLoading(false)
         
-        // fetch(`https://megaclinic.ultra-violet.codes/api/form`, {
-        fetch(`http://localhost:3030/api/form`, { 
+        fetch(`${process.env.REACT_APP_SITE_HOST}/api/form`, { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({ values })

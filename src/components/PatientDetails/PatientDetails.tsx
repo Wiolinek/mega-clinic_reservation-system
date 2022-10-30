@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from 'Context';
-import ButtonLink from 'components/common/ButtonLink/ButtonLink'
-import useFetch from 'helpers/useFetch'
+import ButtonLink from 'components/common/ButtonLink/ButtonLink';
+import useFetch from 'helpers/useFetch';
 import { PatientType } from 'types/patient';
 
-import './PatientDetails.scss'
+import './PatientDetails.scss';
 
 
 interface Props {
@@ -15,9 +15,9 @@ interface Props {
 
 
 const PatientDetails: React.FC<Props> = ({ patientId, patientData }) => {
-    const { labels } = useContext(MyContext)
+    const { labels } = useContext(MyContext);
     const navigate = useNavigate();
-    // const { data } = useFetch(`http://localhost:3030/api/patient`, 'POST', { id: patientId });
+    // const { data } = useFetch(`${process.env.REACT_APP_SITE_HOST}/api/patient`, 'POST', { id: patientId });
 
 
     return (
