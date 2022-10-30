@@ -29,9 +29,10 @@ const userAccount = require('./routes/user-account');
 const logout = require('./routes/logout');
 const visits = require('./routes/visits');
 const labels = require('./routes/labels');
-const sendEmail = require('./routes/sendEmail');
+const sendEmail = require('./routes/send-email');
 const articles = require('./routes/articles');
-const pacients = require('./routes/pacients');
+const patients = require('./routes/patients');
+const singleVisit = require('./routes/single-visit');
 
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -40,7 +41,7 @@ app.set('view engine', 'jade');
 app.use(cors({
   // origin: 'https://megaclinic.ultra-violet.codes/',
   origin: 'http://localhost:3000',
-  methods: 'GET,POST,PUT,DELETE',
+  methods: 'GET,POST,PUT,DELETE,PATCH',
   credentials: true
 }));
 app.use(logger('dev'));
@@ -77,7 +78,8 @@ app.use('/api/visits', visits);
 app.use('/api/labels', labels);
 app.use('/api/send', sendEmail);
 app.use('/api/articles', articles);
-app.use('/api/pacients', pacients);
+app.use('/api/patients', patients);
+app.use('/api/single-visit', singleVisit);
 // app.get('/*', (req, res) => {
 //   res.sendFile(__dirname + '/public/index.html');
 // })
