@@ -3,11 +3,12 @@ export interface VisitType {
     doctor: string;
     id: string;
     doctor_id: string;
-    pacientEmail: string;
-    pacientName: string;
-    pacientPhone: string;
+    patientEmail: string;
+    patientName: string;
+    patientPhone: string;
     speciality: string;
     time: string;
+    notes: string;
 }
 
 export interface VisitsType {

@@ -1,12 +1,12 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { MyContext } from 'Context';
 import Loader from 'components/Loader/Loader';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink';
-import useFetch from 'helpers/useFetch'
 import { convertDate, futureVisitsGenerate, pastVisitsGenerate, listVisitsGenerate } from 'helpers/visits.helper';
 import { VisitsType } from 'types/visit';
-import { PacientsType } from 'types/pacient';
+
+import './VisitsContent.scss';
 
 
 interface Props {
@@ -15,21 +15,17 @@ interface Props {
 
 
 const VisitsContent: React.FC<Props> = ({ visitsData }) => {
-    const { user, labels } = useContext(MyContext)
+    const { labels } = useContext(MyContext)
     const [searchParams, setSearchParams] = useSearchParams();
     const visitsType = searchParams.get('visits');
-    const [searchText, setSearchText] = useState("");
+    const patientQuery = searchParams.get('patient-query');
 
     const pastVisitsList = pastVisitsGenerate(convertDate(visitsData?.data));
     const futureVisitsList = futureVisitsGenerate(convertDate(visitsData?.data));
 
-    const pacientsData: PacientsType = useFetch(`http://localhost:3030/api/pacients`, { pacientName: searchText }, searchText);
-
 
     return (
         <>
-            <h2>{`${labels?.doctorAccount.greetings} ${user?.name || JSON.parse(window.localStorage.getItem('user') || '{}').name}`}</h2>
-            
             <article>
                 <div className='doctor-account__filters'>
                     <div className='doctor-account__filters--header'>
@@ -38,19 +34,22 @@ const VisitsContent: React.FC<Props> = ({ visitsData }) => {
                     </div>
                     <div className='doctor-account__filters--btns'>
                         <ButtonLink
+                            type='button'
                             customClass={`white-btn ${visitsType === 'past' ? 'active-filter' : ''}`}
-                            text={`${labels?.buttons.past} (${pastVisitsList?.length})`}
-                            target='/doctor-account/?visits=past'
+                            text={`${labels?.buttons.past} (${pastVisitsList?.length || 0})`}
+                            onClick={() => setSearchParams(patientQuery ? {visits: 'past', 'patient-query': `${patientQuery}`} : {visits: 'past'})}
                         />
                         <ButtonLink
+                            type='button'
                             customClass={`white-btn ${visitsType === 'future' ? 'active-filter' : ''}`}
-                            text={`${labels?.buttons.future} (${futureVisitsList?.length})`}
-                            target='/doctor-account/?visits=future'
+                            text={`${labels?.buttons.future} (${futureVisitsList?.length || 0})`}
+                            onClick={() => setSearchParams(patientQuery ? {visits: 'future', 'patient-query': `${patientQuery}`} : {visits: 'future'})}
                         />
                         <ButtonLink
+                            type='button'
                             customClass='white-btn'
                             text={labels?.buttons.hideVisits}
-                            target='/doctor-account'
+                            onClick={() => setSearchParams(patientQuery ? {'patient-query': `${patientQuery}`} : {})}
                         />
                     </div>
                 </div>
@@ -64,38 +63,6 @@ const VisitsContent: React.FC<Props> = ({ visitsData }) => {
                             {visitsType === 'past' && listVisitsGenerate(pastVisitsList)}
                         </ul>
                     </>
-                }
-            </article>
-            <article>
-                <div className='doctor-account__filters'>
-                    <div className='doctor-account__filters--header'>
-                        <h3>{labels?.doctorAccount.pacients}</h3>
-                        <p>{labels?.doctorAccount.pacientsFound}
-                            <span> {(searchText.length > 0  && searchText !== ' ') ? pacientsData?.data?.length : 0}
-                            </span>
-                        </p>
-                    </div>
-                    <div className='doctor-account__filters--input'>
-                        <label>{labels?.doctorAccount.inputLabel}<br/>
-                            <input type='text' name='search' onChange={e => setSearchText(e.target.value)} value={searchText}></input>
-                        </label>
-                    </div>
-                </div>
-                {(Array.isArray(pacientsData.data) && pacientsData.data.length > 0 && searchText.length > 0 && searchText !== ' ') &&
-                    <ul className='doctor-account__list pacients'>
-                        {pacientsData?.data?.map(pacient => 
-                            <div className='doctor-account__list--pacient-data'>
-                                <p>{pacient.pacientName}</p>
-                                <p>{pacient.pacientEmail}</p>
-                                <p>{pacient.pacientPhone}</p>
-                                <ButtonLink
-                                    text={labels?.buttons.details}
-                                    target={`/doctor-account?pacient=${pacient.id}`}
-                                    customClass='blue-btn'
-                                />
-                            </div>
-                        )}
-                    </ul>
                 }
             </article>
         </>
