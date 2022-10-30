@@ -11,11 +11,11 @@ import useFetch from 'helpers/useFetch';
 
 const Homepage: React.FC = () => {
     const { labels, language } = useContext(MyContext)
-    const specialitiesData: SpecialitiesType = useFetch(`http://localhost:3030/api/specialities`);
-    // const specialitiesData: SpecialitiesType = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
+    const specialitiesData: SpecialitiesType = useFetch(`http://localhost:3030/api/specialities`, 'GET');
+    // const specialitiesData: SpecialitiesType = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`, 'GET');
 
-    const articleData: ArticleType = useFetch(`http://localhost:3030/api/articles`, { page: 'homepage', language }, language);
-    // const articleData: ArticleType = useFetch(`https://megaclinic.ultra-violet.codes/api/articles`, { page: 'homepage', language }, language);
+    const articleData: ArticleType = useFetch(`http://localhost:3030/api/articles`, 'POST', { page: 'homepage', language }, language);
+    // const articleData: ArticleType = useFetch(`https://megaclinic.ultra-violet.codes/api/articles`, 'POST', { page: 'homepage', language }, language);
 
     
     return (

@@ -41,7 +41,7 @@ const LogIn: React.FC = () => {
             window.localStorage.setItem('user', JSON.stringify({ 'id': res.id, 'name': res.name }))
             navigate('../doctor-account', { replace: true })
         })
-        .catch(error => {
+        .catch(err => {
             setUsername({
                 username: '',
                 password: ''

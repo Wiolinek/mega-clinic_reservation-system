@@ -9,7 +9,7 @@ interface Props {
     target?: string;
     icon?: React.ReactNode;
     aria?: string;
-    onClick?: () => void;
+    onClick?: () => void | React.MouseEventHandler<HTMLAnchorElement>;
     disabled?: boolean;
 }
 
@@ -30,6 +30,7 @@ const Button: React.FC<Props> = ({ customClass, text, type, target, icon, aria, 
             : 
             <NavLink to={target || '/'}
                 className={`btn ${customClass || ''}`}
+                onClick={onClick}
             >
                 {text}
             </NavLink>

@@ -23,7 +23,7 @@ router.post('/', async function(req, res, next) {
 
 	await transport.sendMail({
 		from: process.env.MAIL_FROM,
-		to: values.pacientEmail,
+		to: values.patientEmail,
     bcc: process.env.MAIL_FROM,
 		subject: message.title,
 		html: message.message

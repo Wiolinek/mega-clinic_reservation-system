@@ -1,15 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var mysql = require('./../lib/mysql')
+const mysql = require('./../lib/mysql')
 
 /* GET doctor visits listing. */
 
 router.post('/', function(req, res, next) {
-  let filter = req.body.doctorId
-  let dateFilter = req.body.dateFilter;
+  let doctorFilter = req.body.doctorId ? `doctor_id = '${req.body.doctorId}'` : null;
+  let dateFilter = req.body.date ? `date = '${req.body.date}'` : null;
+  let visitFilter = req.body.visitId ? `id = '${req.body.visitId}'` : null;
 
-  mysql.query("SELECT * FROM reservations WHERE doctor_id = " + '"' + filter + '"' + (dateFilter !== null ? (" AND date = " + '"' + dateFilter + '"') : ''), function(error, result, fields) {
+  const filtersArr = [doctorFilter, dateFilter, visitFilter].filter(Boolean)
+  const filters = filtersArr.join(" AND ")
+
+  mysql.query("SELECT * FROM reservations WHERE " + (filtersArr.length > 0 && filters), function(error, result, fields) {
     res.json(result);
   });
 });

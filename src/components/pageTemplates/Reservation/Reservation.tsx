@@ -6,27 +6,27 @@ import { DoctorType, DoctorsType } from 'types/doctor';
 import { SpecialitiesType } from 'types/speciality';
 import { VisitsType } from 'types/visit';
 import useFetch from 'helpers/useFetch';
-import { specialitiesHandler, doctorsHandler, bookedTimesHandler, availableTimesHandler, timeListHandler } from 'helpers/reservationHelpers'
+import { specialitiesHandler, doctorsHandler, bookedTimesHandler, availableTimesHandler, timeListHandler } from 'helpers/reservation.helper'
 
 import './Reservation.scss';
 
 
 const Reservation: React.FC = () => {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const doctorSpec = searchParams.get('speciality');
     const doctorName = searchParams.get('doctor');
     const [chosenDoctor, setChosenDoctor] = useState<React.SetStateAction<DoctorType[] | undefined>>();
     const [timetable, setTimetable] = useState<React.SetStateAction<string[] | undefined>>();
     const [date, setDate] = useState<React.SetStateAction<Date | undefined | any>>();
 
-    const specialitiesData: SpecialitiesType = useFetch(`http://localhost:3030/api/specialities`);
-    // const specialitiesData: SpecialitiesTYpe = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`);
+    const specialitiesData: SpecialitiesType = useFetch(`http://localhost:3030/api/specialities`, 'GET');
+    // const specialitiesData: SpecialitiesTYpe = useFetch(`https://megaclinic.ultra-violet.codes/api/specialities`, 'GET');
 
-    const doctorsData: DoctorsType = useFetch(`http://localhost:3030/api/doctors`, doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
-    // const doctorsData: DoctorsType = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
+    const doctorsData: DoctorsType = useFetch(`http://localhost:3030/api/doctors`, 'POST', doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
+    // const doctorsData: DoctorsType = useFetch(`https://megaclinic.ultra-violet.codes/api/doctors`, 'POST', doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
 
-    const bookedVisits: VisitsType = useFetch(`http://localhost:3030/api/visits`, { doctorId: String(Array.isArray(chosenDoctor) && chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor!, date);
-    // const bookedVisits: VisitsType = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, { doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, dateFilter: date?.toLocaleDateString('sv') }, chosenDoctor, date);
+    const bookedVisits: VisitsType = useFetch(`http://localhost:3030/api/visits`, 'POST', { doctorId: String(Array.isArray(chosenDoctor) && chosenDoctor?.[0]?.doctor_id) || null, date: date?.toLocaleDateString('sv') }, chosenDoctor!, date);
+    // const bookedVisits: VisitsType = useFetch(`https://megaclinic.ultra-violet.codes/api/visits`, 'POST', { doctorId: String(chosenDoctor?.[0]?.doctor_id) || null, date: date?.toLocaleDateString('sv') }, chosenDoctor, date);
 
     const availableTimes = availableTimesHandler(timetable, bookedTimesHandler(bookedVisits));
 

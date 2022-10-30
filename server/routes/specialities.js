@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var mysql = require('./../lib/mysql')
+const mysql = require('./../lib/mysql')
 
 /* GET specialities listing. */
 router.get('/', function(req, res, next) {

@@ -1,18 +1,18 @@
-export interface PacientType {
+export interface PatientType {
     id?: string | number,
     speciality: string,
     doctor: string,
     doctorId: string,
     date: string,
     time: string,
-    pacientName: string,
-    pacientEmail: string,
-    pacientPhone: string,
+    patientName: string,
+    patientEmail: string,
+    patientPhone: string,
     language: string | undefined,
 }
 
-export interface PacientsType {
-    data: PacientType[] | null
+export interface PatientsType {
+    data: PatientType[] | null
     loading: boolean;
     error: string | null;
 }
