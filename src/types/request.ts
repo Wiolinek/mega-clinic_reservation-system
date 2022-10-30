@@ -1,8 +1,8 @@
 export interface RequestType {
     method: string,
-    credentials?: RequestCredentials | undefined,
+    credentials?: RequestCredentials | any,
     headers: {
       'Content-Type': string
     },
-    body?: BodyInit | null | undefined,
+    body?: BodyInit | null | string,
 }
