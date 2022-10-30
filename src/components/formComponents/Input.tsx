@@ -3,7 +3,7 @@ import { ErrorMessage, useField, FieldHookConfig } from 'formik';
 
 type Props = FieldHookConfig<string> & {
     label?: string;
-    value?: string | number | readonly string[] | undefined;
+    value?: string | number | readonly string[];
     example?: string;
     type?: string;
     customClass?: string;
