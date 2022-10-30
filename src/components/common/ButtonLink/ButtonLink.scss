@@ -7,6 +7,7 @@
     font-family: var(--menu-font-family);
     font-size: 1.2rem;
     letter-spacing: 1px;
+    text-align: center;
     min-width: 140px;
     border-radius: 6px;
     padding: 0.8rem 2rem;
@@ -35,6 +36,18 @@
         background-color: var(--primary-color);
         color: var(--white-color);
         border: 1px solid var(--white-color);
+    }
+}
+
+.red-btn {
+    background-color: var(--red-color);
+    border: 1px solid var(--red-color);
+    border-radius: 6px;
+    color: var(--white-color);
+    &:hover {
+        background-color: var(--white-color);
+        border: 1px solid var(--red-color);
+        color: var(--red-color);
     }
 }
 
