@@ -3,9 +3,9 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import CalendarComp from 'components/Calendar/Calendar';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink'
 import FormFieldControler from '../FormFieldControler';
-import { emailMessageHandler } from 'helpers/formHelper';
+import { emailMessageHandler } from 'helpers/form.helper';
 import { DoctorType } from 'types/doctor';
-import { PacientType } from 'types/pacient';
+import { PatientType } from 'types/patient';
 import { MyContext } from 'Context';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -19,7 +19,7 @@ interface Props {
     doctorsList?: React.ReactNode[];
     setChosenDoctor: React.Dispatch<React.SetStateAction<DoctorType[] | undefined>>;
     timeList?: React.ReactNode[] | boolean;
-    date?: Date | undefined;
+    date?: Date;
     setDate: React.Dispatch<React.SetStateAction<Date>>;
 }
 
@@ -51,7 +51,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         );
     };
 
-    const formHandler = async(values: PacientType) => {
+    const formHandler = async(values: PatientType) => {
         setLoading(true)
 
         const message = emailMessageHandler(values);
@@ -59,21 +59,20 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         await fetch(`http://localhost:3030/api/send`, { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify({values, message})
+            body: JSON.stringify({ values, message })
         })
-        .then((res) => { res.status === 200 && 
+        .then(res => { res.status === 200 && 
             setLoading(false)
         
         // fetch(`https://megaclinic.ultra-violet.codes/api/form`, {
         fetch(`http://localhost:3030/api/form`, { 
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify({values})
+            body: JSON.stringify({ values })
         })
         .then(() => navigate('../success', { replace: true }))
-        .catch(error => console.log(`error ${error}`))
-        }
-        )
+        .catch(err => console.log(`error ${err}`))
+        })
     };
 
     useEffect(() => {
@@ -92,31 +91,31 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
             .required(labels?.formErrors.date),
         time: Yup.string()
             .required(labels?.formErrors.time),
-        pacientName: Yup.string()
-            .required(labels?.formErrors.pacientName)
-            .min(2, labels?.formErrors.pacientNameLength)
+        patientName: Yup.string()
+            .required(labels?.formErrors.patientName)
+            .min(2, labels?.formErrors.patientNameLength)
             .matches(/^[a-zA-Z]{2,}[ ][a-zA-Z]{2,}/, labels?.formErrors.nameMatch),
-        pacientPhone: Yup.string()
-            .required(labels?.formErrors.pacientPhone)
-            .min(9, labels?.formErrors.pacientPhoneLength)
+        patientPhone: Yup.string()
+            .required(labels?.formErrors.patientPhone)
+            .min(9, labels?.formErrors.patientPhoneLength)
             .matches(/^[0-9]/, labels?.formErrors.Start)
-            .typeError(labels?.formErrors.pacientPhoneNumber || ''),
-        pacientEmail: Yup.string()
-            .email(labels?.formErrors.pacientEmailValid)
-            .required(labels?.formErrors.pacientEmail)
-            .min(5, labels?.formErrors.pacientEmailLength)
-            .matches(/^[^@]+@[^@]+\.[^@]+$/, labels?.formErrors.pacientEmailMatch)
+            .typeError(labels?.formErrors.patientPhoneNumber || ''),
+        patientEmail: Yup.string()
+            .email(labels?.formErrors.patientEmailValid)
+            .required(labels?.formErrors.patientEmail)
+            .min(5, labels?.formErrors.patientEmailLength)
+            .matches(/^[^@]+@[^@]+\.[^@]+$/, labels?.formErrors.patientEmailMatch)
     });
 
-    const initialValues: PacientType = {
+    const initialValues: PatientType = {
         speciality: doctorSpec || '',
         doctor: doctorName || '',
         doctorId: doctorId!,
         date: date?.toLocaleDateString('sv') || '',
         time: '',
-        pacientName: '',
-        pacientEmail: '',
-        pacientPhone: '',
+        patientName: '',
+        patientEmail: '',
+        patientPhone: '',
         language,
     }
 
@@ -125,7 +124,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={(values: PacientType): void | Promise<any> => formHandler(values)}
+            onSubmit={(values: PatientType): void | Promise<any> => formHandler(values)}
             enableReinitialize
         >
             {(props: any) => (
@@ -185,7 +184,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                     <FormFieldControler
                         as='input'
                         type='text'
-                        name='pacientName'
+                        name='patientName'
                         label={labels?.personalData.nameSurname}
                         example={labels?.placeholders.nameSurname}
                         required
@@ -194,7 +193,7 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                     <FormFieldControler
                         as='input'
                         type='email'
-                        name='pacientEmail'
+                        name='patientEmail'
                         label={labels?.personalData.email}
                         example={labels?.placeholders.email}
                         required
@@ -203,9 +202,9 @@ const FormComp: React.FC<Props> = ({ specialitiesList, doctorsData, doctorsList,
                     <FormFieldControler
                         as='input'
                         type='tel'
-                        name='pacientPhone'
+                        name='patientPhone'
                         label={labels?.personalData.phone}
-                        value={props.pacientPhone}
+                        value={props.patientPhone}
                         required
                     />
                 </div>

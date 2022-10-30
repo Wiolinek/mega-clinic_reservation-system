@@ -1,6 +1,6 @@
-import { PacientType } from 'types/pacient';
+import { PatientType } from 'types/patient';
 
-export const emailMessageHandler = (values: PacientType) => {
+export const emailMessageHandler = (values: PatientType) => {
 
     if(values.language === 'en') {
         return {title: `MegaClinic - reservation - ${values.date}`,
@@ -25,22 +25,22 @@ export const emailMessageHandler = (values: PacientType) => {
         margin-bottom: 10px;
         font-size: 16px;
         font-weight: 700; 
-        ">Pacient's name and surname</h4>
-        <p>${values.pacientName}</p>
+        ">Patient's name and surname</h4>
+        <p>${values.patientName}</p>
         <h4 style="
         margin-bottom: 10px;
         font-size: 16px;
         font-weight: 700;
-        ">Pacient's e-mail address</h4>
+        ">Patient's e-mail address</h4>
         <p style="
         color: black;
-        ">${values.pacientEmail}</p>
+        ">${values.patientEmail}</p>
         <h4 style="
         margin-bottom: 10px;
         font-size: 16px;
         font-weight: 700; 
-        ">Pacient's phone number</h4>
-        <p>${values.pacientPhone}</p>
+        ">Patient's phone number</h4>
+        <p>${values.patientPhone}</p>
         <h4 style="
         margin-bottom: 10px;
         font-size: 16px;
@@ -86,7 +86,7 @@ export const emailMessageHandler = (values: PacientType) => {
         font-size: 16px;
         font-weight: 700; 
         ">Imię i nazwisko pacjenta</h4>
-        <p>${values.pacientName}</p>
+        <p>${values.patientName}</p>
         <h4 style="
         margin-bottom: 10px;
         font-size: 16px;
@@ -94,13 +94,13 @@ export const emailMessageHandler = (values: PacientType) => {
         ">Adres e-mail pacjenta</h4>
         <p style="
         color: black;
-        ">${values.pacientEmail}</p>
+        ">${values.patientEmail}</p>
         <h4 style="
         margin-bottom: 10px;
         font-size: 16px;
         font-weight: 700; 
         ">Numer telefonu pacjenta</h4>
-        <p>${values.pacientPhone}</p>
+        <p>${values.patientPhone}</p>
         <h4 style="
         margin-bottom: 10px;
         font-size: 16px;
