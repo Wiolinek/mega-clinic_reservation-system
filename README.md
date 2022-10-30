@@ -106,8 +106,12 @@ Project is: _in progress_
 ## Room for Improvement
 
 - fix Typescript types --> in progress
+- add patient account with login option
 - add option for booking cancelation for pacient
 - translate specializations into english (homepage and reservation filters)
+- doctor account - finish patient card section with visits history
+- doctor account - add patient's data edit option
+
 
 ## License
 
