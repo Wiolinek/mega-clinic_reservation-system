@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { RequestType } from 'types/request'
+import { RequestType } from 'types/request';
 
 
 const useFetch = (url: string, type?: string, req?: object, param1?: string | null | object, param2?: string) => {
@@ -16,12 +16,6 @@ const useFetch = (url: string, type?: string, req?: object, param1?: string | nu
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify( req ),
-        };
-      case 'GET':
-        return {
-          method: 'GET',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
         };
       default: return {
         method: 'GET',
