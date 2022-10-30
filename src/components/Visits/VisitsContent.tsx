@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { MyContext } from 'Context';
-import Loader from 'components/Loader/Loader';
 import ButtonLink from 'components/common/ButtonLink/ButtonLink';
 import { convertDate, futureVisitsGenerate, pastVisitsGenerate, listVisitsGenerate } from 'helpers/visits.helper';
 import { VisitsType } from 'types/visit';
@@ -53,9 +52,6 @@ const VisitsContent: React.FC<Props> = ({ visitsData }) => {
                         />
                     </div>
                 </div>
-                {(visitsData?.loading && labels) &&
-                    <Loader message={labels?.loaders.list} />
-                }
                 {visitsType &&
                     <>
                         <ul className='doctor-account__list'>
