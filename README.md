@@ -29,8 +29,6 @@ LOGIN NAME.SURNAME: (eg. marek.nowacki)
 
 PASSWORD: surname123 (eg. nowacki123)
 
-## Live demo [_here_]()
-
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
