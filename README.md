@@ -16,6 +16,7 @@
 > - browse pacient by name
 > - browse booked visits
 > - filter past and future visits
+> - add and modify notes in each visit
 > - toggle between polish and english languages
 >
 > Project was created to learn all technologies used here, and practice.
@@ -58,8 +59,9 @@ PASSWORD: surname123 (eg. nowacki123)
 
 ![](public/images/screens/hp.png)
 ![](public/images/screens/doctors.png)
-![](public/images/screens/reservation.png)
-![](public/images/screens/account.png)
+![](public/images/screens/form.png)
+![](public/images/screens/doctorAccount.png)
+![](public/images/screens/visitDetails.png)
 
 ## Setup
 
