@@ -23,7 +23,7 @@ const Reservation: React.FC = () => {
 
     const doctorsData: DoctorsType = useFetch(`${process.env.REACT_APP_SITE_HOST}/api/doctors`, 'POST', doctorSpec !== '' ? { specialityFilter: doctorSpec } : undefined, doctorSpec);
 
-    const bookedVisits: VisitsType = useFetch(`${process.env.REACT_APP_SITE_HOST}/api/visits`, 'POST', { doctorId: String(Array.isArray(chosenDoctor) && chosenDoctor?.[0]?.doctor_id) || null, date: date?.toLocaleDateString('sv') }, chosenDoctor!, date);
+    const bookedVisits: VisitsType = useFetch(`${process.env.REACT_APP_SITE_HOST}/api/visits`, 'POST', { doctorId: String(Array.isArray(chosenDoctor) && chosenDoctor?.[0]?.doctor_id) || null, date: date?.toLocaleDateString('sv') }, chosenDoctor, date);
 
     const availableTimes = availableTimesHandler(timetable, bookedTimesHandler(bookedVisits));
 

@@ -35,13 +35,13 @@ const Navigation: React.FC = () => {
                             <FontAwesomeIcon icon={faStethoscope}/><span>MegaClinic</span>
                     </NavLink>
                 </div>
-                <Menu isOpen={isOpen!}
+                <Menu isOpen={isOpen}
                     setOpen={setOpen}
                     closeMenu={closeMenu}
                 />
                 <div className='buttons-group'>
                     <ButtonLink type='button'
-                        icon={isOpen! ? <FontAwesomeIcon icon={faXmark}/> : <FontAwesomeIcon icon={faBars}/>}
+                        icon={isOpen ? <FontAwesomeIcon icon={faXmark}/> : <FontAwesomeIcon icon={faBars}/>}
                         customClass='menu-btn'
                         onClick={toggleMenuHandler}
                         aria={labels?.aria.burger}

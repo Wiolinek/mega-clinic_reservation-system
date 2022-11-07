@@ -6,7 +6,7 @@ type Props = FieldHookConfig<string> & {
     value?: string;
     example?: string;
     eventHandler?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-    options?: React.ReactNode[] | boolean | undefined | null;
+    options?: React.ReactNode[] | boolean | null;
 };
 
 
