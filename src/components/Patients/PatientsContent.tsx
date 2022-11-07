@@ -10,7 +10,7 @@ import { PatientsType } from 'types/patient';
 interface Props {
     searchText: string;
     setSearchText: (value: string) => void;
-};
+}
 
 
 const PatientsContent: React.FC<Props> = ({ searchText, setSearchText }) => {
